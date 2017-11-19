@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Db.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_SysException">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HelpLink" Type="varchar" MaxLength="500" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="Source" Type="varchar" MaxLength="500" />
+          <Property Name="StackTrace" Type="text" />
+          <Property Name="TargetSite" Type="varchar" MaxLength="500" />
+          <Property Name="Data" Type="varchar" MaxLength="500" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SysLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Operator" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="Result" Type="varchar" MaxLength="20" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Module" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SysModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="50" />
+          <Property Name="ParentId" Type="varchar" MaxLength="50" />
+          <Property Name="ModuleURL" Type="varchar(max)" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsShow" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_SysModulePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModuleId" Type="varchar" MaxLength="50" />
+          <Property Name="PermissionId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_SysPermission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PermissionName" Type="varchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsShow" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_SysRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsShow" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_SysRolePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="50" />
+          <Property Name="ModelPermissionId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_SysUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" />
+          <Property Name="PassWord" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="SchoolCard" Type="varchar" MaxLength="50" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="DepId" Type="varchar" MaxLength="50" />
+          <Property Name="PosId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_SysUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="RoleId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_SysModulePermission_tbl_SysModulePermission">
+          <End Role="tbl_SysModulePermission" Type="Self.tbl_SysModulePermission" Multiplicity="1" />
+          <End Role="tbl_SysModulePermission1" Type="Self.tbl_SysModulePermission" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SysModulePermission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_SysModulePermission1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbStoreContainer">
+          <EntitySet Name="tbl_SysException" EntityType="Self.tbl_SysException" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysLog" EntityType="Self.tbl_SysLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysModule" EntityType="Self.tbl_SysModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysModulePermission" EntityType="Self.tbl_SysModulePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysPermission" EntityType="Self.tbl_SysPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysRole" EntityType="Self.tbl_SysRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysRolePermission" EntityType="Self.tbl_SysRolePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysUser" EntityType="Self.tbl_SysUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SysUserRole" EntityType="Self.tbl_SysUserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_SysModulePermission_tbl_SysModulePermission" Association="Self.FK_tbl_SysModulePermission_tbl_SysModulePermission">
+            <End Role="tbl_SysModulePermission" EntitySet="tbl_SysModulePermission" />
+            <End Role="tbl_SysModulePermission1" EntitySet="tbl_SysModulePermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Db" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DbContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_SysException" EntityType="Db.tbl_SysException" />
+          <EntitySet Name="tbl_SysLog" EntityType="Db.tbl_SysLog" />
+          <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
+          <EntitySet Name="tbl_SysModulePermission" EntityType="Db.tbl_SysModulePermission" />
+          <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
+          <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
+          <EntitySet Name="tbl_SysRolePermission" EntityType="Db.tbl_SysRolePermission" />
+          <EntitySet Name="tbl_SysUser" EntityType="Db.tbl_SysUser" />
+          <EntitySet Name="tbl_SysUserRole" EntityType="Db.tbl_SysUserRole" />
+          <AssociationSet Name="FK_tbl_SysModulePermission_tbl_SysModulePermission" Association="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission">
+            <End Role="tbl_SysModulePermission" EntitySet="tbl_SysModulePermission" />
+            <End Role="tbl_SysModulePermission1" EntitySet="tbl_SysModulePermission" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_SysException">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HelpLink" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TargetSite" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_SysLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Result" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_SysModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsShow" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_SysModulePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PermissionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_SysModulePermission1" Relationship="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission" FromRole="tbl_SysModulePermission" ToRole="tbl_SysModulePermission1" />
+          <NavigationProperty Name="tbl_SysModulePermission2" Relationship="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission" FromRole="tbl_SysModulePermission1" ToRole="tbl_SysModulePermission" />
+        </EntityType>
+        <EntityType Name="tbl_SysPermission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PermissionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsShow" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_SysRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsShow" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_SysRolePermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModelPermissionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_SysUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DepId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PosId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_SysUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tbl_SysModulePermission_tbl_SysModulePermission">
+          <End Type="Db.tbl_SysModulePermission" Role="tbl_SysModulePermission" Multiplicity="1" />
+          <End Type="Db.tbl_SysModulePermission" Role="tbl_SysModulePermission1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SysModulePermission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_SysModulePermission1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Db" />
+        <Alias Key="Target" Value="Db.Store" />
+        <EntityContainerMapping CdmEntityContainer="DbContainer" StorageEntityContainer="DbStoreContainer">
+          <EntitySetMapping Name="tbl_SysException">
+            <EntityTypeMapping TypeName="Db.tbl_SysException">
+              <MappingFragment StoreEntitySet="tbl_SysException">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="HelpLink" ColumnName="HelpLink" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysLog">
+            <EntityTypeMapping TypeName="Db.tbl_SysLog">
+              <MappingFragment StoreEntitySet="tbl_SysLog">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysModule">
+            <EntityTypeMapping TypeName="Db.tbl_SysModule">
+              <MappingFragment StoreEntitySet="tbl_SysModule">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ModuleURL" ColumnName="ModuleURL" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysModulePermission">
+            <EntityTypeMapping TypeName="Db.tbl_SysModulePermission">
+              <MappingFragment StoreEntitySet="tbl_SysModulePermission">
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysPermission">
+            <EntityTypeMapping TypeName="Db.tbl_SysPermission">
+              <MappingFragment StoreEntitySet="tbl_SysPermission">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysRole">
+            <EntityTypeMapping TypeName="Db.tbl_SysRole">
+              <MappingFragment StoreEntitySet="tbl_SysRole">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysRolePermission">
+            <EntityTypeMapping TypeName="Db.tbl_SysRolePermission">
+              <MappingFragment StoreEntitySet="tbl_SysRolePermission">
+                <ScalarProperty Name="ModelPermissionId" ColumnName="ModelPermissionId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysUser">
+            <EntityTypeMapping TypeName="Db.tbl_SysUser">
+              <MappingFragment StoreEntitySet="tbl_SysUser">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="SchoolCard" ColumnName="SchoolCard" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysUserRole">
+            <EntityTypeMapping TypeName="Db.tbl_SysUserRole">
+              <MappingFragment StoreEntitySet="tbl_SysUserRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
