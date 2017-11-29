@@ -60,25 +60,34 @@ function LoginSys() {
                 return;
             }
 
-            $.ajax({               
-                async: false,
-                type: "get",
-                url: "Login.aspx",
-                data: "UserName=" + $("#UserName").val() + "&Password=" + $("#Password").val() + "&method=login",
-                success: function (data) {
-                    var str = data.substr(0,7);
-                    if (str == "success")
-                    {
-                        window.location.href = "ModuleManager/Index"; 
-                    }
-                    else {
-                        alert("用户名或密码错误!");
-                    }
-                },
-                error: function (err) {
-                    alert("321");
-                } 
+            $.get("./Login.aspx", { method: 'login', UserName: $("#UserName").val(), Password: $("#Password").val() }, function (data) {
+                debugger;
+                var resultJson = eval('(' + data + ')');
+                if (resultJson.flag == "1") {
+                    window.location.href = "ModuleManager/Index"; 
+                }
+                else {
+                    $("#mes").html("用户名或密码错误！");
+                }
+
             });
+            //$.ajax({               
+            //    async: false,
+            //    type: "get",
+            //    url: "Login.aspx",
+            //    data: { method: 'Login', UserName: $("#UserName").val(), Password: $("#Password").val() },             
+            //    success: function (data) {
+            //        debugger;
+            //        var resultJson = eval('(' + data + ')');
+            //        if (resultJson.type == "1")
+            //        {
+            //            window.location.href = "ModuleManager/Index"; 
+            //        }
+            //        else {
+            //            alert("用户名或密码错误!");
+            //        }
+            //    }, 
+            //});
             return false;  
         };
 </script>
