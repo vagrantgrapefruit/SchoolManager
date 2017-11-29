@@ -182,6 +182,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\component.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\img\demo-1-bg.jpg" />
@@ -198,12 +206,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Login.aspx" />
+    <Content Include="Scripts\jQuery\jquery-3.2.1.js" />
+    <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\web\clist.js" />
+    <Content Include="Scripts\web\execlist.js" />
+    <Content Include="Scripts\web\index.js" />
+    <Content Include="Scripts\web\reviewlist.js" />
+    <Content Include="Scripts\web\sel_student.js" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Web\ModuleManager\test.html" />
+    <Content Include="Web\StatusManager\Index.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="ModuleManager\Index.aspx" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Web\ModuleManager\Index.aspx" />
     <Content Include="Scripts\demo-1.js" />
     <Content Include="Scripts\EasePack.min.js" />
     <Content Include="Scripts\html5.js" />
@@ -256,11 +279,11 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModuleManager\Index.aspx.cs">
+    <Compile Include="Web\ModuleManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModuleManager\Index.aspx.designer.cs">
+    <Compile Include="Web\ModuleManager\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,6 +315,13 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\StatusManager\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +330,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\web\detail.json" />
+    <Content Include="Scripts\web\execlist.json" />
+    <Content Include="Scripts\web\list.json" />
+    <Content Include="Scripts\web\nav.json" />
+    <Content Include="Scripts\web\ret_val.json" />
+    <Content Include="Scripts\web\reviewlist.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

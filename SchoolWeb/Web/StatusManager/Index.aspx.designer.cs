@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolWeb.ModuleManager
+namespace SchoolWeb.Web.StatusManager
 {
 
 

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Models
 {
-    public class Class1
+    public class ShowModel
     {
+        public bool? IsShow;
+        public List<Show> content;
+        public string count;
+        public string title;
     }
 }

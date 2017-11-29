@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SchoolWeb.ModuleManager
+namespace SchoolWeb.Web.StatusManager
 {
     public partial class Index : System.Web.UI.Page
     {
