@@ -33,35 +33,38 @@ function addpanel(pid,head,id,isopen,inner){
 }
 function getNav(pid,jsonUrl)
 {
+    debugger;
     
-    $.ajax({
-        url: jsonUrl,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
+    $.get(jsonUrl,function (data) {
+            debugger;
             var head="";
             var content="";
-            $.each(data.head, function(i, item) {
-                content="";
-                head=item.title;
-                if(item.count!="0")
-                    head+=badge.replace(/%count%/g,item.count)
+            $.each(data.head, function (i, item) {
+                if (item.IsShow==true)
+                {
+                    content = "";
+                    head = item.title;
+                    if (item.count != "0")
+                        head += badge.replace(/%count%/g, item.count)
 
-                $.each(item.content, function(j, element) {
-                    if(element.count!="0")
-                        content+=listElement.replace(/%url%/g,element.url).replace(/%title%/g,element.title+badge.replace(/%count%/g,element.count));
-                    else
-                        content+=listElement.replace(/%url%/g,element.url).replace(/%title%/g,element.title);
-
-                })
-                addpanel(pid,head,"id"+i.toString(),i==0,content);
+                    $.each(item.content, function (j, element) {
+                        if (element.IsShow == true) {
+                            if (element.count != "0")
+                                content += listElement.replace(/%url%/g, element.url).replace(/%title%/g, element.title + badge.replace(/%count%/g, element.count));
+                            else
+                                content += listElement.replace(/%url%/g, element.url).replace(/%title%/g, element.title);
+                        }
+                    })
+                    addpanel(pid, head, "id" + i.toString(), i == 0, content);
+                }
             })
 
 
-        }
-    })
+        }, "json",)
+//    })
 }
 function jmp(url){
     var obj=document.getElementById("iframe");
     obj.setAttribute("src",url);
 }
+    
