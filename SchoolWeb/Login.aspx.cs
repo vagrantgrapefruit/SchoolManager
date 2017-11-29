@@ -21,11 +21,15 @@ namespace SchoolWeb
                 {
                     if(login(Request.QueryString["UserName"], Request.QueryString["Password"]))
                     {
-                        Response.Write("success");
+                        Response.Clear();
+                        Response.Write("{\"flag\":\"1\" }");
+                        Response.End();
                     }
                     else
                     {
-                        Response.Write("fail");
+                        Response.Clear();
+                        Response.Write("{\"flag\":\"0\" }");
+                        Response.End();
                     }
 
                 }
