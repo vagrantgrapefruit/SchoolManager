@@ -61,7 +61,6 @@ function LoginSys() {
             }
 
             $.get("/Login.aspx", { method: 'login', UserName: $("#UserName").val(), Password: $("#Password").val() }, function (data) {
-                debugger;
                 var resultJson = eval('(' + data + ')');
                 if (resultJson.flag == "1") {
                     window.location.href = "Web/ModuleManager/Index"; 

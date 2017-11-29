@@ -39,7 +39,7 @@
 		</div>
 		
 		<div id="rframe" style="float:right;width:calc( 100% - 205px );height:100%; padding-left:2px;padding-right:2px"> 
-			<iframe id="iframe" frameborder=0 src="/test.html" style=" width:100%;height:100%;"></iframe>
+			<iframe id="iframe" frameborder=0 src="test.html" style=" width:100%;height:100%;"></iframe>
 		</div>
 	</div>
 </body>

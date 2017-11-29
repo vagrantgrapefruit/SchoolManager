@@ -1,157 +1,184 @@
 {
     "head":[
-        {
-            "title":"新生入学",
-            "content":[
-                {
-                    "title":"学籍批量导入",
-                    "url":"/static/StuInfo_pl.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学籍手动导入",
-                    "url":"/static/StuInfo_sd.html",
-                    "count":"0"
-                }
-            ],
-            "count":"0"
-        },
-        {
-            "title":"学籍管理",
-            "content":[
-                {
-                    "title":"学籍查询",
-                    "url":"/",
-                    "count":"0"
-                },
-                {
-                    "title":"学生转入",
-                    "url":"/static/Transfer_in.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生转出申请",
-                    "url":"/static/Transfer_out.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生休学申请",
-                    "url":"/static/Suspend.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生转班申请",
-                    "url":"/static/TransferClass.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生退学申请",
-                    "url":"/static/DropOut.html",
-                    "count":"0"
-                }
-            ],
-            "count":"0"
-        },
-        {
-            "title":"学生处分",
-            "content":[
-                {
-                    "title":"开除申请",
-                    "url":"/static/Dismiss.html",
-                    "count":"0"
-                }
-            ],
-            "count":"0"
-        },
-        {
-            "title":"学年升级",
-            "content":[
-                {
-                    "title":"学年升级",
-                    "url":"/static/UpGrade.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生跳级申请",
-                    "url":"/static/Skip.html",
-                    "count":"0"
-                },
-                {
-                    "title":"学生留级申请",
-                    "url":"/static/RepeatGrade.html",
-                    "count":"0"
-                }
-            ],
-            "count":"0"
-        },
-        {
-            "title":"审核申请",
-            "content":[
-                {
-                    "title":"留级审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"跳级审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"退学审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"休学审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"开除审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"转入审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"转出审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                },
-                {
-                    "title":"转班审核",
-                    "url":"/static/DropOut_review.html",
-                    "count":"0"
-                }
-                
-            ],
-            "count":"0"
-        },
-        {
-            "title":"执行申请",
-            "content":[
-                {
-                    "title":"退学执行",
-                    "url":"/static/DropOut_exec.html",
-                    "count":"2"
-                },
-                {
-                    "title":"开除执行",
-                    "url":"/static/DropOut_exec.html",
-                    "count":"1"
-                },
-                {
-                    "title":"转出执行",
-                    "url":"/static/DropOut_exec.html",
-                    "count":"0"
-                }
-                
-            ],
-            "count":"3"
-        }
+      {
+        "IsShow": true,
+        "title": "新生入学",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "学籍批量导入",
+            "url": "/static/StuInfo_pl.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学籍手动导入",
+            "url": "/static/StuInfo_sd.html",
+            "count": "0"
+          }
+        ],
+        "count": "0"
+      },
+      {
+        "IsShow": true,
+        "title": "学籍管理",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "学籍查询",
+            "url": "/",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生转入",
+            "url": "/static/Transfer_in.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生转出申请",
+            "url": "/static/Transfer_out.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生休学申请",
+            "url": "/static/Suspend.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生转班申请",
+            "url": "/static/TransferClass.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生退学申请",
+            "url": "/static/DropOut.html",
+            "count": "0"
+          }
+        ],
+        "count": "0"
+      },
+      {
+        "IsShow": true,
+        "title": "学生处分",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "开除申请",
+            "url": "/static/Dismiss.html",
+            "count": "0"
+          }
+        ],
+        "count": "0"
+      },
+      {
+        "IsShow": true,
+        "title": "学年升级",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "学年升级",
+            "url": "/static/UpGrade.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生跳级申请",
+            "url": "/static/Skip.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "学生留级申请",
+            "url": "/static/RepeatGrade.html",
+            "count": "0"
+          }
+        ],
+        "count": "0"
+      },
+      {
+        "IsShow": true,
+        "title": "审核申请",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "留级审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "跳级审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "title": "退学审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "休学审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "title": "开除审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "转入审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "转出审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          },
+          {
+            "IsShow": true,
+            "title": "转班审核",
+            "url": "/static/DropOut_review.html",
+            "count": "0"
+          }
+
+        ],
+        "count": "0"
+      },
+      {
+        "IsShow": true,
+        "title": "执行申请",
+        "content": [
+          {
+            "IsShow": true,
+            "title": "退学执行",
+            "url": "/static/DropOut_exec.html",
+            "count": "2"
+          },
+          {
+            "IsShow": true,
+            "title": "开除执行",
+            "url": "/static/DropOut_exec.html",
+            "count": "1"
+          },
+          {
+            "IsShow": true,
+            "title": "转出执行",
+            "url": "/static/DropOut_exec.html",
+            "count": "0"
+          }
+
+        ],
+        "count": "3"
+      }
     ]
 }
