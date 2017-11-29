@@ -14,17 +14,21 @@ namespace SchoolWeb.ModuleManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var method = Request.QueryString["method"];
-            if(method!=null)
+            //var method = Request.QueryString["method"];
+            if (Request.QueryString["method"] != null) 
             {
-                switch (method)
-                {
-                    case "GetTreeList":
-                        GetTreeList();
-                        break;
-                    default:
-                        break;
-                }
+                //switch (Request.QueryString["method"])
+                //{
+                //    case "GetTreeList":
+                //        GetTreeList();
+                //        break;
+                //    default:
+                //        break;
+                //}
+                if (Request.QueryString["method"] == "GetTreeList")
+                    GetTreeList();
+                else
+                    return;
             }
         }
 

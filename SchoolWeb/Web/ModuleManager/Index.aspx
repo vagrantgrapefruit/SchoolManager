@@ -34,7 +34,7 @@
 		</script>
 		<div id="lframe" style="float:left;width:200px;height:100%;padding-left:1px;padding-right:1px;box-shadow: 0px 0px 15px #666666;">
 			<div class="panel-group" id="accordion" >
-				<script>getNav("accordion","./Index.aspx?method='GetTreeList'");</script>	
+				<script>getNav("accordion","./Index.aspx");</script>	
 			</div>
 		</div>
 		

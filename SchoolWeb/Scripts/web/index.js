@@ -34,14 +34,13 @@ function addpanel(pid,head,id,isopen,inner){
 function getNav(pid,jsonUrl)
 {
     debugger;
-    
-    $.get(jsonUrl,function (data) {
-            debugger;
+
+    $.get(jsonUrl, { method: 'GetTreeList', flag:'1' }, function (data) {
+        debugger;
             var head="";
             var content="";
             $.each(data.head, function (i, item) {
-                if (item.IsShow==true)
-                {
+                if (item.IsShow == true) {
                     content = "";
                     head = item.title;
                     if (item.count != "0")
@@ -54,17 +53,48 @@ function getNav(pid,jsonUrl)
                             else
                                 content += listElement.replace(/%url%/g, element.url).replace(/%title%/g, element.title);
                         }
+
                     })
                     addpanel(pid, head, "id" + i.toString(), i == 0, content);
                 }
-            })
+            })       
+
+    },"json");
+
+    //$.ajax({
+    //    //async:false,
+    //    url: jsonUrl,
+    //    type: "GET",
+    //    dataType: "json",
+    //    success: function (data) {
+    //        debugger;
+    //        var head="";
+    //        var content="";
+    //        $.each(data.head, function (i, item) {
+    //            if (item.IsShow == true) {
+    //                content = "";
+    //                head = item.title;
+    //                if (item.count != "0")
+    //                    head += badge.replace(/%count%/g, item.count)
+
+    //                $.each(item.content, function (j, element) {
+    //                    if (element.IsShow == true) {
+    //                        if (element.count != "0")
+    //                            content += listElement.replace(/%url%/g, element.url).replace(/%title%/g, element.title + badge.replace(/%count%/g, element.count));
+    //                        else
+    //                            content += listElement.replace(/%url%/g, element.url).replace(/%title%/g, element.title);
+    //                    }
+
+    //                })
+    //                addpanel(pid, head, "id" + i.toString(), i == 0, content);
+    //            }
+    //        })
 
 
-        }, "json",)
-//    })
+    //    }
+    //})
 }
 function jmp(url){
     var obj=document.getElementById("iframe");
     obj.setAttribute("src",url);
 }
-    

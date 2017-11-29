@@ -44,7 +44,7 @@
 
     });
 function LoginSys() {
-    $("#mes").html(""); 
+            $("#mes").html(""); 
             $("#UserName").removeClass("input-validation-error");
             $("#Password").removeClass("input-validation-error");
             $("#ValidateCode").removeClass("input-validation-error");
