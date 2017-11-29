@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SchoolWeb.Web.StatusManager
 {
-    public partial class Index1 : System.Web.UI.Page
+    public partial class StuInfo_sd : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

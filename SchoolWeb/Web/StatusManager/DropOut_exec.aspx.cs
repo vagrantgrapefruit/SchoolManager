@@ -5,16 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SchoolWeb
+namespace SchoolWeb.Web.StatusManager
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class DropOut_exec : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(IsPostBack)
-            {
 
-            }
         }
     }
 }

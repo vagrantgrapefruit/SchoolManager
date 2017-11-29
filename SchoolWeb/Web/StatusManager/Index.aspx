@@ -1,16 +1,19 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../Content/bootstrap/css/bootstrap.min.css">  
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="SchoolWeb.Web.StatusManager.Index1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="../../Content/bootstrap/css/bootstrap.min.css"/>  
 	<script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../Scripts/web/index.js"></script>
 	<title>学籍管理系统</title>
 </head>
-<body style="padding-top:52px;background-color:#F6F4F0;">
-	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="box-shadow: 0px 0px 5px #666666;">
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="box-shadow: 0px 0px 5px #666666;">
 	    <div class="container-fluid">
 	    <div class="navbar-header">
 	        <a class="navbar-brand" href="#">学籍管理系统</a>
@@ -42,6 +45,5 @@
 
 	
 	
-	</body>
+</body>
 </html>
- 

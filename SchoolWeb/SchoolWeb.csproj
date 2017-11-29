@@ -213,7 +213,6 @@
     <Content Include="Scripts\web\index.js" />
     <Content Include="Scripts\web\reviewlist.js" />
     <Content Include="Scripts\web\sel_student.js" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
@@ -223,7 +222,20 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Web\ModuleManager\test.html" />
+    <Content Include="Web\StatusManager\Dismiss.aspx" />
+    <Content Include="Web\StatusManager\DropOut.aspx" />
+    <Content Include="Web\StatusManager\DropOut_exec.aspx" />
+    <Content Include="Web\StatusManager\DropOut_review.aspx" />
     <Content Include="Web\StatusManager\Index.aspx" />
+    <Content Include="Web\StatusManager\RepeatGrade.aspx" />
+    <Content Include="Web\StatusManager\Skip.aspx" />
+    <Content Include="Web\StatusManager\StuInfo_pl.aspx" />
+    <Content Include="Web\StatusManager\StuInfo_sd.aspx" />
+    <Content Include="Web\StatusManager\Suspend.aspx" />
+    <Content Include="Web\StatusManager\TransferClass.aspx" />
+    <Content Include="Web\StatusManager\Transfer_in.aspx" />
+    <Content Include="Web\StatusManager\Transfer_out.aspx" />
+    <Content Include="Web\StatusManager\UpGrade.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\SchoolWeb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -309,12 +321,33 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Web\StatusManager\Dismiss.aspx.cs">
+      <DependentUpon>Dismiss.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Web\StatusManager\Dismiss.aspx.designer.cs">
+      <DependentUpon>Dismiss.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut.aspx.cs">
+      <DependentUpon>DropOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut.aspx.designer.cs">
+      <DependentUpon>DropOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut_exec.aspx.cs">
+      <DependentUpon>DropOut_exec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut_exec.aspx.designer.cs">
+      <DependentUpon>DropOut_exec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut_review.aspx.cs">
+      <DependentUpon>DropOut_review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\DropOut_review.aspx.designer.cs">
+      <DependentUpon>DropOut_review.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\StatusManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -322,6 +355,69 @@
     </Compile>
     <Compile Include="Web\StatusManager\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\RepeatGrade.aspx.cs">
+      <DependentUpon>RepeatGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\RepeatGrade.aspx.designer.cs">
+      <DependentUpon>RepeatGrade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\Skip.aspx.cs">
+      <DependentUpon>Skip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\Skip.aspx.designer.cs">
+      <DependentUpon>Skip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\StuInfo_pl.aspx.cs">
+      <DependentUpon>StuInfo_pl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\StuInfo_pl.aspx.designer.cs">
+      <DependentUpon>StuInfo_pl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\StuInfo_sd.aspx.cs">
+      <DependentUpon>StuInfo_sd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\StuInfo_sd.aspx.designer.cs">
+      <DependentUpon>StuInfo_sd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\Suspend.aspx.cs">
+      <DependentUpon>Suspend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\Suspend.aspx.designer.cs">
+      <DependentUpon>Suspend.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\TransferClass.aspx.cs">
+      <DependentUpon>TransferClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\TransferClass.aspx.designer.cs">
+      <DependentUpon>TransferClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\Transfer_in.aspx.cs">
+      <DependentUpon>Transfer_in.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\Transfer_in.aspx.designer.cs">
+      <DependentUpon>Transfer_in.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\Transfer_out.aspx.cs">
+      <DependentUpon>Transfer_out.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\Transfer_out.aspx.designer.cs">
+      <DependentUpon>Transfer_out.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\StatusManager\UpGrade.aspx.cs">
+      <DependentUpon>UpGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\StatusManager\UpGrade.aspx.designer.cs">
+      <DependentUpon>UpGrade.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

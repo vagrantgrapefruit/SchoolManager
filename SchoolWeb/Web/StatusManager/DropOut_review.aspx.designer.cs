@@ -10,6 +10,6 @@
 namespace SchoolWeb.Web.StatusManager {
     
     
-    public partial class Index1 {
+    public partial class DropOut_review {
     }
 }
