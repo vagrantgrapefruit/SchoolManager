@@ -16,7 +16,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class SysUserBLL: Virtual_SysUserBLL,ISysUserBLL
+	public partial class SysUserBLL: Virtual_SysUserBLL
 	{
         
 

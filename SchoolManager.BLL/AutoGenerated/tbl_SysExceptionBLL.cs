@@ -16,7 +16,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class SysExceptionBLL: Virtual_SysExceptionBLL,ISysExceptionBLL
+	public partial class SysExceptionBLL: Virtual_SysExceptionBLL
 	{
         
 

@@ -16,7 +16,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class SysRolePermissionBLL: Virtual_SysRolePermissionBLL,ISysRolePermissionBLL
+	public partial class SysRolePermissionBLL: Virtual_SysRolePermissionBLL
 	{
         
 

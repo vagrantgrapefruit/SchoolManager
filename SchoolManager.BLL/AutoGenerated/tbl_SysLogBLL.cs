@@ -16,7 +16,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class SysLogBLL: Virtual_SysLogBLL,ISysLogBLL
+	public partial class SysLogBLL: Virtual_SysLogBLL
 	{
         
 

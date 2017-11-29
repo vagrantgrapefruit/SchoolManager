@@ -35,7 +35,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class <#=entity.Name.Replace("tbl_","") #>BLL: Virtual_<#=entity.Name.Replace("tbl_","") #>BLL,I<#=entity.Name.Replace("tbl_","") #>BLL
+	public partial class <#=entity.Name.Replace("tbl_","") #>BLL: Virtual_<#=entity.Name.Replace("tbl_","") #>BLL
 	{
         
 
