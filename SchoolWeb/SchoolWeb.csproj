@@ -371,6 +371,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.js" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\Manager\ModuleManage.js" />
     <Content Include="Scripts\web\clist.js" />
     <Content Include="Scripts\web\execlist.js" />
     <Content Include="Scripts\web\index.js" />
@@ -442,6 +443,7 @@
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Web\Handler\GetModel.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -455,6 +457,9 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\GetModel.ashx.cs">
+      <DependentUpon>GetModel.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
