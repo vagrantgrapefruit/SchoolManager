@@ -36,6 +36,7 @@ namespace SchoolWeb.ModuleManager
             var json = new
             {
                 head = (from r in rootModel
+                        orderby r.Sort ascending
                         select new ShowModel
                         {
                             IsShow = r.IsShow,
