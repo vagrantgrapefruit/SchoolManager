@@ -33,11 +33,9 @@ function addpanel(pid,head,id,isopen,inner){
 }
 function getNav(pid,jsonUrl)
 {
-    debugger;
 
-    $.get(jsonUrl, { method: 'GetTreeList', flag:'1' }, function (data) {
-        debugger;
-            var head="";
+    $.get(jsonUrl, { method: 'GetTreeList', flag: '1' }, function (data) {
+            var head = "";
             var content="";
             $.each(data.head, function (i, item) {
                 if (item.IsShow == true) {

@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="../../Content/bootstrap/css/bootstrap.min.css"/>  
 	<script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../Scripts/web/index.js"></script>
+	<script src="../../Scripts/web/clist.js"></script>
+    <script src="../../Scripts/web/sel_student.js"></script>
 	<title>学籍管理系统</title>
 </head>
 <body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">

@@ -17,18 +17,14 @@ namespace SchoolWeb.ModuleManager
             //var method = Request.QueryString["method"];
             if (Request.QueryString["method"] != null) 
             {
-                //switch (Request.QueryString["method"])
-                //{
-                //    case "GetTreeList":
-                //        GetTreeList();
-                //        break;
-                //    default:
-                //        break;
-                //}
-                if (Request.QueryString["method"] == "GetTreeList")
-                    GetTreeList();
-                else
-                    return;
+                switch (Request.QueryString["method"])
+                {
+                    case "GetTreeList":
+                        GetTreeList();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -40,6 +36,7 @@ namespace SchoolWeb.ModuleManager
             var json = new
             {
                 head = (from r in rootModel
+                        orderby r.Sort ascending
                         select new ShowModel
                         {
                             IsShow = r.IsShow,
