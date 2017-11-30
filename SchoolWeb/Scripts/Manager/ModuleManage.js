@@ -96,7 +96,9 @@ var ButtonInit = function () {
         //初始化页面上面的按钮事件
     };
     oInit.Add = function () {
-        alert("add");
+        var frameSrc = "../ErrorPages/NoPermission.html";
+        $("#NoPermissioniframe").attr("src", frameSrc);
+        $('#NoPermissionModal').modal({ show: true, backdrop: 'static' });
     };
     oInit.Edit = function () {
         alert("Edit");
