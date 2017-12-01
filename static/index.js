@@ -33,12 +33,13 @@ function addpanel(pid,head,id,isopen,inner){
 }
 function getNav(pid,jsonUrl)
 {
-    
+    debugger;
     $.ajax({
         url: jsonUrl,
         type: "GET",
         dataType: "json",
         success: function(data) {
+			debugger;
             var head="";
             var content="";
             $.each(data.head, function(i, item) {
