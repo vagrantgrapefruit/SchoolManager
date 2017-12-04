@@ -385,6 +385,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Web\ModuleManager\AddModule.aspx" />
     <Content Include="Web\ModuleManager\ModuleManage.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
     <Content Include="Web\StatusManager\Dismiss.aspx" />
@@ -460,6 +461,13 @@
     </Compile>
     <Compile Include="Web\Handler\GetModel.ashx.cs">
       <DependentUpon>GetModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AddModule.aspx.cs">
+      <DependentUpon>AddModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AddModule.aspx.designer.cs">
+      <DependentUpon>AddModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
