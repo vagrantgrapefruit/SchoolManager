@@ -100,12 +100,6 @@
     <Compile Include="tbl_SysUserRole.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Virtual_tbl_SysExceptionModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Virtual_tbl_SysLogModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
     <Compile Include="Virtual_tbl_SysModuleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
@@ -126,6 +120,12 @@
     </Compile>
     <Compile Include="Virtual_tbl_SysUserRoleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_wyqstudentModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wyqstudent.cs">
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
