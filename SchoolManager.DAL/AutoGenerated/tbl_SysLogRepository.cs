@@ -12,9 +12,9 @@ using System;
 
 namespace SchoolManager.DAL
 {
-	public partial class YZJ_InfoRepository:BaseRepository<YZJ_Info>,IDisposable
+	public partial class SysLogRepository:BaseRepository<tbl_SysLog>,IDisposable
     {
-        public YZJ_InfoRepository(DbContainer db):base(db)
+        public SysLogRepository(DbContainer db):base(db)
         {
 			
         }

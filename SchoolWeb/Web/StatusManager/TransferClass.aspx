@@ -12,6 +12,47 @@
 	<script src="../../Scripts/web/clist.js"></script>
     <script src="../../Scripts/web/sel_student.js"></script>
 	<title>学籍管理系统</title>
+    <script type="text/javascript">
+        function getStudent() {
+            //输入学籍号
+            
+            $.get("./TransferClass.aspx", { "action": "getStudent", "condition": $("#condition").val() }, function (resultString) {
+                var studentInfor = eval('(' + resultString + ')');
+                var studentInforArray = studentInfor.studentList;
+                $(studentInforArray).each(function (index, student) {
+                    //alert()
+                    $("#stdname").val(student.Sname);
+                    $("#stdid").val(student.Sno);
+                    $("#stdclass").val(student.Classno);
+                });
+                
+            });
+
+        }
+        function submit()
+        {
+            $("#mes").html("");
+            $("#reason").removeClass("input-validation-error");
+            if ($.trim($("#reason").val()) == "") {
+                $("#reason").addClass("input-validation-error").focus();
+                $("#mes").html("申请理由不为空！");
+                console.log("add")
+                return;
+            }
+            if ($.trim($("#stdname").val()) == "") {
+                $("#stdname").addClass("input-validation-error").focus();
+                $("#mes").html("未选择有效学生！");
+                console.log("add")
+                return;
+            }
+            newClass = newClass.substring(0, 2) + $("#cclass").val();
+            $.get("./TransferClass.aspx", { "action": "transfer", "newClass": newClass, "Sno":"#stdid" }, function (resultString) {
+
+
+            })
+         
+        }
+    </script>
 </head>
 <body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
     <script>
@@ -35,7 +76,8 @@
                     <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
                         <div class="panel-body" style="padding: 3px;padding-left:5px;padding-right:5px">
                             <div >
-                                <input type="text" class="form-control" name="model_name" placeholder="姓名或学籍号">
+       <!--                         <input type="text" class="form-control" name="model_name" placeholder="姓名或学籍号"/>  -->
+                                <input type="text" class="form-control" id="condition" name="model_name" placeholder="姓名或学号"/>
                             </div>
                         </div>
                     </div>
@@ -43,7 +85,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getStudent('test')">确认选择</button>
+        <!--            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getStudent('test')">确认选择</button>
+         -->           <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getStudent();">确认选择</button>
+
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -61,41 +105,45 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学生名字</label>
                     <div class="col-sm-8">
-                        <input id="stdname" type="text" class="form-control" name="stdname" placeholder="名字" disabled>
+                        <input id="stdname" type="text" class="form-control" name="stdname" placeholder="名字" disabled />
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">学籍号</label>
+                    <label class="col-sm-2 control-label">学号</label>
                     <div class="col-sm-8">
-                        <input id="stdid" type="text" class="form-control" name="stdid" placeholder="学籍号" disabled>
+                        <input id="stdid" type="text" class="form-control" name="stdid" placeholder="学号" disabled/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">当前班级</label>
                     <div class="col-sm-8">
-                        <input id="stdclass" type="text" class="form-control" name="stdclass" placeholder="当前班级" disabled>
+                        <input id="stdclass" type="text" class="form-control" name="stdclass" placeholder="当前班级" disabled/>
                     </div>
                 </div>
                 
                 <div class="form-group" style="margin-bottom:5px;margin-top:5px">
                     <label class="col-sm-2 control-label">转入</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="cclass">
-                            <option>一班</option>
-                            <option>二班</option>
-                            <option>三班</option>
-                            <option>四班</option>
-                            <option>五班</option>
+                        <select class="form-control" id="cclass" name="cclass">
+                            <option value="01">一班</option>
+                            <option value="02">二班</option>
+                            <option value="03">三班</option>
+                            <option value="04">四班</option>
+                            <option value="05">五班</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">
-                        <textarea rows="3" class="form-control" name="rea" placeholder="申请理由"></textarea>
+                        <textarea rows="3" id="reason" class="form-control" name="rea" placeholder="申请理由"></textarea>
                     </div>
                 </div>
-                <div style="text-align: center;margin:10px"><button type="submit" class="btn btn-success">提出申请</button></div>
+                <div style="text-align: center;margin:10px">
+                    <span id="mes"></span>
+                    <a class="btn btn-success" onclick="submit();">提出申请</a> 
+                </div>
+               
             </form>
         </div>
     </div>	

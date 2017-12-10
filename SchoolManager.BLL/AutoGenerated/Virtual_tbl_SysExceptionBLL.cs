@@ -20,20 +20,26 @@ using Unity.Attributes;
 
 namespace SchoolManager.BLL
 {
-	public class Virtual_YZJ_CheckTypeBLL
+	public class Virtual_SysExceptionBLL
 	{
 
-        public YZJ_CheckTypeRepository m_Rep =new YZJ_CheckTypeRepository(new DbContainer());
+        public SysExceptionRepository m_Rep =new SysExceptionRepository(new DbContainer());
 
-		public virtual List<YZJ_CheckTypeModel> GetList( string queryStr)
+		public virtual List<SysExceptionModel> GetList( string queryStr)
         {
 
-            IQueryable<YZJ_CheckType> queryData = null;
+            IQueryable<tbl_SysException> queryData = null;
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
+								a=>(a.Id!=null && a.Id.Contains(queryStr))
+								|| (a.HelpLink!=null && a.HelpLink.Contains(queryStr))
+								|| (a.Message!=null && a.Message.Contains(queryStr))
+								|| (a.Source!=null && a.Source.Contains(queryStr))
+								|| (a.StackTrace!=null && a.StackTrace.Contains(queryStr))
+								|| (a.TargetSite!=null && a.TargetSite.Contains(queryStr))
+								|| (a.Data!=null && a.Data.Contains(queryStr))
 								
-								a=>(a.Name!=null && a.Name.Contains(queryStr))
 								);
             }
             else
@@ -43,33 +49,45 @@ namespace SchoolManager.BLL
             return CreateModelList(ref queryData);
         }
 
-        public virtual List<YZJ_CheckTypeModel> CreateModelList(ref IQueryable<YZJ_CheckType> queryData)
+        public virtual List<SysExceptionModel> CreateModelList(ref IQueryable<tbl_SysException> queryData)
         {
 
-            List<YZJ_CheckTypeModel> modelList = (from r in queryData
-                                              select new YZJ_CheckTypeModel
+            List<SysExceptionModel> modelList = (from r in queryData
+                                              select new SysExceptionModel
                                               {
-													ID = r.ID,
-													Name = r.Name,
+													Id = r.Id,
+													HelpLink = r.HelpLink,
+													Message = r.Message,
+													Source = r.Source,
+													StackTrace = r.StackTrace,
+													TargetSite = r.TargetSite,
+													Data = r.Data,
+													CreateTime = r.CreateTime,
           
                                               }).ToList();
 
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, YZJ_CheckTypeModel model)
+        public virtual bool Create(ref ValidationErrors errors, SysExceptionModel model)
         {
             try
             {
-                YZJ_CheckType entity = m_Rep.GetById(model.ID);
+                tbl_SysException entity = m_Rep.GetById(model.Id);
                 if (entity != null)
                 {
                     errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
-                entity = new YZJ_CheckType();
-               				entity.ID = model.ID;
-				entity.Name = model.Name;
+                entity = new tbl_SysException();
+               				entity.Id = model.Id;
+				entity.HelpLink = model.HelpLink;
+				entity.Message = model.Message;
+				entity.Source = model.Source;
+				entity.StackTrace = model.StackTrace;
+				entity.TargetSite = model.TargetSite;
+				entity.Data = model.Data;
+				entity.CreateTime = model.CreateTime;
   
 
                 if (m_Rep.Create(entity))
@@ -146,18 +164,24 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, YZJ_CheckTypeModel model)
+        public virtual bool Edit(ref ValidationErrors errors, SysExceptionModel model)
         {
             try
             {
-                YZJ_CheckType entity = m_Rep.GetById(model.ID);
+                tbl_SysException entity = m_Rep.GetById(model.Id);
                 if (entity == null)
                 {
                     errors.Add(Suggestion.Disable);
                     return false;
                 }
-                              				entity.ID = model.ID;
-				entity.Name = model.Name;
+                              				entity.Id = model.Id;
+				entity.HelpLink = model.HelpLink;
+				entity.Message = model.Message;
+				entity.Source = model.Source;
+				entity.StackTrace = model.StackTrace;
+				entity.TargetSite = model.TargetSite;
+				entity.Data = model.Data;
+				entity.CreateTime = model.CreateTime;
  
 
 
@@ -182,14 +206,20 @@ namespace SchoolManager.BLL
 
       
 
-        public virtual YZJ_CheckTypeModel GetById(string id)
+        public virtual SysExceptionModel GetById(string id)
         {
             if (IsExists(id))
             {
-                YZJ_CheckType entity = m_Rep.GetById(id);
-                YZJ_CheckTypeModel model = new YZJ_CheckTypeModel();
-                              				model.ID = entity.ID;
-				model.Name = entity.Name;
+                tbl_SysException entity = m_Rep.GetById(id);
+                SysExceptionModel model = new SysExceptionModel();
+                              				model.Id = entity.Id;
+				model.HelpLink = entity.HelpLink;
+				model.Message = entity.Message;
+				model.Source = entity.Source;
+				model.StackTrace = entity.StackTrace;
+				model.TargetSite = entity.TargetSite;
+				model.Data = entity.Data;
+				model.CreateTime = entity.CreateTime;
  
                 return model;
             }

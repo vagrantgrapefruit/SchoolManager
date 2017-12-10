@@ -15,14 +15,30 @@ namespace SchoolManager.Models
 using System;
     using System.Collections.Generic;
     
-public partial class tbl_SysUserRole
+public partial class wyqstudent
 {
 
-    public string Id { get; set; }
+    public string Sno { get; set; }
 
-    public string UserId { get; set; }
+    public string Sname { get; set; }
 
-    public string RoleId { get; set; }
+    public string Ssex { get; set; }
+
+    public string State { get; set; }
+
+    public string Intime { get; set; }
+
+    public string SSymbol { get; set; }
+
+    public string Classno { get; set; }
+
+    public string Gradeno { get; set; }
+
+    public string Province { get; set; }
+
+    public string SAddress { get; set; }
+
+    public string STel { get; set; }
 
 }
 
