@@ -25,8 +25,6 @@ namespace SchoolManager.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_SysException> tbl_SysException { get; set; }
-        public virtual DbSet<tbl_SysLog> tbl_SysLog { get; set; }
         public virtual DbSet<tbl_SysModule> tbl_SysModule { get; set; }
         public virtual DbSet<tbl_SysModulePermission> tbl_SysModulePermission { get; set; }
         public virtual DbSet<tbl_SysPermission> tbl_SysPermission { get; set; }
@@ -34,5 +32,13 @@ namespace SchoolManager.Models
         public virtual DbSet<tbl_SysRolePermission> tbl_SysRolePermission { get; set; }
         public virtual DbSet<tbl_SysUser> tbl_SysUser { get; set; }
         public virtual DbSet<tbl_SysUserRole> tbl_SysUserRole { get; set; }
+        public virtual DbSet<YZJ_CheckRecord> YZJ_CheckRecord { get; set; }
+        public virtual DbSet<YZJ_CheckType> YZJ_CheckType { get; set; }
+        public virtual DbSet<YZJ_CredentialsType> YZJ_CredentialsType { get; set; }
+        public virtual DbSet<YZJ_Info> YZJ_Info { get; set; }
+        public virtual DbSet<YZJ_Score> YZJ_Score { get; set; }
+        public virtual DbSet<YZJ_Status> YZJ_Status { get; set; }
+        public virtual DbSet<YZJ_StatusType> YZJ_StatusType { get; set; }
+        public virtual DbSet<YZJ_StdGraduationRecord> YZJ_StdGraduationRecord { get; set; }
     }
 }

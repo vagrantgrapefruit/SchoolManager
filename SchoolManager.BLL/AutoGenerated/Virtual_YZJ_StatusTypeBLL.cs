@@ -20,25 +20,20 @@ using Unity.Attributes;
 
 namespace SchoolManager.BLL
 {
-	public class Virtual_SysLogBLL
+	public class Virtual_YZJ_StatusTypeBLL
 	{
 
-        public SysLogRepository m_Rep =new SysLogRepository(new DbContainer());
+        public YZJ_StatusTypeRepository m_Rep =new YZJ_StatusTypeRepository(new DbContainer());
 
-		public virtual List<SysLogModel> GetList( string queryStr)
+		public virtual List<YZJ_StatusTypeModel> GetList( string queryStr)
         {
 
-            IQueryable<tbl_SysLog> queryData = null;
+            IQueryable<YZJ_StatusType> queryData = null;
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
-								a=>(a.Id!=null && a.Id.Contains(queryStr))
-								|| (a.Operator!=null && a.Operator.Contains(queryStr))
-								|| (a.Message!=null && a.Message.Contains(queryStr))
-								|| (a.Result!=null && a.Result.Contains(queryStr))
-								|| (a.Type!=null && a.Type.Contains(queryStr))
-								|| (a.Module!=null && a.Module.Contains(queryStr))
 								
+								a=>(a.Name!=null && a.Name.Contains(queryStr))
 								);
             }
             else
@@ -48,43 +43,33 @@ namespace SchoolManager.BLL
             return CreateModelList(ref queryData);
         }
 
-        public virtual List<SysLogModel> CreateModelList(ref IQueryable<tbl_SysLog> queryData)
+        public virtual List<YZJ_StatusTypeModel> CreateModelList(ref IQueryable<YZJ_StatusType> queryData)
         {
 
-            List<SysLogModel> modelList = (from r in queryData
-                                              select new SysLogModel
+            List<YZJ_StatusTypeModel> modelList = (from r in queryData
+                                              select new YZJ_StatusTypeModel
                                               {
-													Id = r.Id,
-													Operator = r.Operator,
-													Message = r.Message,
-													Result = r.Result,
-													Type = r.Type,
-													Module = r.Module,
-													CreateTime = r.CreateTime,
+													ID = r.ID,
+													Name = r.Name,
           
                                               }).ToList();
 
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, SysLogModel model)
+        public virtual bool Create(ref ValidationErrors errors, YZJ_StatusTypeModel model)
         {
             try
             {
-                tbl_SysLog entity = m_Rep.GetById(model.Id);
+                YZJ_StatusType entity = m_Rep.GetById(model.ID);
                 if (entity != null)
                 {
                     errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
-                entity = new tbl_SysLog();
-               				entity.Id = model.Id;
-				entity.Operator = model.Operator;
-				entity.Message = model.Message;
-				entity.Result = model.Result;
-				entity.Type = model.Type;
-				entity.Module = model.Module;
-				entity.CreateTime = model.CreateTime;
+                entity = new YZJ_StatusType();
+               				entity.ID = model.ID;
+				entity.Name = model.Name;
   
 
                 if (m_Rep.Create(entity))
@@ -161,23 +146,18 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, SysLogModel model)
+        public virtual bool Edit(ref ValidationErrors errors, YZJ_StatusTypeModel model)
         {
             try
             {
-                tbl_SysLog entity = m_Rep.GetById(model.Id);
+                YZJ_StatusType entity = m_Rep.GetById(model.ID);
                 if (entity == null)
                 {
                     errors.Add(Suggestion.Disable);
                     return false;
                 }
-                              				entity.Id = model.Id;
-				entity.Operator = model.Operator;
-				entity.Message = model.Message;
-				entity.Result = model.Result;
-				entity.Type = model.Type;
-				entity.Module = model.Module;
-				entity.CreateTime = model.CreateTime;
+                              				entity.ID = model.ID;
+				entity.Name = model.Name;
  
 
 
@@ -202,19 +182,14 @@ namespace SchoolManager.BLL
 
       
 
-        public virtual SysLogModel GetById(string id)
+        public virtual YZJ_StatusTypeModel GetById(string id)
         {
             if (IsExists(id))
             {
-                tbl_SysLog entity = m_Rep.GetById(id);
-                SysLogModel model = new SysLogModel();
-                              				model.Id = entity.Id;
-				model.Operator = entity.Operator;
-				model.Message = entity.Message;
-				model.Result = entity.Result;
-				model.Type = entity.Type;
-				model.Module = entity.Module;
-				model.CreateTime = entity.CreateTime;
+                YZJ_StatusType entity = m_Rep.GetById(id);
+                YZJ_StatusTypeModel model = new YZJ_StatusTypeModel();
+                              				model.ID = entity.ID;
+				model.Name = entity.Name;
  
                 return model;
             }

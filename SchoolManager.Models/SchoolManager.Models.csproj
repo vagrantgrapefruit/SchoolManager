@@ -73,12 +73,6 @@
     <Compile Include="model\ShowModel.cs" />
     <Compile Include="model\ShowModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tbl_SysException.cs">
-      <DependentUpon>Db.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_SysLog.cs">
-      <DependentUpon>Db.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_SysModule.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
@@ -100,12 +94,6 @@
     <Compile Include="tbl_SysUserRole.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Virtual_tbl_SysExceptionModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Virtual_tbl_SysLogModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
     <Compile Include="Virtual_tbl_SysModuleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
@@ -126,6 +114,54 @@
     </Compile>
     <Compile Include="Virtual_tbl_SysUserRoleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_CheckRecordModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_CheckTypeModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_CredentialsTypeModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_InfoModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_ScoreModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_StatusModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_StatusTypeModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Virtual_YZJ_StdGraduationRecordModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_CheckRecord.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_CheckType.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_CredentialsType.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_Info.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_Score.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_Status.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_StatusType.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_StdGraduationRecord.cs">
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

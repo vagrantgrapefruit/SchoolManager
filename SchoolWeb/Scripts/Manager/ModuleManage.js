@@ -96,8 +96,8 @@ var ButtonInit = function () {
         //初始化页面上面的按钮事件
     };
     oInit.Add = function () {
-        var frameSrc = "./AddModuleManager";
-        $("#Moduleifram").attr("src", frameSrc);
+        var frameSrc = "./AddModule.aspx";
+        $("#Moduleiframe").attr("src", frameSrc);
         $('#ModuleModal').modal({ show: true, backdrop: 'static' });
     };
     oInit.Edit = function () {

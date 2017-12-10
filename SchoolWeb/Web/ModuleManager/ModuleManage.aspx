@@ -57,16 +57,16 @@
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
-                <%-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--%>
-                <button type="button" class="close" onclick="window.history.go(-1);">×</button>
+                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<%--                <button type="button" class="close" onclick="window.history.go(-1);">×</button>--%>
                 <h4 class="modal-title" id="NoPermissionModalLabel">系统消息</h4>
             </div>
             <div class="modal-body">
                 <iframe id="Moduleiframe" width="100%" height="50%" frameborder="0"></iframe>
             </div>
             <div class="modal-footer">
-<%--                <button type="button" class="btn btn-default " data-dismiss="modal">    关  闭    </button>--%>
-                <button class="btn btn-default"  type="button" onclick="window.history.go(-1);" >    关  闭    </button>
+                <button type="button" class="btn btn-default " data-dismiss="modal">    关  闭    </button>
+<%--                <button class="btn btn-default"  type="button" onclick="window.history.go(-1);" >    关  闭    </button>--%>
             </div>
         </div>
     </div>

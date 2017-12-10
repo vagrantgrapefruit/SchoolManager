@@ -20,26 +20,22 @@ using Unity.Attributes;
 
 namespace SchoolManager.BLL
 {
-	public class Virtual_SysExceptionBLL
+	public class Virtual_YZJ_ScoreBLL
 	{
 
-        public SysExceptionRepository m_Rep =new SysExceptionRepository(new DbContainer());
+        public YZJ_ScoreRepository m_Rep =new YZJ_ScoreRepository(new DbContainer());
 
-		public virtual List<SysExceptionModel> GetList( string queryStr)
+		public virtual List<YZJ_ScoreModel> GetList( string queryStr)
         {
 
-            IQueryable<tbl_SysException> queryData = null;
+            IQueryable<YZJ_Score> queryData = null;
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
-								a=>(a.Id!=null && a.Id.Contains(queryStr))
-								|| (a.HelpLink!=null && a.HelpLink.Contains(queryStr))
-								|| (a.Message!=null && a.Message.Contains(queryStr))
-								|| (a.Source!=null && a.Source.Contains(queryStr))
-								|| (a.StackTrace!=null && a.StackTrace.Contains(queryStr))
-								|| (a.TargetSite!=null && a.TargetSite.Contains(queryStr))
-								|| (a.Data!=null && a.Data.Contains(queryStr))
 								
+								
+								a=>(a.Grade!=null && a.Grade.Contains(queryStr))
+								|| (a.ClassNo!=null && a.ClassNo.Contains(queryStr))
 								);
             }
             else
@@ -49,45 +45,37 @@ namespace SchoolManager.BLL
             return CreateModelList(ref queryData);
         }
 
-        public virtual List<SysExceptionModel> CreateModelList(ref IQueryable<tbl_SysException> queryData)
+        public virtual List<YZJ_ScoreModel> CreateModelList(ref IQueryable<YZJ_Score> queryData)
         {
 
-            List<SysExceptionModel> modelList = (from r in queryData
-                                              select new SysExceptionModel
+            List<YZJ_ScoreModel> modelList = (from r in queryData
+                                              select new YZJ_ScoreModel
                                               {
-													Id = r.Id,
-													HelpLink = r.HelpLink,
-													Message = r.Message,
-													Source = r.Source,
-													StackTrace = r.StackTrace,
-													TargetSite = r.TargetSite,
-													Data = r.Data,
-													CreateTime = r.CreateTime,
+													id = r.id,
+													available = r.available,
+													Grade = r.Grade,
+													ClassNo = r.ClassNo,
           
                                               }).ToList();
 
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, SysExceptionModel model)
+        public virtual bool Create(ref ValidationErrors errors, YZJ_ScoreModel model)
         {
             try
             {
-                tbl_SysException entity = m_Rep.GetById(model.Id);
+                YZJ_Score entity = m_Rep.GetById(model.id);
                 if (entity != null)
                 {
                     errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
-                entity = new tbl_SysException();
-               				entity.Id = model.Id;
-				entity.HelpLink = model.HelpLink;
-				entity.Message = model.Message;
-				entity.Source = model.Source;
-				entity.StackTrace = model.StackTrace;
-				entity.TargetSite = model.TargetSite;
-				entity.Data = model.Data;
-				entity.CreateTime = model.CreateTime;
+                entity = new YZJ_Score();
+               				entity.id = model.id;
+				entity.available = model.available;
+				entity.Grade = model.Grade;
+				entity.ClassNo = model.ClassNo;
   
 
                 if (m_Rep.Create(entity))
@@ -164,24 +152,20 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, SysExceptionModel model)
+        public virtual bool Edit(ref ValidationErrors errors, YZJ_ScoreModel model)
         {
             try
             {
-                tbl_SysException entity = m_Rep.GetById(model.Id);
+                YZJ_Score entity = m_Rep.GetById(model.id);
                 if (entity == null)
                 {
                     errors.Add(Suggestion.Disable);
                     return false;
                 }
-                              				entity.Id = model.Id;
-				entity.HelpLink = model.HelpLink;
-				entity.Message = model.Message;
-				entity.Source = model.Source;
-				entity.StackTrace = model.StackTrace;
-				entity.TargetSite = model.TargetSite;
-				entity.Data = model.Data;
-				entity.CreateTime = model.CreateTime;
+                              				entity.id = model.id;
+				entity.available = model.available;
+				entity.Grade = model.Grade;
+				entity.ClassNo = model.ClassNo;
  
 
 
@@ -206,20 +190,16 @@ namespace SchoolManager.BLL
 
       
 
-        public virtual SysExceptionModel GetById(string id)
+        public virtual YZJ_ScoreModel GetById(string id)
         {
             if (IsExists(id))
             {
-                tbl_SysException entity = m_Rep.GetById(id);
-                SysExceptionModel model = new SysExceptionModel();
-                              				model.Id = entity.Id;
-				model.HelpLink = entity.HelpLink;
-				model.Message = entity.Message;
-				model.Source = entity.Source;
-				model.StackTrace = entity.StackTrace;
-				model.TargetSite = entity.TargetSite;
-				model.Data = entity.Data;
-				model.CreateTime = entity.CreateTime;
+                YZJ_Score entity = m_Rep.GetById(id);
+                YZJ_ScoreModel model = new YZJ_ScoreModel();
+                              				model.id = entity.id;
+				model.available = entity.available;
+				model.Grade = entity.Grade;
+				model.ClassNo = entity.ClassNo;
  
                 return model;
             }

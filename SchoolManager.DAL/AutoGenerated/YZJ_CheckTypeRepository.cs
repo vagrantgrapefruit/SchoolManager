@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using SchoolManager.Models;
-using SchoolManager.BLL;
+using System;
 
-namespace SchoolManager.BLL
+namespace SchoolManager.DAL
 {
-	public partial class SysExceptionBLL: Virtual_SysExceptionBLL
-	{
-        
+	public partial class YZJ_CheckTypeRepository:BaseRepository<YZJ_CheckType>,IDisposable
+    {
+        public YZJ_CheckTypeRepository(DbContainer db):base(db)
+        {
+			
+        }
+    }
 
-	}
 }

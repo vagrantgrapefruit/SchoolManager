@@ -11,18 +11,13 @@ using System;
 
 namespace SchoolManager.Models
 {
-	public partial class SysLogModel : Virtual_SysLogModel
+	public partial class YZJ_StatusTypeModel : Virtual_YZJ_StatusTypeModel
 	{
 
 	}
-	public class Virtual_SysLogModel
+	public class Virtual_YZJ_StatusTypeModel
 	{
-		public virtual string Id { get; set;}
-		public virtual string Operator { get; set;}
-		public virtual string Message { get; set;}
-		public virtual string Result { get; set;}
-		public virtual string Type { get; set;}
-		public virtual string Module { get; set;}
-		public virtual Nullable<System.DateTime> CreateTime { get; set;}
+		public virtual int ID { get; set;}
+		public virtual string Name { get; set;}
 	}
 }
