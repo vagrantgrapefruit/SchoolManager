@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using SchoolManager.Models;
-using SchoolManager.BLL;
+using System;
 
-namespace SchoolManager.BLL
+namespace SchoolManager.DAL
 {
-	public partial class SysModuleBLL: Virtual_SysModuleBLL
-	{
-        
+	public partial class YZJ_InfoRepository:BaseRepository<YZJ_Info>,IDisposable
+    {
+        public YZJ_InfoRepository(DbContainer db):base(db)
+        {
+			
+        }
+    }
 
-	}
 }

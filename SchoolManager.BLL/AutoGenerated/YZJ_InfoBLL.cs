@@ -16,7 +16,7 @@ using SchoolManager.BLL;
 
 namespace SchoolManager.BLL
 {
-	public partial class SysModuleBLL: Virtual_SysModuleBLL
+	public partial class YZJ_InfoBLL: Virtual_YZJ_InfoBLL
 	{
         
 

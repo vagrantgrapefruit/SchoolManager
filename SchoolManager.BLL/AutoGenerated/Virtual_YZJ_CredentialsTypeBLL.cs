@@ -20,21 +20,20 @@ using Unity.Attributes;
 
 namespace SchoolManager.BLL
 {
-	public class Virtual_SysUserRoleBLL
+	public class Virtual_YZJ_CredentialsTypeBLL
 	{
 
-        public SysUserRoleRepository m_Rep =new SysUserRoleRepository(new DbContainer());
+        public YZJ_CredentialsTypeRepository m_Rep =new YZJ_CredentialsTypeRepository(new DbContainer());
 
-		public virtual List<SysUserRoleModel> GetList( string queryStr)
+		public virtual List<YZJ_CredentialsTypeModel> GetList( string queryStr)
         {
 
-            IQueryable<tbl_SysUserRole> queryData = null;
+            IQueryable<YZJ_CredentialsType> queryData = null;
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
-								a=>(a.Id!=null && a.Id.Contains(queryStr))
-								|| (a.UserId!=null && a.UserId.Contains(queryStr))
-								|| (a.RoleId!=null && a.RoleId.Contains(queryStr))
+								
+								a=>(a.Name!=null && a.Name.Contains(queryStr))
 								);
             }
             else
@@ -44,35 +43,33 @@ namespace SchoolManager.BLL
             return CreateModelList(ref queryData);
         }
 
-        public virtual List<SysUserRoleModel> CreateModelList(ref IQueryable<tbl_SysUserRole> queryData)
+        public virtual List<YZJ_CredentialsTypeModel> CreateModelList(ref IQueryable<YZJ_CredentialsType> queryData)
         {
 
-            List<SysUserRoleModel> modelList = (from r in queryData
-                                              select new SysUserRoleModel
+            List<YZJ_CredentialsTypeModel> modelList = (from r in queryData
+                                              select new YZJ_CredentialsTypeModel
                                               {
-													Id = r.Id,
-													UserId = r.UserId,
-													RoleId = r.RoleId,
+													ID = r.ID,
+													Name = r.Name,
           
                                               }).ToList();
 
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, SysUserRoleModel model)
+        public virtual bool Create(ref ValidationErrors errors, YZJ_CredentialsTypeModel model)
         {
             try
             {
-                tbl_SysUserRole entity = m_Rep.GetById(model.Id);
+                YZJ_CredentialsType entity = m_Rep.GetById(model.ID);
                 if (entity != null)
                 {
                     errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
-                entity = new tbl_SysUserRole();
-               				entity.Id = model.Id;
-				entity.UserId = model.UserId;
-				entity.RoleId = model.RoleId;
+                entity = new YZJ_CredentialsType();
+               				entity.ID = model.ID;
+				entity.Name = model.Name;
   
 
                 if (m_Rep.Create(entity))
@@ -149,19 +146,18 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, SysUserRoleModel model)
+        public virtual bool Edit(ref ValidationErrors errors, YZJ_CredentialsTypeModel model)
         {
             try
             {
-                tbl_SysUserRole entity = m_Rep.GetById(model.Id);
+                YZJ_CredentialsType entity = m_Rep.GetById(model.ID);
                 if (entity == null)
                 {
                     errors.Add(Suggestion.Disable);
                     return false;
                 }
-                              				entity.Id = model.Id;
-				entity.UserId = model.UserId;
-				entity.RoleId = model.RoleId;
+                              				entity.ID = model.ID;
+				entity.Name = model.Name;
  
 
 
@@ -186,15 +182,14 @@ namespace SchoolManager.BLL
 
       
 
-        public virtual SysUserRoleModel GetById(string id)
+        public virtual YZJ_CredentialsTypeModel GetById(string id)
         {
             if (IsExists(id))
             {
-                tbl_SysUserRole entity = m_Rep.GetById(id);
-                SysUserRoleModel model = new SysUserRoleModel();
-                              				model.Id = entity.Id;
-				model.UserId = entity.UserId;
-				model.RoleId = entity.RoleId;
+                YZJ_CredentialsType entity = m_Rep.GetById(id);
+                YZJ_CredentialsTypeModel model = new YZJ_CredentialsTypeModel();
+                              				model.ID = entity.ID;
+				model.Name = entity.Name;
  
                 return model;
             }
