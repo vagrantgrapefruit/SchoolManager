@@ -124,6 +124,9 @@
     <Compile Include="Virtual_YZJ_CredentialsTypeModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
+    <Compile Include="Virtual_YZJ_GradeModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
     <Compile Include="Virtual_YZJ_InfoModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="YZJ_CredentialsType.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YZJ_Grade.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="YZJ_Info.cs">

@@ -109,13 +109,14 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“school1.dbo.YZJ_Grade”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
         <EntityType Name="YZJ_Grade">
-          <Property Name="id" Type="int" />
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="available" Type="bit" />
           <Property Name="Grade" Type="varchar" MaxLength="10" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="YZJ_Info">
           <Key>
             <PropertyRef Name="id" />
@@ -222,6 +223,7 @@
           <EntitySet Name="YZJ_CheckRecord" EntityType="Self.YZJ_CheckRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CheckType" EntityType="Self.YZJ_CheckType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CredentialsType" EntityType="Self.YZJ_CredentialsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YZJ_Grade" EntityType="Self.YZJ_Grade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_Info" EntityType="Self.YZJ_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_Score" EntityType="Self.YZJ_Score" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_Status" EntityType="Self.YZJ_Status" Schema="dbo" store:Type="Tables" />
@@ -256,6 +258,7 @@
           <EntitySet Name="YZJ_Status" EntityType="Db.YZJ_Status" />
           <EntitySet Name="YZJ_StatusType" EntityType="Db.YZJ_StatusType" />
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Db.YZJ_StdGraduationRecord" />
+          <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
         </EntityContainer>
         <EntityType Name="tbl_SysModule">
           <Key>
@@ -457,6 +460,14 @@
           <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="GraduatedSchoolname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="GraduatedSchoolNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_Grade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -663,6 +674,15 @@
                 <ScalarProperty Name="StdRollId" ColumnName="StdRollId" />
                 <ScalarProperty Name="StdName" ColumnName="StdName" />
                 <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YZJ_Grade">
+            <EntityTypeMapping TypeName="Db.YZJ_Grade">
+              <MappingFragment StoreEntitySet="YZJ_Grade">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
                 <ScalarProperty Name="available" ColumnName="available" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
