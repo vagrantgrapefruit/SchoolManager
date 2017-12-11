@@ -57,14 +57,13 @@ namespace SchoolManager.BLL
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, YZJ_CredentialsTypeModel model)
+        public virtual bool Create(YZJ_CredentialsTypeModel model)
         {
             try
             {
                 YZJ_CredentialsType entity = m_Rep.GetById(model.ID);
                 if (entity != null)
                 {
-                    errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
                 entity = new YZJ_CredentialsType();
@@ -78,21 +77,19 @@ namespace SchoolManager.BLL
                 }
                 else
                 {
-                    errors.Add(Suggestion.InsertFail);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
 
 
 
-         public virtual bool Delete(ref ValidationErrors errors, string id)
+         public virtual bool Delete( string id)
         {
             try
             {
@@ -107,13 +104,12 @@ namespace SchoolManager.BLL
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
 
-        public virtual bool Delete(ref ValidationErrors errors, string[] deleteCollection)
+        public virtual bool Delete( string[] deleteCollection)
         {
             try
             {
@@ -137,8 +133,7 @@ namespace SchoolManager.BLL
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
@@ -146,14 +141,13 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, YZJ_CredentialsTypeModel model)
+        public virtual bool Edit( YZJ_CredentialsTypeModel model)
         {
             try
             {
                 YZJ_CredentialsType entity = m_Rep.GetById(model.ID);
                 if (entity == null)
                 {
-                    errors.Add(Suggestion.Disable);
                     return false;
                 }
                               				entity.ID = model.ID;
@@ -167,15 +161,13 @@ namespace SchoolManager.BLL
                 }
                 else
                 {
-                    errors.Add(Suggestion.EditFail);
                     return false;
                 }
 
             }
             catch (Exception ex)
-            {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+            {                
+
                 return false;
             }
         }

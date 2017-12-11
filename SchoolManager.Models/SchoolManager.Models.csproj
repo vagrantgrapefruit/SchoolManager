@@ -115,6 +115,9 @@
     <Compile Include="Virtual_tbl_SysUserRoleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
+    <Compile Include="Virtual_wyqstudentModel.cs">
+      <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
     <Compile Include="Virtual_YZJ_CheckRecordModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
@@ -141,6 +144,9 @@
     </Compile>
     <Compile Include="Virtual_YZJ_StdGraduationRecordModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wyqstudent.cs">
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="YZJ_CheckRecord.cs">
       <DependentUpon>Db.tt</DependentUpon>

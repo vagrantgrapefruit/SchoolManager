@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using SchoolManager.Models;
+using SchoolManager.BLL;
 
-namespace SchoolManager.Models
+namespace SchoolManager.BLL
 {
-	public partial class SysUserRoleModel : Virtual_SysUserRoleModel
+	public partial class wyqstudentBLL: Virtual_wyqstudentBLL
 	{
+        
 
-	}
-	public class Virtual_SysUserRoleModel
-	{
-		public virtual string Id { get; set;}
-		public virtual string UserId { get; set;}
-		public virtual string RoleId { get; set;}
 	}
 }
