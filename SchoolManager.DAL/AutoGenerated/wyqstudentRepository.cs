@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using SchoolManager.Models;
 using System;
 
-namespace SchoolManager.Models
+namespace SchoolManager.DAL
 {
-	public partial class SysUserRoleModel : Virtual_SysUserRoleModel
-	{
+	public partial class wyqstudentRepository:BaseRepository<wyqstudent>,IDisposable
+    {
+        public wyqstudentRepository(DbContainer db):base(db)
+        {
+			
+        }
+    }
 
-	}
-	public class Virtual_SysUserRoleModel
-	{
-		public virtual string Id { get; set;}
-		public virtual string UserId { get; set;}
-		public virtual string RoleId { get; set;}
-	}
 }

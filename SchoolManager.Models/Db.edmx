@@ -71,6 +71,22 @@
           <Property Name="UserId" Type="varchar" MaxLength="50" />
           <Property Name="RoleId" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="wyqstudent">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Sname" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Ssex" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="State" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Intime" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="SSymbol" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Classno" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Gradeno" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Province" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="SAddress" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="STel" Type="char" MaxLength="11" />
+        </EntityType>
         <EntityType Name="YZJ_CheckRecord">
           <Key>
             <PropertyRef Name="id" />
@@ -220,6 +236,7 @@
           <EntitySet Name="tbl_SysRolePermission" EntityType="Self.tbl_SysRolePermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysUser" EntityType="Self.tbl_SysUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysUserRole" EntityType="Self.tbl_SysUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wyqstudent" EntityType="Self.wyqstudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CheckRecord" EntityType="Self.YZJ_CheckRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CheckType" EntityType="Self.YZJ_CheckType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CredentialsType" EntityType="Self.YZJ_CredentialsType" Schema="dbo" store:Type="Tables" />
@@ -259,6 +276,7 @@
           <EntitySet Name="YZJ_StatusType" EntityType="Db.YZJ_StatusType" />
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Db.YZJ_StdGraduationRecord" />
           <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
+          <EntitySet Name="wyqstudent" EntityType="Db.wyqstudent" />
         </EntityContainer>
         <EntityType Name="tbl_SysModule">
           <Key>
@@ -468,6 +486,22 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="available" Type="Boolean" />
           <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wyqstudent">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="Sname" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Ssex" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Intime" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="SSymbol" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Classno" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Gradeno" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="SAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="STel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -685,6 +719,23 @@
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
                 <ScalarProperty Name="available" ColumnName="available" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wyqstudent">
+            <EntityTypeMapping TypeName="Db.wyqstudent">
+              <MappingFragment StoreEntitySet="wyqstudent">
+                <ScalarProperty Name="STel" ColumnName="STel" />
+                <ScalarProperty Name="SAddress" ColumnName="SAddress" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Gradeno" ColumnName="Gradeno" />
+                <ScalarProperty Name="Classno" ColumnName="Classno" />
+                <ScalarProperty Name="SSymbol" ColumnName="SSymbol" />
+                <ScalarProperty Name="Intime" ColumnName="Intime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Ssex" ColumnName="Ssex" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

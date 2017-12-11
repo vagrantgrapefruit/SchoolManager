@@ -111,14 +111,13 @@ namespace SchoolManager.BLL
             return modelList;
         }
 
-        public virtual bool Create(ref ValidationErrors errors, YZJ_StatusModel model)
+        public virtual bool Create(YZJ_StatusModel model)
         {
             try
             {
                 YZJ_Status entity = m_Rep.GetById(model.id);
                 if (entity != null)
                 {
-                    errors.Add(Suggestion.PrimaryRepeat);
                     return false;
                 }
                 entity = new YZJ_Status();
@@ -159,21 +158,19 @@ namespace SchoolManager.BLL
                 }
                 else
                 {
-                    errors.Add(Suggestion.InsertFail);
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
 
 
 
-         public virtual bool Delete(ref ValidationErrors errors, string id)
+         public virtual bool Delete( string id)
         {
             try
             {
@@ -188,13 +185,12 @@ namespace SchoolManager.BLL
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
 
-        public virtual bool Delete(ref ValidationErrors errors, string[] deleteCollection)
+        public virtual bool Delete( string[] deleteCollection)
         {
             try
             {
@@ -218,8 +214,7 @@ namespace SchoolManager.BLL
             }
             catch (Exception ex)
             {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+
                 return false;
             }
         }
@@ -227,14 +222,13 @@ namespace SchoolManager.BLL
 		
        
 
-        public virtual bool Edit(ref ValidationErrors errors, YZJ_StatusModel model)
+        public virtual bool Edit( YZJ_StatusModel model)
         {
             try
             {
                 YZJ_Status entity = m_Rep.GetById(model.id);
                 if (entity == null)
                 {
-                    errors.Add(Suggestion.Disable);
                     return false;
                 }
                               				entity.id = model.id;
@@ -275,15 +269,13 @@ namespace SchoolManager.BLL
                 }
                 else
                 {
-                    errors.Add(Suggestion.EditFail);
                     return false;
                 }
 
             }
             catch (Exception ex)
-            {
-                errors.Add(ex.Message);
-                ExceptionHandler.WriteException(ex);
+            {                
+
                 return false;
             }
         }

@@ -41,5 +41,6 @@ namespace SchoolManager.Models
         public virtual DbSet<YZJ_StatusType> YZJ_StatusType { get; set; }
         public virtual DbSet<YZJ_StdGraduationRecord> YZJ_StdGraduationRecord { get; set; }
         public virtual DbSet<YZJ_Grade> YZJ_Grade { get; set; }
+        public virtual DbSet<wyqstudent> wyqstudent { get; set; }
     }
 }
