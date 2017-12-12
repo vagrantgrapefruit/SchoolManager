@@ -9,13 +9,32 @@
     <script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
     <script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
     <link href="../../Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <script>
-        $.get("../Handler/GetModel.ashx", "[{'method':'getParent'}]", function (data) {
-            debugger;
-            data.list.each(function (index, element) {
+    <script>       
+        $.get("../Handler/GetModel.ashx", { method :'getParent'}, function (data) {
+            var resultJson = eval('(' + data + ')');
+            resultJson.rows.forEach(function (val, index) {
 
+                $("#ParentId").append('<option value="' + val.ModuleId + '">' + val.ModuleName + '</option>')
             });
-
+        });
+        $(function () {
+            $("#Save").click(function () {
+                if ($("#ModuleId").val() == null || $("#ModuleId").val() == "") {
+                    alert("请填写模块ID！");
+                }
+                else if ($("#ModuleName").val() == null || $("#ModuleName").val() == "") {
+                    alert("请填写模块名称！");
+                }
+                else {
+                    $.get("../Handler/EditModel.ashx", { method: 'SaveModel', ModuleID: $("#ModuleId").val(), ModuleName: $("#ModuleName").val(), ParentId: $("#ParentId").val(), ModuleURL: $("#ModuleURL").val(), IsLast: $("#IsLast").val(), IsShow: $("#IsShow").val() }, function (data) {
+                        var resultJson = eval('(' + data + ')');
+                        if (resultJson.flag)
+                            alert("创建成功！");
+                        else 
+                            alert("创建失败！");
+                    });
+                }
+            });
         });
     </script>
 </head>
@@ -48,14 +67,26 @@
       <div class="form-group">
         <label for="IsShow" class="col-sm-2 control-label">是否展示</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="IsShow" placeholder="请输入姓"/>
+            <select id="IsShow" class="form-control" name="IsShow">
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
         </div>
       </div>
-      <div class="form-group">
+        <div class="form-group">
+        <label for="IsShow" class="col-sm-2 control-label">是否最终节点</label>
+        <div class="col-sm-10">
+            <select id="IsLast" class="form-control" name="IsLast">
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
+        </div>
+      </div>       
+    </form> 
+    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">确认新增</button>
+          <button  id="Save" class="btn btn-default">确认新增</button>
         </div>
       </div>
-    </form>
 </body>
 </html>
