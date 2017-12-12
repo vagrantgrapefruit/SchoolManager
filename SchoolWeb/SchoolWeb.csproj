@@ -392,6 +392,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Web\ModuleManager\AddModule.aspx" />
+    <Content Include="Web\ModuleManager\EditModule.aspx" />
     <Content Include="Web\ModuleManager\ModuleManage.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
     <Content Include="Web\StatusManager\Dismiss.aspx" />
@@ -451,6 +452,7 @@
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Web\Handler\GetModel.ashx" />
+    <Content Include="Web\Handler\EditModel.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -465,6 +467,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\EditModel.ashx.cs">
+      <DependentUpon>EditModel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\GetModel.ashx.cs">
       <DependentUpon>GetModel.ashx</DependentUpon>
     </Compile>
@@ -474,6 +479,13 @@
     </Compile>
     <Compile Include="Web\ModuleManager\AddModule.aspx.designer.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\EditModule.aspx.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\EditModule.aspx.designer.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

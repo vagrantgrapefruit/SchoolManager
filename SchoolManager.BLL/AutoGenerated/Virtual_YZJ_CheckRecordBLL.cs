@@ -34,7 +34,7 @@ namespace SchoolManager.BLL
                 queryData = m_Rep.GetList(
 								a=>(a.id!=null && a.id.Contains(queryStr))
 								
-								
+								|| (a.StdId!=null && a.StdId.Contains(queryStr))
 								|| (a.StdName!=null && a.StdName.Contains(queryStr))
 								|| (a.ApplicantNo!=null && a.ApplicantNo.Contains(queryStr))
 								|| (a.ApplicantName!=null && a.ApplicantName.Contains(queryStr))

@@ -19,7 +19,7 @@ namespace SchoolManager.Models
 	{
 		public virtual string id { get; set;}
 		public virtual Nullable<bool> available { get; set;}
-		public virtual Nullable<int> StdId { get; set;}
+		public virtual string StdId { get; set;}
 		public virtual string StdName { get; set;}
 		public virtual string ApplicantNo { get; set;}
 		public virtual string ApplicantName { get; set;}

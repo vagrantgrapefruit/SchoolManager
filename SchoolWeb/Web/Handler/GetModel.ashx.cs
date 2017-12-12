@@ -13,7 +13,8 @@ namespace SchoolWeb.Web.ModuleManager
     /// </summary>
     public class GetModel : IHttpHandler
     {
-
+        public SysModuleBLL moduleBLL = new SysModuleBLL();
+        public JavaScriptSerializer js = new JavaScriptSerializer();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -26,6 +27,11 @@ namespace SchoolWeb.Web.ModuleManager
                 var jsondata = GetDepartment(limit, offset, departmentname, statu);
                 context.Response.Write(jsondata);
             }
+            else if (context.Request.QueryString["method"] =="getParent")
+            {
+                var jsondata = GetParentId();
+                context.Response.Write(jsondata);
+            }
             else
             {
                 context.Response.Write("Hello World!");
@@ -35,17 +41,28 @@ namespace SchoolWeb.Web.ModuleManager
 
         public string GetDepartment(int limit, int offset, string departmentname, string statu)
         {
-            SysModuleBLL moduleBLL = new SysModuleBLL();
+            
             List<SysModuleModel> modelList = (from m in moduleBLL.GetList("") orderby m.Sort ascending select m).ToList();
 
             var total = modelList.Count;
             var rows = modelList.Skip(offset).Take(limit).ToList();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
+
             var jsondata = js.Serialize(new { total = total, rows = rows });
             return jsondata;
         }
 
+        public string GetParentId()
+        {
+            List<SysModuleModel> modelList = (from m in moduleBLL.GetList("") where m.IsLast==false select m).ToList();
+            List<string> parentList = new List<string>();
+            foreach(var a in modelList)
+            {
+                parentList.Add(a.ModuleId);
+            }
+            var jsondata = js.Serialize(new { list = parentList });
+            return jsondata;
+        }
         public bool IsReusable
         {
             get

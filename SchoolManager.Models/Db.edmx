@@ -13,8 +13,9 @@
           <Property Name="ModuleName" Type="varchar" MaxLength="50" />
           <Property Name="ParentId" Type="varchar" MaxLength="50" />
           <Property Name="ModuleURL" Type="varchar(max)" />
-          <Property Name="Sort" Type="int" />
+          <Property Name="Sort" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IsShow" Type="bit" />
+          <Property Name="IsLast" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_SysModulePermission">
           <Key>
@@ -93,7 +94,7 @@
           </Key>
           <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="available" Type="bit" />
-          <Property Name="StdId" Type="int" />
+          <Property Name="StdId" Type="varchar" MaxLength="20" />
           <Property Name="StdName" Type="varchar" MaxLength="20" />
           <Property Name="ApplicantNo" Type="varchar" MaxLength="20" />
           <Property Name="ApplicantName" Type="varchar" MaxLength="20" />
@@ -256,7 +257,6 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Db" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DbContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
           <EntitySet Name="tbl_SysModulePermission" EntityType="Db.tbl_SysModulePermission" />
           <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
           <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
@@ -267,7 +267,6 @@
             <End Role="tbl_SysModulePermission" EntitySet="tbl_SysModulePermission" />
             <End Role="tbl_SysModulePermission1" EntitySet="tbl_SysModulePermission" />
           </AssociationSet>
-          <EntitySet Name="YZJ_CheckRecord" EntityType="Db.YZJ_CheckRecord" />
           <EntitySet Name="YZJ_CheckType" EntityType="Db.YZJ_CheckType" />
           <EntitySet Name="YZJ_CredentialsType" EntityType="Db.YZJ_CredentialsType" />
           <EntitySet Name="YZJ_Info" EntityType="Db.YZJ_Info" />
@@ -277,18 +276,9 @@
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Db.YZJ_StdGraduationRecord" />
           <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
           <EntitySet Name="wyqstudent" EntityType="Db.wyqstudent" />
+          <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
+          <EntitySet Name="YZJ_CheckRecord" EntityType="Db.YZJ_CheckRecord" />
         </EntityContainer>
-        <EntityType Name="tbl_SysModule">
-          <Key>
-            <PropertyRef Name="ModuleId" />
-          </Key>
-          <Property Name="ModuleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModuleURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="IsShow" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tbl_SysModulePermission">
           <Key>
             <PropertyRef Name="Id" />
@@ -358,30 +348,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="YZJ_CheckRecord">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdId" Type="Int32" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplicantNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplicantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
-          <Property Name="AssessorId" Type="Int32" />
-          <Property Name="AssessorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AssessDate" Type="DateTime" Precision="3" />
-          <Property Name="ExaminantId" Type="Int32" />
-          <Property Name="ExaminantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineDate" Type="DateTime" Precision="3" />
-          <Property Name="AssessResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AssessState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineOpinion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="YZJ_CheckType">
           <Key>
             <PropertyRef Name="ID" />
@@ -503,6 +469,42 @@
           <Property Name="SAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="false" />
           <Property Name="STel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="tbl_SysModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsShow" Type="Boolean" />
+          <Property Name="IsLast" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="YZJ_CheckRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessorId" Type="Int32" />
+          <Property Name="AssessorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssessDate" Type="DateTime" Precision="3" />
+          <Property Name="ExaminantId" Type="Int32" />
+          <Property Name="ExaminantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssessState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineOpinion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -511,18 +513,6 @@
         <Alias Key="Model" Value="Db" />
         <Alias Key="Target" Value="Db.Store" />
         <EntityContainerMapping CdmEntityContainer="DbContainer" StorageEntityContainer="DbStoreContainer">
-          <EntitySetMapping Name="tbl_SysModule">
-            <EntityTypeMapping TypeName="Db.tbl_SysModule">
-              <MappingFragment StoreEntitySet="tbl_SysModule">
-                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="ModuleURL" ColumnName="ModuleURL" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
-                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_SysModulePermission">
             <EntityTypeMapping TypeName="Db.tbl_SysModulePermission">
               <MappingFragment StoreEntitySet="tbl_SysModulePermission">
@@ -581,31 +571,6 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="YZJ_CheckRecord">
-            <EntityTypeMapping TypeName="Db.YZJ_CheckRecord">
-              <MappingFragment StoreEntitySet="YZJ_CheckRecord">
-                <ScalarProperty Name="ApplyType" ColumnName="ApplyType" />
-                <ScalarProperty Name="ExamineOpinion" ColumnName="ExamineOpinion" />
-                <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
-                <ScalarProperty Name="AssessState" ColumnName="AssessState" />
-                <ScalarProperty Name="AssessResult" ColumnName="AssessResult" />
-                <ScalarProperty Name="ExamineDate" ColumnName="ExamineDate" />
-                <ScalarProperty Name="ExamineName" ColumnName="ExamineName" />
-                <ScalarProperty Name="ExaminantName" ColumnName="ExaminantName" />
-                <ScalarProperty Name="ExaminantId" ColumnName="ExaminantId" />
-                <ScalarProperty Name="AssessDate" ColumnName="AssessDate" />
-                <ScalarProperty Name="AssessorName" ColumnName="AssessorName" />
-                <ScalarProperty Name="AssessorId" ColumnName="AssessorId" />
-                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
-                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
-                <ScalarProperty Name="ApplicantNo" ColumnName="ApplicantNo" />
-                <ScalarProperty Name="StdName" ColumnName="StdName" />
-                <ScalarProperty Name="StdId" ColumnName="StdId" />
-                <ScalarProperty Name="available" ColumnName="available" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -736,6 +701,44 @@
                 <ScalarProperty Name="Ssex" ColumnName="Ssex" />
                 <ScalarProperty Name="Sname" ColumnName="Sname" />
                 <ScalarProperty Name="Sno" ColumnName="Sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysModule">
+            <EntityTypeMapping TypeName="Db.tbl_SysModule">
+              <MappingFragment StoreEntitySet="tbl_SysModule">
+                <ScalarProperty Name="IsLast" ColumnName="IsLast" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ModuleURL" ColumnName="ModuleURL" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YZJ_CheckRecord">
+            <EntityTypeMapping TypeName="Db.YZJ_CheckRecord">
+              <MappingFragment StoreEntitySet="YZJ_CheckRecord">
+                <ScalarProperty Name="ApplyType" ColumnName="ApplyType" />
+                <ScalarProperty Name="ExamineOpinion" ColumnName="ExamineOpinion" />
+                <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
+                <ScalarProperty Name="AssessState" ColumnName="AssessState" />
+                <ScalarProperty Name="AssessResult" ColumnName="AssessResult" />
+                <ScalarProperty Name="ExamineDate" ColumnName="ExamineDate" />
+                <ScalarProperty Name="ExamineName" ColumnName="ExamineName" />
+                <ScalarProperty Name="ExaminantName" ColumnName="ExaminantName" />
+                <ScalarProperty Name="ExaminantId" ColumnName="ExaminantId" />
+                <ScalarProperty Name="AssessDate" ColumnName="AssessDate" />
+                <ScalarProperty Name="AssessorName" ColumnName="AssessorName" />
+                <ScalarProperty Name="AssessorId" ColumnName="AssessorId" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="ApplicantNo" ColumnName="ApplicantNo" />
+                <ScalarProperty Name="StdName" ColumnName="StdName" />
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

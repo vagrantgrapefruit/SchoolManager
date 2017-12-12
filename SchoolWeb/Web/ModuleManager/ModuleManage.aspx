@@ -18,7 +18,7 @@
     </script>
 </head>
 <body>
-    <div class="panel-body" style="padding-bottom:0px;">
+<%--    <div class="panel-body" style="padding-bottom:0px;">
         <div class="panel panel-default">
             <div class="panel-heading">查询条件</div>
             <div class="panel-body">
@@ -38,7 +38,7 @@
                     </div>
                 </form>
             </div>
-        </div>       
+        </div>   --%>    
 
         <div id="toolbar" class="btn-group">
             <button id="btn_add" type="button" class="btn btn-default">
@@ -52,17 +52,17 @@
             </button>
         </div>
         <table id="tb_departments"></table>
-    </div>
+<%--    </div>--%>
     <div class="modal fade" id="ModuleModal">
-    <div class="modal-dialog" >
+    <div class="modal-dialog"style="width:800px" >
         <div class="modal-content">
             <div class="modal-header">
                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 <%--                <button type="button" class="close" onclick="window.history.go(-1);">×</button>--%>
-                <h4 class="modal-title" id="NoPermissionModalLabel">系统消息</h4>
+                <h4 class="modal-title" id="NoPermissionModalLabel"></h4>
             </div>
             <div class="modal-body">
-                <iframe id="Moduleiframe" width="100%" height="50%" frameborder="0"></iframe>
+                <iframe id="Moduleiframe" width="100%" height="50%" frameborder="0"style="height:400px;overflow:auto; "></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default " data-dismiss="modal">    关  闭    </button>
