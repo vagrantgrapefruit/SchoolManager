@@ -21,7 +21,8 @@ namespace SchoolManager.Models
 		public virtual string ModuleName { get; set;}
 		public virtual string ParentId { get; set;}
 		public virtual string ModuleURL { get; set;}
-		public virtual Nullable<int> Sort { get; set;}
+		public virtual int Sort { get; set;}
 		public virtual Nullable<bool> IsShow { get; set;}
+		public virtual Nullable<bool> IsLast { get; set;}
 	}
 }

@@ -9,15 +9,6 @@
     <script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
     <script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
     <link href="../../Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <script>
-        $.get("../Handler/GetModel.ashx", "[{'method':'getParent'}]", function (data) {
-            debugger;
-            data.list.each(function (index, element) {
-
-            });
-
-        });
-    </script>
 </head>
 <body>
     <form class="form-horizontal" role="form">
@@ -36,7 +27,7 @@
       <div class="form-group">
         <label for="ParentId" class="col-sm-2 control-label">上级节点</label>
         <div class="col-sm-10">
-            <select id="ParentId" class="form-control" name="ParentId"></select>
+          <input type="text" class="form-control" id="ParentId" placeholder="请选择上级节点"/>
         </div>
       </div>
       <div class="form-group">
@@ -53,7 +44,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">确认新增</button>
+          <button type="submit" class="btn btn-default">确认修改</button>
         </div>
       </div>
     </form>

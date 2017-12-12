@@ -38,6 +38,7 @@ namespace SchoolManager.BLL
 								|| (a.ModuleURL!=null && a.ModuleURL.Contains(queryStr))
 								
 								
+								
 								);
             }
             else
@@ -59,6 +60,7 @@ namespace SchoolManager.BLL
 													ModuleURL = r.ModuleURL,
 													Sort = r.Sort,
 													IsShow = r.IsShow,
+													IsLast = r.IsLast,
           
                                               }).ToList();
 
@@ -81,6 +83,7 @@ namespace SchoolManager.BLL
 				entity.ModuleURL = model.ModuleURL;
 				entity.Sort = model.Sort;
 				entity.IsShow = model.IsShow;
+				entity.IsLast = model.IsLast;
   
 
                 if (m_Rep.Create(entity))
@@ -168,6 +171,7 @@ namespace SchoolManager.BLL
 				entity.ModuleURL = model.ModuleURL;
 				entity.Sort = model.Sort;
 				entity.IsShow = model.IsShow;
+				entity.IsLast = model.IsLast;
  
 
 
@@ -202,6 +206,7 @@ namespace SchoolManager.BLL
 				model.ModuleURL = entity.ModuleURL;
 				model.Sort = entity.Sort;
 				model.IsShow = entity.IsShow;
+				model.IsLast = entity.IsLast;
  
                 return model;
             }

@@ -24,7 +24,6 @@ var TableInit = function () {
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
-        debugger;
         $('#tb_departments').bootstrapTable({
             url: '../Handler/GetModel.ashx',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
@@ -46,7 +45,7 @@ var TableInit = function () {
             showRefresh: true,                  //是否显示刷新按钮
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
-            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "ModuleId",                     //每一行的唯一标识，一般为主键列
             showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
@@ -87,12 +86,10 @@ var TableInit = function () {
 
 
 var ButtonInit = function () {
-    debugger;
     var oInit = new Object();
     var postdata = {};
 
     oInit.Init = function () {
-        debugger;
         //初始化页面上面的按钮事件
     };
     oInit.Add = function () {
@@ -101,7 +98,17 @@ var ButtonInit = function () {
         $('#ModuleModal').modal({ show: true, backdrop: 'static' });
     };
     oInit.Edit = function () {
-        alert("Edit");
+        var data = $('#tb_departments').bootstrapTable('getSelections');
+        if (data.length == 1) {
+            var frameSrc = "./EditModule.aspx";
+            $("#Moduleiframe").attr("src", frameSrc);
+            $('#ModuleModal').modal({ show: true, backdrop: 'static' });
+            $.get("./EditModule.aspx", JSON.stringify(data), function (data) { });
+            alert(JSON.stringify(data));            
+        }
+        else {
+            alert("修改时只能选择一条记录");
+        }
     };
     oInit.Delete = function () {
         alert("Delete");

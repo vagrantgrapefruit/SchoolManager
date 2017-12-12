@@ -16,7 +16,7 @@ namespace SchoolManager.Models
     {
         public string id { get; set; }
         public Nullable<bool> available { get; set; }
-        public Nullable<int> StdId { get; set; }
+        public string StdId { get; set; }
         public string StdName { get; set; }
         public string ApplicantNo { get; set; }
         public string ApplicantName { get; set; }

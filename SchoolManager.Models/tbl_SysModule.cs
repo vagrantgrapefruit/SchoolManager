@@ -18,7 +18,8 @@ namespace SchoolManager.Models
         public string ModuleName { get; set; }
         public string ParentId { get; set; }
         public string ModuleURL { get; set; }
-        public Nullable<int> Sort { get; set; }
+        public int Sort { get; set; }
         public Nullable<bool> IsShow { get; set; }
+        public Nullable<bool> IsLast { get; set; }
     }
 }
