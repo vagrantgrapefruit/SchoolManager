@@ -50,7 +50,7 @@ namespace SchoolWeb
                 SysUserModel model = userBLL.GetById(UserName);
                 if (model.PassWord == Password)
                 {
-                    Session["user"] = model;
+                    Session["UserName"] = UserName;
                     return true;
                 }
                 else
