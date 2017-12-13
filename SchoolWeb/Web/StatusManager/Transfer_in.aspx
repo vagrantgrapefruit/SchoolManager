@@ -11,6 +11,45 @@
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../Scripts/web/clist.js"></script>
 	<title>学籍管理系统</title>
+    <script type="text/javascript">
+        function submit()
+        {
+            CurrAddress = $("#AddProvince").val() + "AddCity": $("#AddCity").val() + "AddArea" + $("#AddArea").val()
+                + "AddStreet" + $("#AddStreet").val() + "AddDetail" + $("#AddDetail").val();
+
+            $.get("./Transfer_in.aspx", {
+                "action": "submit",
+                "   ": $("#stdRollId").val(),
+                "StdName": $("#stdname").val(),
+                "StdSex": $("#stdsex").val(),
+                "native": $("#native").val(),
+                "nation": $("#nation").val(),
+                "HouseholdAddress": $("#HouseholdAddress").val(),
+                //现住址
+                "CurrAddress": CurrAddress,
+                "Photo": $("#inputfile").val(),
+                "PhoneNumber": $("#PhoneNumber").val(),
+                "PaperNumber": $("#PaperNumber").val(),
+                "UsedName": $("#UsedName").val(),
+                "email": $("#email").val(),
+                "PostCode": $("#PostCode").val(),
+                "IsIEagueeMember": $("#IsIEagueeMember").val(),
+                "IsYoungPineer": $("#IsYoungPineer").val(),
+                "GuardianNo1": $("#GuardianNO1").val(),
+                "G1PhoneNumber": $("#G1PhoneNumber").val(),
+                "G1Relationship": $("#G1Relationship").val(),
+                "GuardianNo2": $("#GuardianNo2").val(),
+                "G2PhoneNumber": $("#G2PhoneNumber").val(),
+                "G2Relationship": $("#G2Relationship").val(),
+                "AlmaMater": $("#AlmaMater").val(),
+                "StdCategory": $("#StudentCategory").val()
+            },
+                function (resultString) {
+                    alert("已转入~")
+                });
+        }
+    </script>
+
 </head>
 <body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
     <script>
@@ -34,19 +73,19 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学籍号</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="stdid" placeholder="学籍号">
+                        <input type="text" id="stdRollId" class="form-control" name="stdRollId" placeholder="学籍号">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">名字</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="stdname" placeholder="名字">
+                        <input type="text" id="stdname" class="form-control" name="stdname" placeholder="名字">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="stdsex">
+                        <select class="form-control" id="stdsex" name="stdsex">
                             <option>男</option>
                             <option>女</option>
                             <option>秀吉</option>
@@ -56,49 +95,49 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">籍贯</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="native" placeholder="籍贯">
+                        <input type="text" id="native" class="form-control" name="native" placeholder="籍贯">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">民族</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="nation" placeholder="民族">
+                        <input type="text" id="nation" class="form-control" name="nation" placeholder="民族">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">户籍住址</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="HouseHoldAddress" placeholder="户籍住址">
+                        <input type="text" id="HouseholdAddress" class="form-control" name="HouseHoldAddress" placeholder="户籍住址">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">居住省</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AddProvince" placeholder="居住省">
+                        <input type="text" id="AddProvince" class="form-control" name="AddProvince" placeholder="居住省">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">居住市</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AddCity" placeholder="居住市">
+                        <input type="text" id="AddCity" class="form-control" name="AddCity" placeholder="居住市">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">居住区</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AddArea" placeholder="居住区">
+                        <input type="text" id="AddArea" class="form-control" name="AddArea" placeholder="居住区">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">居住街道</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AddStreet" placeholder="居住街道">
+                        <input type="text" id="AddStreet" class="form-control" name="AddStreet" placeholder="居住街道">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">详细地址</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AddDetail" placeholder="详细地址">
+                        <input type="text" id="AddDetail" class="form-control" name="AddDetail" placeholder="详细地址">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
@@ -110,25 +149,25 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Connection" placeholder="联系方式">
+                        <input type="text" id="PhoneNumber" class="form-control" name="Connection" placeholder="联系方式">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">身份证号</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="IdCard" placeholder="身份证号">
+                        <input type="text" class="form-control" name="PaperNumber" placeholder="身份证号">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">曾用名</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="StdUsedName" placeholder="曾用名">
+                        <input type="text" class="form-control" id="UsedName" placeholder="曾用名">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">电子邮箱</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="email" placeholder="电子邮箱">
+                        <input type="text" class="form-control" id="email" placeholder="电子邮箱">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
@@ -140,7 +179,7 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">是否团员</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="IsIEagueeMember">
+                        <select class="form-control" id="IsIEagueeMember">
                             <option>是</option>
                             <option>否</option>
                         </select>
@@ -149,7 +188,7 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">是否少先队员</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="IsYoungPineer">
+                        <select class="form-control" id="IsYoungPineer">
                             <option>是</option>
                             <option>否</option>
                         </select>
@@ -158,56 +197,56 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="GuardianNO1" placeholder="监护人1">
+                        <input type="text" class="form-control" id="GuardianNO1" placeholder="监护人1">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="G1PhoneNumber" placeholder="监护人1联系方式">
+                        <input type="text" class="form-control" id="G1PhoneNumber" placeholder="监护人1联系方式">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1与其关系</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="G1Relationship" placeholder="监护人1与其关系">
+                        <input type="text" class="form-control" id="G1Relationship" placeholder="监护人1与其关系">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="GuardianNO2" placeholder="监护人2">
+                        <input type="text" class="form-control" id="GuardianNO2" placeholder="监护人2">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="G2PhoneNumber" placeholder="监护人2联系方式">
+                        <input type="text" class="form-control" id="G2PhoneNumber" placeholder="监护人2联系方式">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2与其关系</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="G2Relationship" placeholder="监护人2与其关系">
+                        <input type="text" class="form-control" id="G2Relationship" placeholder="监护人2与其关系">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">原毕业学校</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="AlmaMater" placeholder="原毕业学校">
+                        <input type="text" class="form-control" id="AlmaMater" placeholder="原毕业学校">
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学生类别</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="StudentCategory">
+                        <select class="form-control" id="StudentCategory">
                             <option>普通学生</option>
                             <option>残疾学生</option>
                             <option>贫困学生</option>
                         </select>
                     </div>
                 </div>
-                <div style="text-align: center;margin:10px"><button type="submit" class="btn btn-success">转入</button></div>
+                <div style="text-align: center;margin:10px"><button type="submit" class="btn btn-success" onclick="submit();">转入</button></div>
 
             </form>
         </div>
