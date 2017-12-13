@@ -17,13 +17,13 @@
             //输入学籍号
             
             $.get("./TransferClass.aspx", { "action": "getStudent", "condition": $("#condition").val() }, function (resultString) {
+
                 var studentInfor = eval('(' + resultString + ')');
-                var studentInforArray = studentInfor.studentList;
-                $(studentInforArray).each(function (index, student) {
-                    //alert()
-                    $("#stdname").val(student.Sname);
-                    $("#stdid").val(student.Sno);
-                    $("#stdclass").val(student.Classno);
+                var studentInforArray = studentInfor.InforList;
+                $(studentInforArray).each(function (index, Infor) {
+                    $("#stdname").val(Infor.StdName);
+                    $("#stdid").val(Infor.StdId);
+                    $("#stdclass").val(Infor.ClassNo);
                 });
                 
             });
@@ -45,11 +45,14 @@
                 console.log("add")
                 return;
             }
-            newClass = newClass.substring(0, 2) + $("#cclass").val();
-            $.get("./TransferClass.aspx", { "action": "transfer", "newClass": newClass, "Sno":"#stdid" }, function (resultString) {
-
-
-            })
+            newClass = ($("#stdclass").val()).substring(0, 2) + $("#cclass").val();
+            $.get("./TransferClass.aspx", { "action": "transfer", "newClass": newClass, "stdid": $("#stdid").val(), "ApplyReason": $("#reason").val() }, function (resultString) {
+                if (resultString != null)
+                {
+                    alert("修改好啦！")
+                }
+   
+            });
          
         }
     </script>
