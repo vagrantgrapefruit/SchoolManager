@@ -14,7 +14,8 @@
     <script type="text/javascript">
         function submit()
         {
-            CurrAddress = $("#AddProvince").val() + "AddCity": $("#AddCity").val() + "AddArea" + $("#AddArea").val()
+            alert("一条如")
+            CurrAddress = $("#AddProvince").val() + "AddCity"+ $("#AddCity").val() + "AddArea" + $("#AddArea").val()
                 + "AddStreet" + $("#AddStreet").val() + "AddDetail" + $("#AddDetail").val();
 
             $.get("./Transfer_in.aspx", {
@@ -27,7 +28,7 @@
                 "HouseholdAddress": $("#HouseholdAddress").val(),
                 //现住址
                 "CurrAddress": CurrAddress,
-                "Photo": $("#inputfile").val(),
+                //"Photo": $("#inputfile").val(),
                 "PhoneNumber": $("#PhoneNumber").val(),
                 "PaperNumber": $("#PaperNumber").val(),
                 "UsedName": $("#UsedName").val(),
@@ -246,7 +247,10 @@
                         </select>
                     </div>
                 </div>
-                <div style="text-align: center;margin:10px"><button type="submit" class="btn btn-success" onclick="submit();">转入</button></div>
+                <div style="text-align: center;margin:10px">
+                  <button type="submit" class="btn btn-success" onclick="submit();">转入</button>
+
+                </div>
 
             </form>
         </div>
