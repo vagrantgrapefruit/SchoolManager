@@ -453,6 +453,7 @@
     <Content Include="Site.Mobile.Master" />
     <Content Include="Web\Handler\GetModel.ashx" />
     <Content Include="Web\Handler\EditModel.ashx" />
+    <Content Include="Web\Handler\DeleteModel.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -466,6 +467,9 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\DeleteModel.ashx.cs">
+      <DependentUpon>DeleteModel.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\EditModel.ashx.cs">
       <DependentUpon>EditModel.ashx</DependentUpon>

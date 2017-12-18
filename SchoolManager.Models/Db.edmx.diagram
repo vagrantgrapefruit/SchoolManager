@@ -20,8 +20,8 @@
         <EntityTypeShape EntityType="Db.YZJ_StatusType" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="Db.YZJ_StdGraduationRecord" Width="1.5" PointX="5.75" PointY="10.75" />
         <EntityTypeShape EntityType="Db.YZJ_Grade" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="Db.tbl_SysModule" Width="1.5" PointX="12.375" PointY="4.75" />
         <EntityTypeShape EntityType="Db.YZJ_CheckRecord" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Db.tbl_SysModule" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

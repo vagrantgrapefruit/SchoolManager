@@ -41,8 +41,8 @@ namespace SchoolWeb.Web.ModuleManager
 
         public string GetDepartment(int limit, int offset, string departmentname, string statu)
         {
-            
-            List<SysModuleModel> modelList = (from m in moduleBLL.GetList("") orderby m.Sort ascending select m).ToList();
+
+            List<SysModuleModel> modelList = moduleBLL.GetList("");
 
             var total = modelList.Count;
             var rows = modelList.Skip(offset).Take(limit).ToList();

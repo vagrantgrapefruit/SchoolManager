@@ -64,9 +64,6 @@ var TableInit = function () {
             }, {
                 field: 'ModuleURL',
                 title: '链接'
-            }, {
-                field: 'Sort',
-                title: '排序',
             },]
         });
     };
@@ -84,6 +81,14 @@ var TableInit = function () {
     return oTableInit;
 };
 
+function getrow() {
+    var row = $('#tb_departments').bootstrapTable('getSelections');
+    return row;
+}
+
+$('#ModuleModal').on('hidden.bs.modal', function () {
+    location.reload();
+})
 
 var ButtonInit = function () {
     var oInit = new Object();
@@ -98,20 +103,34 @@ var ButtonInit = function () {
         $('#ModuleModal').modal({ show: true, backdrop: 'static' });
     };
     oInit.Edit = function () {
-        var data = $('#tb_departments').bootstrapTable('getSelections');
-        if (data.length == 1) {
-            var frameSrc = "./EditModule.aspx";
-            $("#Moduleiframe").attr("src", frameSrc);
-            $('#ModuleModal').modal({ show: true, backdrop: 'static' });
-            $.get("./EditModule.aspx", JSON.stringify(data), function (data) { });
-            alert(JSON.stringify(data));            
-        }
+        var row = $('#tb_departments').bootstrapTable('getSelections');
+        if (row.length == 1) {
+                var frameSrc = "./EditModule.aspx";
+                $("#Moduleiframe").attr("src", frameSrc);
+                $('#ModuleModal').modal({ show: true, backdrop: 'static' });                       
+        }        
         else {
-            alert("修改时只能选择一条记录");
+            alert("修改时必须且只能选择一条记录");
         }
     };
     oInit.Delete = function () {
-        alert("Delete");
+        var rows = $('#tb_departments').bootstrapTable('getSelections');
+        var row = rows[0];
+        if (rows.length == 1) {
+            $.get("../Handler/DeleteModel.ashx", row, function (data) {
+                var resultJson = eval('(' + data + ')');
+                if (resultJson.flag)
+                {
+                    alert("删除成功！");
+                    location.reload();
+                }
+                else
+                    alert("删除失败！");
+            });
+        }
+        else {
+            alert("一次只能删除一条记录");
+        }
     };
 
     return oInit;

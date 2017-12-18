@@ -29,7 +29,11 @@
                     $.get("../Handler/EditModel.ashx", { method: 'SaveModel', ModuleID: $("#ModuleId").val(), ModuleName: $("#ModuleName").val(), ParentId: $("#ParentId").val(), ModuleURL: $("#ModuleURL").val(), IsLast: $("#IsLast").val(), IsShow: $("#IsShow").val() }, function (data) {
                         var resultJson = eval('(' + data + ')');
                         if (resultJson.flag)
+                        {
                             alert("创建成功！");
+                            //window.close();
+                            window.parent.location.reload();
+                        }
                         else 
                             alert("创建失败！");
                     });
