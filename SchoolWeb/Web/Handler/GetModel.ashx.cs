@@ -55,12 +55,7 @@ namespace SchoolWeb.Web.ModuleManager
         public string GetParentId()
         {
             List<SysModuleModel> modelList = (from m in moduleBLL.GetList("") where m.IsLast==false select m).ToList();
-            List<string> parentList = new List<string>();
-            foreach(var a in modelList)
-            {
-                parentList.Add(a.ModuleId);
-            }
-            var jsondata = js.Serialize(new { list = parentList });
+            var jsondata = js.Serialize(new { flag = 1, rows = modelList });
             return jsondata;
         }
         public bool IsReusable
