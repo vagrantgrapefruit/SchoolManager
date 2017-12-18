@@ -20,48 +20,48 @@ namespace SchoolWeb.Web.Handler
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            SysUserModel moduleModel = new SysUserModel();
+            SysUserModel userModel = new SysUserModel();
             if (context.Request.QueryString["method"] == "SaveUser")
             {
-                moduleModel.UserId = context.Request.QueryString["UserId"];
-                moduleModel.UserName = context.Request.QueryString["UserName"];
-                moduleModel.PassWord = context.Request.QueryString["PassWord"];
-                moduleModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
-                moduleModel.SchoolCard = context.Request.QueryString["SchoolCard"];
-                moduleModel.Sex = (context.Request.QueryString["Sex"]);
-                moduleModel.DepId = (context.Request.QueryString["DepId"]);
-                moduleModel.PosId = (context.Request.QueryString["PosId"]);
-                var jsondata = NewModule(moduleModel);
+                userModel.UserId = context.Request.QueryString["UserId"];
+                userModel.UserName = context.Request.QueryString["UserName"];
+                userModel.PassWord = context.Request.QueryString["PassWord"];
+                userModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
+                userModel.SchoolCard = context.Request.QueryString["SchoolCard"];
+                userModel.Sex = (context.Request.QueryString["Sex"]);
+                userModel.DepId = (context.Request.QueryString["DepId"]);
+                userModel.PosId = (context.Request.QueryString["PosId"]);
+                var jsondata = NewModule(userModel);
                 context.Response.Clear();
                 context.Response.Write(jsondata);
                 context.Response.End();
             }
             else if (context.Request.QueryString["method"] == "EditUser")
             {
-                moduleModel.UserId = context.Request.QueryString["UserId"];
-                moduleModel.UserName = context.Request.QueryString["UserName"];
-                moduleModel.PassWord = context.Request.QueryString["PassWord"];
-                moduleModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
-                moduleModel.SchoolCard = context.Request.QueryString["SchoolCard"];
-                moduleModel.Sex = (context.Request.QueryString["Sex"]);
-                moduleModel.DepId = (context.Request.QueryString["DepId"]);
-                moduleModel.PosId = (context.Request.QueryString["PosId"]);
-                var jsondata = EditModule(moduleModel);
+                userModel.UserId = context.Request.QueryString["UserId"];
+                userModel.UserName = context.Request.QueryString["UserName"];
+                userModel.PassWord = context.Request.QueryString["PassWord"];
+                userModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
+                userModel.SchoolCard = context.Request.QueryString["SchoolCard"];
+                userModel.Sex = (context.Request.QueryString["Sex"]);
+                userModel.DepId = (context.Request.QueryString["DepId"]);
+                userModel.PosId = (context.Request.QueryString["PosId"]);
+                var jsondata = EditModule(userModel);
                 context.Response.Clear();
                 context.Response.Write(jsondata);
                 context.Response.End();
             }
             else if (context.Request.QueryString["0"] != null)
             {
-                moduleModel.UserId = context.Request.QueryString["UserId"];
-                moduleModel.UserName = context.Request.QueryString["UserName"];
-                moduleModel.PassWord = context.Request.QueryString["PassWord"];
-                moduleModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
-                moduleModel.SchoolCard = context.Request.QueryString["SchoolCard"];
-                moduleModel.Sex = (context.Request.QueryString["Sex"]);
-                moduleModel.DepId = (context.Request.QueryString["DepId"]);
-                moduleModel.PosId = (context.Request.QueryString["PosId"]);
-                var jsondata = returnjson(moduleModel);
+                userModel.UserId = context.Request.QueryString["UserId"];
+                userModel.UserName = context.Request.QueryString["UserName"];
+                userModel.PassWord = context.Request.QueryString["PassWord"];
+                userModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
+                userModel.SchoolCard = context.Request.QueryString["SchoolCard"];
+                userModel.Sex = (context.Request.QueryString["Sex"]);
+                userModel.DepId = (context.Request.QueryString["DepId"]);
+                userModel.PosId = (context.Request.QueryString["PosId"]);
+                var jsondata = returnjson(userModel);
                 context.Response.Clear();
                 context.Response.Write(jsondata);
                 context.Response.End();

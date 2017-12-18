@@ -17,9 +17,9 @@ namespace SchoolManager.Models
 	}
 	public class Virtual_SysRoleModel
 	{
+		public virtual string Id { get; set;}
 		public virtual string RoleId { get; set;}
 		public virtual string RoleName { get; set;}
-		public virtual Nullable<int> Sort { get; set;}
 		public virtual Nullable<bool> IsShow { get; set;}
 	}
 }

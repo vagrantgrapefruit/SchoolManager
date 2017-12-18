@@ -32,9 +32,9 @@ namespace SchoolManager.BLL
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
-								a=>(a.RoleId!=null && a.RoleId.Contains(queryStr))
+								a=>(a.Id!=null && a.Id.Contains(queryStr))
+								|| (a.RoleId!=null && a.RoleId.Contains(queryStr))
 								|| (a.RoleName!=null && a.RoleName.Contains(queryStr))
-								
 								
 								);
             }
@@ -51,9 +51,9 @@ namespace SchoolManager.BLL
             List<SysRoleModel> modelList = (from r in queryData
                                               select new SysRoleModel
                                               {
+													Id = r.Id,
 													RoleId = r.RoleId,
 													RoleName = r.RoleName,
-													Sort = r.Sort,
 													IsShow = r.IsShow,
           
                                               }).ToList();
@@ -65,15 +65,15 @@ namespace SchoolManager.BLL
         {
             try
             {
-                tbl_SysRole entity = m_Rep.GetById(model.RoleId);
+                tbl_SysRole entity = m_Rep.GetById(model.Id);
                 if (entity != null)
                 {
                     return false;
                 }
                 entity = new tbl_SysRole();
-               				entity.RoleId = model.RoleId;
+               				entity.Id = model.Id;
+				entity.RoleId = model.RoleId;
 				entity.RoleName = model.RoleName;
-				entity.Sort = model.Sort;
 				entity.IsShow = model.IsShow;
   
 
@@ -151,14 +151,14 @@ namespace SchoolManager.BLL
         {
             try
             {
-                tbl_SysRole entity = m_Rep.GetById(model.RoleId);
+                tbl_SysRole entity = m_Rep.GetById(model.Id);
                 if (entity == null)
                 {
                     return false;
                 }
-                              				entity.RoleId = model.RoleId;
+                              				entity.Id = model.Id;
+				entity.RoleId = model.RoleId;
 				entity.RoleName = model.RoleName;
-				entity.Sort = model.Sort;
 				entity.IsShow = model.IsShow;
  
 
@@ -188,9 +188,9 @@ namespace SchoolManager.BLL
             {
                 tbl_SysRole entity = m_Rep.GetById(id);
                 SysRoleModel model = new SysRoleModel();
-                              				model.RoleId = entity.RoleId;
+                              				model.Id = entity.Id;
+				model.RoleId = entity.RoleId;
 				model.RoleName = entity.RoleName;
-				model.Sort = entity.Sort;
 				model.IsShow = entity.IsShow;
  
                 return model;

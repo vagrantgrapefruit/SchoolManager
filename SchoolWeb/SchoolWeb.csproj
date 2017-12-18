@@ -377,7 +377,9 @@
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.js" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\Manager\AllotUser.js" />
     <Content Include="Scripts\Manager\ModuleManage.js" />
+    <Content Include="Scripts\Manager\RoleManage.js" />
     <Content Include="Scripts\Manager\UserManage.js" />
     <Content Include="Scripts\web\clist.js" />
     <Content Include="Scripts\web\execlist.js" />
@@ -393,10 +395,14 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Web\ModuleManager\AddModule.aspx" />
+    <Content Include="Web\ModuleManager\AddRole.aspx" />
     <Content Include="Web\ModuleManager\AddUser.aspx" />
+    <Content Include="Web\ModuleManager\AllotUser.aspx" />
     <Content Include="Web\ModuleManager\EditModule.aspx" />
     <Content Include="Web\ModuleManager\EditUser.aspx" />
     <Content Include="Web\ModuleManager\ModuleManage.aspx" />
+    <Content Include="Web\ModuleManager\RoleManage.aspx" />
+    <Content Include="Web\ModuleManager\ShowUser.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
     <Content Include="Web\ModuleManager\UserManage.aspx" />
     <Content Include="Web\StatusManager\Dismiss.aspx" />
@@ -461,6 +467,10 @@
     <Content Include="Web\Handler\GetUserModel.ashx" />
     <Content Include="Web\Handler\EditUser.ashx" />
     <Content Include="Web\Handler\DeleteUser.ashx" />
+    <Content Include="Web\Handler\GetRoleModel.ashx" />
+    <Content Include="Web\Handler\EditRole.ashx" />
+    <Content Include="Web\Handler\DeleteRole.ashx" />
+    <Content Include="Web\Handler\GetUserRole.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -478,11 +488,17 @@
     <Compile Include="Web\Handler\DeleteModel.ashx.cs">
       <DependentUpon>DeleteModel.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\DeleteRole.ashx.cs">
+      <DependentUpon>DeleteRole.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\DeleteUser.ashx.cs">
       <DependentUpon>DeleteUser.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\EditModel.ashx.cs">
       <DependentUpon>EditModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\EditRole.ashx.cs">
+      <DependentUpon>EditRole.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\EditUser.ashx.cs">
       <DependentUpon>EditUser.ashx</DependentUpon>
@@ -490,8 +506,14 @@
     <Compile Include="Web\Handler\GetModel.ashx.cs">
       <DependentUpon>GetModel.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\GetRoleModel.ashx.cs">
+      <DependentUpon>GetRoleModel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\GetUserModel.ashx.cs">
       <DependentUpon>GetUserModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\GetUserRole.ashx.cs">
+      <DependentUpon>GetUserRole.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\AddModule.aspx.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
@@ -500,12 +522,26 @@
     <Compile Include="Web\ModuleManager\AddModule.aspx.designer.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\ModuleManager\AddRole.aspx.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AddRole.aspx.designer.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\ModuleManager\AddUser.aspx.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\ModuleManager\AddUser.aspx.designer.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AllotUser.aspx.cs">
+      <DependentUpon>AllotUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AllotUser.aspx.designer.cs">
+      <DependentUpon>AllotUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\EditModule.aspx.cs">
       <DependentUpon>EditModule.aspx</DependentUpon>
@@ -556,6 +592,20 @@
     </Compile>
     <Compile Include="Web\ModuleManager\ModuleManage.aspx.designer.cs">
       <DependentUpon>ModuleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\RoleManage.aspx.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\RoleManage.aspx.designer.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\ShowUser.aspx.cs">
+      <DependentUpon>ShowUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\ShowUser.aspx.designer.cs">
+      <DependentUpon>ShowUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\UserManage.aspx.cs">
       <DependentUpon>UserManage.aspx</DependentUpon>

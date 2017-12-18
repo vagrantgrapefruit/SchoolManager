@@ -9,28 +9,24 @@ using System.Web.Script.Serialization;
 namespace SchoolWeb.Web.Handler
 {
     /// <summary>
-    /// DeleteUser 的摘要说明
+    /// DeleteRole 的摘要说明
     /// </summary>
-    public class DeleteUser : IHttpHandler
+    public class DeleteRole : IHttpHandler
     {
 
-        public SysUserBLL moduleBLL = new SysUserBLL();
+        public SysRoleBLL roleBLL = new SysRoleBLL();
         public JavaScriptSerializer js = new JavaScriptSerializer();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            SysUserModel userModel = new SysUserModel();
+            SysRoleModel roleModel = new SysRoleModel();
             if (context.Request.QueryString["0"] != null)
             {
-                userModel.UserId = context.Request.QueryString["UserId"];
-                userModel.UserName = context.Request.QueryString["UserName"];
-                userModel.PassWord = context.Request.QueryString["PassWord"];
-                userModel.PhoneNumber = context.Request.QueryString["PhoneNumber"];
-                userModel.SchoolCard = context.Request.QueryString["SchoolCard"];
-                userModel.Sex = (context.Request.QueryString["Sex"]);
-                userModel.DepId = (context.Request.QueryString["DepId"]);
-                userModel.PosId = (context.Request.QueryString["PosId"]);
-                var jsondata = delete(userModel);
+                roleModel.Id = context.Request.QueryString["Id"];
+                roleModel.RoleId = context.Request.QueryString["RoleId"];
+                roleModel.RoleName = context.Request.QueryString["RoleName"];
+                roleModel.IsShow = Convert.ToBoolean(context.Request.QueryString["IsShow"]);
+                var jsondata = delete(roleModel);
                 context.Response.Clear();
                 context.Response.Write(jsondata);
                 context.Response.End();
@@ -38,9 +34,9 @@ namespace SchoolWeb.Web.Handler
             context.Response.Write("Hello World");
         }
 
-        public string delete(SysUserModel model)
+        public string delete(SysRoleModel model)
         {
-            var a = moduleBLL.Delete(model.UserId);
+            var a = roleBLL.Delete(model.Id);
             var jsondata = js.Serialize(new { flag = a });
             return jsondata;
         }

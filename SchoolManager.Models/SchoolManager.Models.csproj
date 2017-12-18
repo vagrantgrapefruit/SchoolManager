@@ -72,6 +72,7 @@
     <Compile Include="model\Show.cs" />
     <Compile Include="model\ShowModel.cs" />
     <Compile Include="model\ShowModels.cs" />
+    <Compile Include="model\UserListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tbl_SysModule.cs">
       <DependentUpon>Db.tt</DependentUpon>
