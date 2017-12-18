@@ -14,9 +14,9 @@ namespace SchoolManager.Models
     
     public partial class tbl_SysPermission
     {
-        public string PermissionId { get; set; }
-        public string PermissionName { get; set; }
-        public Nullable<int> Sort { get; set; }
+        public string Id { get; set; }
+        public string RoleId { get; set; }
+        public string ModuleId { get; set; }
         public Nullable<bool> IsShow { get; set; }
     }
 }

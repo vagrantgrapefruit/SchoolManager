@@ -76,16 +76,10 @@
     <Compile Include="tbl_SysModule.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_SysModulePermission.cs">
-      <DependentUpon>Db.tt</DependentUpon>
-    </Compile>
     <Compile Include="tbl_SysPermission.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_SysRole.cs">
-      <DependentUpon>Db.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_SysRolePermission.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_SysUser.cs">
@@ -97,16 +91,10 @@
     <Compile Include="Virtual_tbl_SysModuleModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
-    <Compile Include="Virtual_tbl_SysModulePermissionModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
     <Compile Include="Virtual_tbl_SysPermissionModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
     <Compile Include="Virtual_tbl_SysRoleModel.cs">
-      <DependentUpon>Common.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Virtual_tbl_SysRolePermissionModel.cs">
       <DependentUpon>Common.tt</DependentUpon>
     </Compile>
     <Compile Include="Virtual_tbl_SysUserModel.cs">

@@ -17,9 +17,9 @@ namespace SchoolManager.Models
 	}
 	public class Virtual_SysPermissionModel
 	{
-		public virtual string PermissionId { get; set;}
-		public virtual string PermissionName { get; set;}
-		public virtual Nullable<int> Sort { get; set;}
+		public virtual string Id { get; set;}
+		public virtual string RoleId { get; set;}
+		public virtual string ModuleId { get; set;}
 		public virtual Nullable<bool> IsShow { get; set;}
 	}
 }

@@ -17,21 +17,13 @@
           <Property Name="IsShow" Type="bit" />
           <Property Name="IsLast" Type="bit" />
         </EntityType>
-        <EntityType Name="tbl_SysModulePermission">
+        <EntityType Name="tbl_SysPermission">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ModuleId" Type="varchar" MaxLength="50" />
-          <Property Name="PermissionId" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbl_SysPermission">
-          <Key>
-            <PropertyRef Name="PermissionId" />
-          </Key>
-          <Property Name="PermissionId" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PermissionName" Type="varchar" MaxLength="50" />
-          <Property Name="Sort" Type="int" />
           <Property Name="IsShow" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_SysRole">
@@ -42,14 +34,6 @@
           <Property Name="RoleName" Type="varchar" MaxLength="50" />
           <Property Name="Sort" Type="int" />
           <Property Name="IsShow" Type="bit" />
-        </EntityType>
-        <EntityType Name="tbl_SysRolePermission">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleId" Type="varchar" MaxLength="50" />
-          <Property Name="ModelPermissionId" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_SysUser">
           <Key>
@@ -201,24 +185,10 @@
           <Property Name="GraduatedSchoolname" Type="varchar" MaxLength="30" />
           <Property Name="GraduatedSchoolNo" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK_tbl_SysModulePermission_tbl_SysModulePermission">
-          <End Role="tbl_SysModulePermission" Type="Self.tbl_SysModulePermission" Multiplicity="1" />
-          <End Role="tbl_SysModulePermission1" Type="Self.tbl_SysModulePermission" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_SysModulePermission">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_SysModulePermission1">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DbStoreContainer">
           <EntitySet Name="tbl_SysModule" EntityType="Self.tbl_SysModule" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_SysModulePermission" EntityType="Self.tbl_SysModulePermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysPermission" EntityType="Self.tbl_SysPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysRole" EntityType="Self.tbl_SysRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_SysRolePermission" EntityType="Self.tbl_SysRolePermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysUser" EntityType="Self.tbl_SysUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_SysUserRole" EntityType="Self.tbl_SysUserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_CheckRecord" EntityType="Self.YZJ_CheckRecord" Schema="dbo" store:Type="Tables" />
@@ -230,26 +200,15 @@
           <EntitySet Name="YZJ_Status" EntityType="Self.YZJ_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_StatusType" EntityType="Self.YZJ_StatusType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Self.YZJ_StdGraduationRecord" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_tbl_SysModulePermission_tbl_SysModulePermission" Association="Self.FK_tbl_SysModulePermission_tbl_SysModulePermission">
-            <End Role="tbl_SysModulePermission" EntitySet="tbl_SysModulePermission" />
-            <End Role="tbl_SysModulePermission1" EntitySet="tbl_SysModulePermission" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Db" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DbContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_SysModulePermission" EntityType="Db.tbl_SysModulePermission" />
-          <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
           <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
-          <EntitySet Name="tbl_SysRolePermission" EntityType="Db.tbl_SysRolePermission" />
           <EntitySet Name="tbl_SysUser" EntityType="Db.tbl_SysUser" />
           <EntitySet Name="tbl_SysUserRole" EntityType="Db.tbl_SysUserRole" />
-          <AssociationSet Name="FK_tbl_SysModulePermission_tbl_SysModulePermission" Association="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission">
-            <End Role="tbl_SysModulePermission" EntitySet="tbl_SysModulePermission" />
-            <End Role="tbl_SysModulePermission1" EntitySet="tbl_SysModulePermission" />
-          </AssociationSet>
           <EntitySet Name="YZJ_CheckType" EntityType="Db.YZJ_CheckType" />
           <EntitySet Name="YZJ_CredentialsType" EntityType="Db.YZJ_CredentialsType" />
           <EntitySet Name="YZJ_Info" EntityType="Db.YZJ_Info" />
@@ -260,26 +219,8 @@
           <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
           <EntitySet Name="YZJ_CheckRecord" EntityType="Db.YZJ_CheckRecord" />
           <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
+          <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
         </EntityContainer>
-        <EntityType Name="tbl_SysModulePermission">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModuleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PermissionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbl_SysModulePermission1" Relationship="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission" FromRole="tbl_SysModulePermission" ToRole="tbl_SysModulePermission1" />
-          <NavigationProperty Name="tbl_SysModulePermission2" Relationship="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission" FromRole="tbl_SysModulePermission1" ToRole="tbl_SysModulePermission" />
-        </EntityType>
-        <EntityType Name="tbl_SysPermission">
-          <Key>
-            <PropertyRef Name="PermissionId" />
-          </Key>
-          <Property Name="PermissionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PermissionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sort" Type="Int32" />
-          <Property Name="IsShow" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tbl_SysRole">
           <Key>
             <PropertyRef Name="RoleId" />
@@ -288,14 +229,6 @@
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Sort" Type="Int32" />
           <Property Name="IsShow" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tbl_SysRolePermission">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModelPermissionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_SysUser">
           <Key>
@@ -318,18 +251,6 @@
           <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_tbl_SysModulePermission_tbl_SysModulePermission">
-          <End Type="Db.tbl_SysModulePermission" Role="tbl_SysModulePermission" Multiplicity="1" />
-          <End Type="Db.tbl_SysModulePermission" Role="tbl_SysModulePermission1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_SysModulePermission">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_SysModulePermission1">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="YZJ_CheckType">
           <Key>
             <PropertyRef Name="ID" />
@@ -471,6 +392,15 @@
           <Property Name="IsShow" Type="Boolean" />
           <Property Name="IsLast" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tbl_SysPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsShow" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -479,25 +409,6 @@
         <Alias Key="Model" Value="Db" />
         <Alias Key="Target" Value="Db.Store" />
         <EntityContainerMapping CdmEntityContainer="DbContainer" StorageEntityContainer="DbStoreContainer">
-          <EntitySetMapping Name="tbl_SysModulePermission">
-            <EntityTypeMapping TypeName="Db.tbl_SysModulePermission">
-              <MappingFragment StoreEntitySet="tbl_SysModulePermission">
-                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
-                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_SysPermission">
-            <EntityTypeMapping TypeName="Db.tbl_SysPermission">
-              <MappingFragment StoreEntitySet="tbl_SysPermission">
-                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
-                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_SysRole">
             <EntityTypeMapping TypeName="Db.tbl_SysRole">
               <MappingFragment StoreEntitySet="tbl_SysRole">
@@ -505,15 +416,6 @@
                 <ScalarProperty Name="Sort" ColumnName="Sort" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_SysRolePermission">
-            <EntityTypeMapping TypeName="Db.tbl_SysRolePermission">
-              <MappingFragment StoreEntitySet="tbl_SysRolePermission">
-                <ScalarProperty Name="ModelPermissionId" ColumnName="ModelPermissionId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -687,6 +589,16 @@
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
                 <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysPermission">
+            <EntityTypeMapping TypeName="Db.tbl_SysPermission">
+              <MappingFragment StoreEntitySet="tbl_SysPermission">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

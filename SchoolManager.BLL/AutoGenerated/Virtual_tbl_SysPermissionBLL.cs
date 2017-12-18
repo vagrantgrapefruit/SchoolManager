@@ -32,9 +32,9 @@ namespace SchoolManager.BLL
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
-								a=>(a.PermissionId!=null && a.PermissionId.Contains(queryStr))
-								|| (a.PermissionName!=null && a.PermissionName.Contains(queryStr))
-								
+								a=>(a.Id!=null && a.Id.Contains(queryStr))
+								|| (a.RoleId!=null && a.RoleId.Contains(queryStr))
+								|| (a.ModuleId!=null && a.ModuleId.Contains(queryStr))
 								
 								);
             }
@@ -51,9 +51,9 @@ namespace SchoolManager.BLL
             List<SysPermissionModel> modelList = (from r in queryData
                                               select new SysPermissionModel
                                               {
-													PermissionId = r.PermissionId,
-													PermissionName = r.PermissionName,
-													Sort = r.Sort,
+													Id = r.Id,
+													RoleId = r.RoleId,
+													ModuleId = r.ModuleId,
 													IsShow = r.IsShow,
           
                                               }).ToList();
@@ -65,15 +65,15 @@ namespace SchoolManager.BLL
         {
             try
             {
-                tbl_SysPermission entity = m_Rep.GetById(model.PermissionId);
+                tbl_SysPermission entity = m_Rep.GetById(model.Id);
                 if (entity != null)
                 {
                     return false;
                 }
                 entity = new tbl_SysPermission();
-               				entity.PermissionId = model.PermissionId;
-				entity.PermissionName = model.PermissionName;
-				entity.Sort = model.Sort;
+               				entity.Id = model.Id;
+				entity.RoleId = model.RoleId;
+				entity.ModuleId = model.ModuleId;
 				entity.IsShow = model.IsShow;
   
 
@@ -151,14 +151,14 @@ namespace SchoolManager.BLL
         {
             try
             {
-                tbl_SysPermission entity = m_Rep.GetById(model.PermissionId);
+                tbl_SysPermission entity = m_Rep.GetById(model.Id);
                 if (entity == null)
                 {
                     return false;
                 }
-                              				entity.PermissionId = model.PermissionId;
-				entity.PermissionName = model.PermissionName;
-				entity.Sort = model.Sort;
+                              				entity.Id = model.Id;
+				entity.RoleId = model.RoleId;
+				entity.ModuleId = model.ModuleId;
 				entity.IsShow = model.IsShow;
  
 
@@ -188,9 +188,9 @@ namespace SchoolManager.BLL
             {
                 tbl_SysPermission entity = m_Rep.GetById(id);
                 SysPermissionModel model = new SysPermissionModel();
-                              				model.PermissionId = entity.PermissionId;
-				model.PermissionName = entity.PermissionName;
-				model.Sort = entity.Sort;
+                              				model.Id = entity.Id;
+				model.RoleId = entity.RoleId;
+				model.ModuleId = entity.ModuleId;
 				model.IsShow = entity.IsShow;
  
                 return model;

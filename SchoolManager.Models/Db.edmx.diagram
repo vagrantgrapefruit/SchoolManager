@@ -5,13 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="eea1cc9c07934ce183bc2333118c2621" Name="Diagram1" >
-        <EntityTypeShape EntityType="Db.tbl_SysModulePermission" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Db.tbl_SysPermission" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="Db.tbl_SysRole" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Db.tbl_SysRolePermission" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="Db.tbl_SysUser" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="Db.tbl_SysUserRole" Width="1.5" PointX="0.75" PointY="7.75" />
-        <AssociationConnector Association="Db.FK_tbl_SysModulePermission_tbl_SysModulePermission" />
         <EntityTypeShape EntityType="Db.YZJ_CheckType" Width="1.5" PointX="5.75" PointY="7.75" />
         <EntityTypeShape EntityType="Db.YZJ_CredentialsType" Width="1.5" PointX="7.75" PointY="7.75" />
         <EntityTypeShape EntityType="Db.YZJ_Info" Width="1.5" PointX="9.75" PointY="0.75" />
@@ -22,6 +18,7 @@
         <EntityTypeShape EntityType="Db.YZJ_Grade" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="Db.YZJ_CheckRecord" Width="1.5" PointX="12.375" PointY="8.75" />
         <EntityTypeShape EntityType="Db.tbl_SysModule" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Db.tbl_SysPermission" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
