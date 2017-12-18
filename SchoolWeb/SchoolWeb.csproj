@@ -378,6 +378,7 @@
     <Content Include="Scripts\jQuery\jquery-3.2.1.js" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
     <Content Include="Scripts\Manager\ModuleManage.js" />
+    <Content Include="Scripts\Manager\UserManage.js" />
     <Content Include="Scripts\web\clist.js" />
     <Content Include="Scripts\web\execlist.js" />
     <Content Include="Scripts\web\index.js" />
@@ -392,9 +393,12 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Web\ModuleManager\AddModule.aspx" />
+    <Content Include="Web\ModuleManager\AddUser.aspx" />
     <Content Include="Web\ModuleManager\EditModule.aspx" />
+    <Content Include="Web\ModuleManager\EditUser.aspx" />
     <Content Include="Web\ModuleManager\ModuleManage.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
+    <Content Include="Web\ModuleManager\UserManage.aspx" />
     <Content Include="Web\StatusManager\Dismiss.aspx" />
     <Content Include="Web\StatusManager\DropOut.aspx" />
     <Content Include="Web\StatusManager\DropOut_exec.aspx" />
@@ -454,6 +458,9 @@
     <Content Include="Web\Handler\GetModel.ashx" />
     <Content Include="Web\Handler\EditModel.ashx" />
     <Content Include="Web\Handler\DeleteModel.ashx" />
+    <Content Include="Web\Handler\GetUserModel.ashx" />
+    <Content Include="Web\Handler\EditUser.ashx" />
+    <Content Include="Web\Handler\DeleteUser.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -471,11 +478,20 @@
     <Compile Include="Web\Handler\DeleteModel.ashx.cs">
       <DependentUpon>DeleteModel.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\DeleteUser.ashx.cs">
+      <DependentUpon>DeleteUser.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\EditModel.ashx.cs">
       <DependentUpon>EditModel.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\EditUser.ashx.cs">
+      <DependentUpon>EditUser.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\GetModel.ashx.cs">
       <DependentUpon>GetModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\GetUserModel.ashx.cs">
+      <DependentUpon>GetUserModel.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\AddModule.aspx.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
@@ -484,12 +500,26 @@
     <Compile Include="Web\ModuleManager\AddModule.aspx.designer.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\ModuleManager\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\ModuleManager\EditModule.aspx.cs">
       <DependentUpon>EditModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\ModuleManager\EditModule.aspx.designer.cs">
       <DependentUpon>EditModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -526,6 +556,13 @@
     </Compile>
     <Compile Include="Web\ModuleManager\ModuleManage.aspx.designer.cs">
       <DependentUpon>ModuleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\UserManage.aspx.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\UserManage.aspx.designer.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\StatusManager\Dismiss.aspx.cs">
       <DependentUpon>Dismiss.aspx</DependentUpon>

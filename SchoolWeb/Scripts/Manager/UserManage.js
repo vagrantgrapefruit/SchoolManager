@@ -14,7 +14,7 @@
     $("#btn_delete").click(function () {
         oButtonInit.Delete();
     });
-    
+
 
     //按钮点击事件
 });
@@ -25,7 +25,7 @@ var TableInit = function () {
     //初始化Table
     oTableInit.Init = function () {
         $('#tb_departments').bootstrapTable({
-            url: '../Handler/GetModel.ashx',         //请求后台的URL（*）
+            url: '../Handler/GetUserModel.ashx',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -46,24 +46,36 @@ var TableInit = function () {
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "ModuleId",                     //每一行的唯一标识，一般为主键列
+            uniqueId: "UserId",                     //每一行的唯一标识，一般为主键列
             showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                   //是否显示父子表
             columns: [{
                 checkbox: true
             }, {
-                field: 'ModuleId',
-                title: '模块Id',
+                field: 'UserId',
+                title: '用户名',
             }, {
-                field: 'ModuleName',
-                title: '模块名称'
+                field: 'UserName',
+                title: '真实姓名'
             }, {
-                field: 'ParentId',
-                title: '父节点'
+                field: 'PassWord',
+                title: '密码'
             }, {
-                field: 'ModuleURL',
-                title: '链接'
+                field: 'PhoneNumber',
+                title: '电话'
+            }, {
+                field: 'SchoolCard',
+                title: '校园卡号'
+            }, {
+                field: 'Sex',
+                title: '性别'
+            }, {
+                field: 'DepId',
+                title: '所属部门名称'
+            }, {
+                field: 'PosId',
+                title: '所属职位名称'
             },]
         });
     };
@@ -81,10 +93,11 @@ var TableInit = function () {
     return oTableInit;
 };
 
+function getrow() {
+    var row = $('#tb_departments').bootstrapTable('getSelections');
+    return row;
+}
 
-$('#ModuleModal').on('hidden.bs.modal', function () {
-    location.reload();
-})
 
 var ButtonInit = function () {
     var oInit = new Object();
@@ -94,17 +107,17 @@ var ButtonInit = function () {
         //初始化页面上面的按钮事件
     };
     oInit.Add = function () {
-        var frameSrc = "./AddModule.aspx";
+        var frameSrc = "./AddUser.aspx";
         $("#Moduleiframe").attr("src", frameSrc);
         $('#ModuleModal').modal({ show: true, backdrop: 'static' });
     };
     oInit.Edit = function () {
         var row = $('#tb_departments').bootstrapTable('getSelections');
         if (row.length == 1) {
-                var frameSrc = "./EditModule.aspx";
-                $("#Moduleiframe").attr("src", frameSrc);
-                $('#ModuleModal').modal({ show: true, backdrop: 'static' });                       
-        }        
+            var frameSrc = "./EditUser.aspx";
+            $("#Moduleiframe").attr("src", frameSrc);
+            $('#ModuleModal').modal({ show: true, backdrop: 'static' });
+        }
         else {
             alert("修改时必须且只能选择一条记录");
         }
@@ -113,10 +126,9 @@ var ButtonInit = function () {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
         var row = rows[0];
         if (rows.length == 1) {
-            $.get("../Handler/DeleteModel.ashx", row, function (data) {
+            $.get("../Handler/DeleteUser.ashx", row, function (data) {
                 var resultJson = eval('(' + data + ')');
-                if (resultJson.flag)
-                {
+                if (resultJson.flag) {
                     alert("删除成功！");
                     location.reload();
                 }

@@ -12,7 +12,6 @@
     <script>
         var rows = window.parent.getrow();
         var row = rows[0];
-
         $.get("../Handler/GetModel.ashx", { method: 'getParent' }, function (data) {
             var resultJson = eval('(' + data + ')');
             resultJson.rows.forEach(function (val, index) {
