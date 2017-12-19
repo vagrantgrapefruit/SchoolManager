@@ -5,19 +5,34 @@
 
     //2.初始化Button的点击事件
     var oButtonInit = new ButtonInit();
-    $("#btn_add").click(function () {
-        oButtonInit.Add();
-    });
-    $("#btn_Allot").click(function () {
-        oButtonInit.Allot();
-    });
     $("#btn_Permission").click(function () {
         oButtonInit.Permission();
     });
-    $("#btn_Delete").click(function () {
-        oButtonInit.Delete();
-    });
 
+    debugger;
+    var rows = window.parent.getrow();
+    var row = rows[0];
+
+    $.get("../Handler/Permission.ashx", { method: 'getModule', RoleId: row.RoleId }, function (data) {
+        debugger;
+        var resultJson = eval('(' + data + ')');
+        var datarow = $('#tb_departments').bootstrapTable('getData');
+        $.each(datarow, function (i, item) {
+            $.each(resultJson, function (index, element) {
+                if (datarow[i].ModuleId == element.ModuleId) {
+                    var a = datarow[i];
+                    $('#tb_departments').bootstrapTable('updateRow', {
+                        index: i,
+                        row: {
+                            0: true,
+                        }
+                    });
+                    //item.0= true;
+                }
+            });
+        });
+
+    });
 
     //按钮点击事件
 });
@@ -28,7 +43,7 @@ var TableInit = function () {
     //初始化Table
     oTableInit.Init = function () {
         $('#tb_departments').bootstrapTable({
-            url: '../Handler/GetRoleModel.ashx',         //请求后台的URL（*）
+            url: '../Handler/GetModel.ashx',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -40,8 +55,8 @@ var TableInit = function () {
             queryParams: oTableInit.queryParams,//传递参数（*）
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                       //初始化加载第一页，默认第一页
-            pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            pageSize: 300,                       //每页的记录行数（*）
+            pageList: [10,25,50],        //可供选择的每页的行数（*）
             //search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: true,
             showColumns: true,                  //是否显示所有的列
@@ -49,24 +64,24 @@ var TableInit = function () {
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             //height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "UserId",                     //每一行的唯一标识，一般为主键列
+            uniqueId: "ModuleId",                     //每一行的唯一标识，一般为主键列
             showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                   //是否显示父子表
             columns: [{
                 checkbox: true
             }, {
-                field: 'Id',
-                title: 'Id',
+                field: 'ModuleId',
+                title: '模块Id',
             }, {
-                field: 'RoleId',
-                title: '角色Id'
+                field: 'ModuleName',
+                title: '模块名称'
             }, {
-                field: 'RoleName',
-                title: '角色名称'
+                field: 'ParentId',
+                title: '父节点'
             }, {
-                field: 'IsShow',
-                title: 'IsShow'
+                field: 'ModuleURL',
+                title: '链接'
             },]
         });
     };
@@ -82,6 +97,8 @@ var TableInit = function () {
         return temp;
     };
     return oTableInit;
+
+
 };
 
 function getrow() {
@@ -89,6 +106,10 @@ function getrow() {
     return row;
 }
 
+function ObjUserId(userId) //声明对象
+{
+    this.UserId = userId;
+}
 
 var ButtonInit = function () {
     var oInit = new Object();
@@ -97,50 +118,27 @@ var ButtonInit = function () {
     oInit.Init = function () {
         //初始化页面上面的按钮事件
     };
-    oInit.Add = function () {
-        var frameSrc = "./AddRole.aspx";
-        $("#Moduleiframe").attr("src", frameSrc);
-        $('#ModuleModal').modal({ show: true, backdrop: 'static' });
-    };
-    oInit.Allot = function () {
-        var row = $('#tb_departments').bootstrapTable('getSelections');
-        if (row.length == 1) {
-            var frameSrc = "./AllotUser.aspx";
-            $("#Moduleiframe").attr("src", frameSrc);
-            $('#ModuleModal').modal({ show: true, backdrop: 'static' });
-        }
-        else {
-            alert("修改时必须且只能选择一条记录");
-        }
-    };
     oInit.Permission = function () {
-        var row = $('#tb_departments').bootstrapTable('getSelections');
-        if (row.length == 1) {
-            var frameSrc = "./RolePermission.aspx";
-            $("#Moduleiframe").attr("src", frameSrc);
-            $('#ModuleModal').modal({ show: true, backdrop: 'static' });
-        }
-        else {
-            alert("修改时必须且只能选择一条记录");
-        }
-    };
-    oInit.Delete = function () {
-        var rows = $('#tb_departments').bootstrapTable('getSelections');
+        var rows = window.parent.getrow();
         var row = rows[0];
-        if (rows.length == 1) {
-            $.get("../Handler/DeleteRole.ashx", row, function (data) {
-                var resultJson = eval('(' + data + ')');
-                if (resultJson.flag) {
-                    alert("删除成功！");
-                    location.reload();
-                }
-                else
-                    alert("删除失败！");
-            });
-        }
-        else {
-            alert("一次只能删除一条记录");
-        }
+        var moduleRows = $('#tb_departments').bootstrapTable('getSelections');
+        var len = moduleRows.length;
+        var UserId = new Array();
+        $.each(moduleRows, function (i, item) {
+            UserId.push(new ObjUserId(item.ModuleId));
+        });
+        
+        $.get("../Handler/Permission.ashx", { method: 'EditPermission', RoleId: row.RoleId, length: len, rows: UserId }, function (data) {
+            var resultJson = eval('(' + data + ')');
+            if (resultJson.flag) {
+                alert("分配成功！");
+                //window.close();
+                window.parent.location.reload();
+            }
+            else
+                alert("分配失败！");
+
+        });
     };
 
     return oInit;

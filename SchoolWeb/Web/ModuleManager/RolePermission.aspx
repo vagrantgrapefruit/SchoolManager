@@ -13,7 +13,7 @@
     <script src="../../Content/bootstrap-table/bootstrap-table.js"></script>
     <link href="../../Content/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
     <script src="../../Content/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-    <script src="../../Scripts/Manager/RoleManage.js"></script>
+    <script src="../../Scripts/Manager/PermissionManage.js"></script>
     <script>
     </script>
 </head>
@@ -41,18 +41,9 @@
         </div>   --%>    
 
         <div id="toolbar" class="btn-group">
-            <button id="btn_add" type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-            </button>
-            <button id="btn_Allot" type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>分配用户
-            </button>
             <button id="btn_Permission" type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>分配权限
-            </button>
-            <button id="btn_Delete" type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-            </button>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>确认分配
+            </button>            
         </div>
         <table id="tb_departments"></table>
 <%--    </div>--%>

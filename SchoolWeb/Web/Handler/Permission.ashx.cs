@@ -1,46 +1,46 @@
 ﻿using SchoolManager.BLL;
+using SchoolManager.Common;
 using SchoolManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
-using SchoolManager.Common;
-
 
 namespace SchoolWeb.Web.Handler
 {
     /// <summary>
-    /// GetUserRole 的摘要说明
+    /// Permission 的摘要说明
     /// </summary>
-    public class GetUserRole : IHttpHandler
+    public class Permission : IHttpHandler
     {
 
-        public SysUserRoleBLL userRoleBLL = new SysUserRoleBLL();
+        public SysPermissionBLL sysPermissionBLL = new SysPermissionBLL();
         public JavaScriptSerializer js = new JavaScriptSerializer();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            if (context.Request.QueryString["method"] == "getUser")
+            if (context.Request.QueryString["method"] == "getModule")
             {
-                var roleId = context.Request.QueryString["Id"];
-                var jsondata = GetUserId(roleId);
+                var roleId = context.Request.QueryString["RoleId"];
+                var jsondata = GetModuleId(roleId);
                 context.Response.Write(jsondata);
             }
-            else if(context.Request.QueryString["method"] == "EditUserRole")
+            else if (context.Request.QueryString["method"] == "EditPermission")
             {
-                int len = Convert.ToInt32( context.Request.QueryString["length"]);
-                var roleId = context.Request.QueryString["RoleId"];
-                List<SysUserModel> userList = new List<SysUserModel>();
+                int len = Convert.ToInt32(context.Request.QueryString["length"]);
+                var roleId = context.Request.QueryString["roleId"];
+                List<SysModuleModel> moduleList = new List<SysModuleModel>();
                 for (int i = 0; i < len; i++)
                 {
-                    userList.Add(new SysUserModel());
+                    moduleList.Add(new SysModuleModel());
                 }
                 for (int i = 0; i < len; i++)
                 {
-                    userList[i].UserId = context.Request.QueryString["rows["+i+"][UserId]"];
+                    moduleList[i].ModuleId = context.Request.QueryString["rows[" + i + "][UserId]"];
+                    //;
                 }
-                List<SysUserRoleModel> list = userRoleBLL.GetByRoleId(roleId);
+                List<SysPermissionModel> list = sysPermissionBLL.GetByRoleId(roleId);
                 if (len == 0)
                 {
                     var jsondata = DeleteUserRole(list);
@@ -48,7 +48,7 @@ namespace SchoolWeb.Web.Handler
                 }
                 else
                 {
-                    var jsondata = CreateUserRole(userList, roleId, len);
+                    var jsondata = CreateUserRole(moduleList, roleId, len);
                     context.Response.Write(jsondata);
                 }
             }
@@ -59,17 +59,18 @@ namespace SchoolWeb.Web.Handler
 
         }
 
-        public string GetUserId(string roleId)
+        public string GetModuleId(string roleId)
         {
-            List<SysUserRoleModel> list = userRoleBLL.GetByRoleId(roleId);
-            List<UserListModel> userList = new List<UserListModel>();
+            List<SysPermissionModel> list = sysPermissionBLL.GetByRoleId(roleId);
+            List<SysModuleModel> moduleList = new List<SysModuleModel>();
             foreach (var a in list)
             {
-                userList.Add(new UserListModel { UserId = a.UserId });     
+                moduleList.Add(new SysModuleModel { ModuleId = a.ModuleId });
             }
-            var jsondata = js.Serialize(userList);
+            var jsondata = js.Serialize(moduleList);
             return jsondata;
         }
+
         /// <summary>
         /// 新增或更改角色的用户
         /// </summary>
@@ -77,46 +78,47 @@ namespace SchoolWeb.Web.Handler
         /// <param name="roleId"></param>
         /// <param name="len"></param>
         /// <returns></returns>
-        public string CreateUserRole(List<SysUserModel> userList, string roleId, int len)
+        public string CreateUserRole(List<SysModuleModel> moduleList, string roleId, int len)
         {
-            List<SysUserRoleModel> list = userRoleBLL.GetByRoleId(roleId);
+            List<SysPermissionModel> list = sysPermissionBLL.GetByRoleId(roleId);
             //去除已有的不需更改的记录
-            for (int i=0;i<len;i++)
+            for (int i = 0; i < len; i++)
             {
-                for(int j=0;j<list.Count;j++)
+                for (int j = 0; j < list.Count; j++)
                 {
-                    if (userList[i].UserId == list[j].UserId)
+                    if (moduleList[i].ModuleId == list[j].ModuleId)
                     {
-                        userList.Remove(userList[i]);
-                        list.Remove(list[j]);                        
+                        moduleList.Remove(moduleList[i]);
+                        list.Remove(list[j]);
                         i--;
                         len--;
                         break;
                     }
                 }
-                if (userList.Count == 0)
+                if (moduleList.Count == 0)
                     break;
             }
-            if(list.Count!=0)
+            if (list.Count != 0)
             {
-                foreach(var a in list)
-                {                    
-                    if (!userRoleBLL.Delete(a.Id))
+                foreach (var a in list)
+                {
+                    if (!sysPermissionBLL.Delete(a.Id))
                     {
                         var json = js.Serialize(new { flag = false });
                         return json;
                     }
                 }
             }
-            if (userList.Count != 0)
+            if (moduleList.Count != 0)
             {
-                foreach (var a in userList)
+                foreach (var a in moduleList)
                 {
-                    SysUserRoleModel userRoleModel = new SysUserRoleModel();
-                    userRoleModel.Id = ResultHelper.NewId;
-                    userRoleModel.UserId = a.UserId;
-                    userRoleModel.RoleId = roleId;
-                    if (!userRoleBLL.Create(userRoleModel))
+                    SysPermissionModel permissionModel = new SysPermissionModel();
+                    permissionModel.Id = ResultHelper.NewId;
+                    permissionModel.ModuleId = a.ModuleId;
+                    permissionModel.RoleId = roleId;
+                    permissionModel.IsShow = true;
+                    if (!sysPermissionBLL.Create(permissionModel))
                     {
                         var json = js.Serialize(new { flag = false });
                         return json;
@@ -125,7 +127,7 @@ namespace SchoolWeb.Web.Handler
                 var jsondata = js.Serialize(new { flag = true });
                 return jsondata;
             }
-            else if(list.Count==0)
+            else if (list.Count == 0)
             {
                 var jsondata = js.Serialize(new { flag = false });
                 return jsondata;
@@ -135,7 +137,7 @@ namespace SchoolWeb.Web.Handler
                 var jsondata = js.Serialize(new { flag = true });
                 return jsondata;
             }
-                
+
         }
 
         /// <summary>
@@ -143,11 +145,11 @@ namespace SchoolWeb.Web.Handler
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public string DeleteUserRole(List<SysUserRoleModel> list)
+        public string DeleteUserRole(List<SysPermissionModel> list)
         {
             foreach (var a in list)
             {
-                if (!userRoleBLL.Delete(a.Id))
+                if (!sysPermissionBLL.Delete(a.Id))
                 {
                     var json = js.Serialize(new { flag = false });
                     return json;
@@ -157,18 +159,7 @@ namespace SchoolWeb.Web.Handler
             return jsondata;
 
         }
-        //public string GetDepartment(int limit, int offset, string departmentname, string statu)
-        //{
-
-        //    List<SysRoleModel> modelList = userBLL.GetList("");
-
-        //    var total = modelList.Count;
-        //    var rows = modelList.Skip(offset).Take(limit).ToList();
-
-
-        //    var jsondata = js.Serialize(new { total = total, rows = rows });
-        //    return jsondata;
-        //}
+        
         public bool IsReusable
         {
             get

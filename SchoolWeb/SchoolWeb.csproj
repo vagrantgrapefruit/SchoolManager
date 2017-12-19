@@ -379,6 +379,7 @@
     <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
     <Content Include="Scripts\Manager\AllotUser.js" />
     <Content Include="Scripts\Manager\ModuleManage.js" />
+    <Content Include="Scripts\Manager\PermissionManage.js" />
     <Content Include="Scripts\Manager\RoleManage.js" />
     <Content Include="Scripts\Manager\UserManage.js" />
     <Content Include="Scripts\web\clist.js" />
@@ -402,6 +403,7 @@
     <Content Include="Web\ModuleManager\EditUser.aspx" />
     <Content Include="Web\ModuleManager\ModuleManage.aspx" />
     <Content Include="Web\ModuleManager\RoleManage.aspx" />
+    <Content Include="Web\ModuleManager\RolePermission.aspx" />
     <Content Include="Web\ModuleManager\ShowUser.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
     <Content Include="Web\ModuleManager\UserManage.aspx" />
@@ -421,6 +423,7 @@
     <Content Include="Web\StatusManager\UpGrade.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\SchoolWeb - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\SchooManage - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Web\ModuleManager\Index.aspx" />
     <Content Include="Scripts\demo-1.js" />
@@ -471,6 +474,7 @@
     <Content Include="Web\Handler\EditRole.ashx" />
     <Content Include="Web\Handler\DeleteRole.ashx" />
     <Content Include="Web\Handler\GetUserRole.ashx" />
+    <Content Include="Web\Handler\Permission.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -514,6 +518,9 @@
     </Compile>
     <Compile Include="Web\Handler\GetUserRole.ashx.cs">
       <DependentUpon>GetUserRole.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\Permission.ashx.cs">
+      <DependentUpon>Permission.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\AddModule.aspx.cs">
       <DependentUpon>AddModule.aspx</DependentUpon>
@@ -599,6 +606,13 @@
     </Compile>
     <Compile Include="Web\ModuleManager\RoleManage.aspx.designer.cs">
       <DependentUpon>RoleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ModuleManager\RolePermission.aspx.cs">
+      <DependentUpon>RolePermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ModuleManager\RolePermission.aspx.designer.cs">
+      <DependentUpon>RolePermission.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\ModuleManager\ShowUser.aspx.cs">
       <DependentUpon>ShowUser.aspx</DependentUpon>

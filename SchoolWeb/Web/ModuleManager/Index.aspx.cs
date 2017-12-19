@@ -20,7 +20,10 @@ namespace SchoolWeb.ModuleManager
                 switch (Request.QueryString["method"])
                 {
                     case "GetTreeList":
-                        GetTreeList();
+                        {
+                            var userName = Request.QueryString["userName"];
+                            GetTreeList(userName);
+                        }
                         break;
                     default:
                         break;
@@ -28,11 +31,31 @@ namespace SchoolWeb.ModuleManager
             }
         }
 
-        public void GetTreeList()
+        public void GetTreeList(string userName)
         {
+            SysUserRoleBLL sysUserRoleBLL = new SysUserRoleBLL();
+            SysPermissionBLL sysPermissionBLL = new SysPermissionBLL();
+            List<SysUserRoleModel> userRoleModelList = sysUserRoleBLL.GetByUserId(userName);
+            List<SysPermissionModel> permissionList = new List<SysPermissionModel>();
+            foreach (var a in userRoleModelList)
+            {
+                permissionList.AddRange(sysPermissionBLL.GetByRoleId(a.RoleId));
+            }
+            GetTree(permissionList);
+        }
+        public void GetTree(List<SysPermissionModel> permissionList)
+        {             
             SysModuleBLL moduleBLL = new SysModuleBLL();
-            List<SysModuleModel> model = moduleBLL.GetList(null);
+            List<SysModuleModel> model = new List<SysModuleModel>();
+            foreach (var a in permissionList)
+            {
+                model.AddRange(moduleBLL.GetByModuleId(a.ModuleId)); 
+            }
             List<SysModuleModel> rootModel = (from r in model where r.ParentId == "0" select r).ToList();
+            rootModel = rootModel
+                .GroupBy(a => new SysModuleModel())
+                .Select(b => b.First())
+                .ToList();
             var json = new
             {
                 head = (from r in rootModel

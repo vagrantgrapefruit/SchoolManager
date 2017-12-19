@@ -53,7 +53,7 @@ var TableInit = function () {
             queryParams: oTableInit.queryParams,//传递参数（*）
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                       //初始化加载第一页，默认第一页
-            pageSize: 10,                       //每页的记录行数（*）
+            pageSize: 500,                       //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
             //search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: true,
@@ -113,7 +113,10 @@ function getrow() {
     var row = $('#tb_departments').bootstrapTable('getSelections');
     return row;
 }
-
+function ObjUserId(userId) //声明对象
+{
+    this.UserId = userId;
+}
 
 var ButtonInit = function () {
     var oInit = new Object();
@@ -126,9 +129,12 @@ var ButtonInit = function () {
         var rows = window.parent.getrow();
         var row = rows[0];
         var userRows = $('#tb_departments').bootstrapTable('getSelections');
-        debugger;
         var len = userRows.length;
-        $.get("../Handler/GetUserRole.ashx", { method: 'EditUserRole', RoleId: row.RoleId , length: len, rows: userRows }, function (data) {
+        var UserId = new Array()
+        $.each(userRows, function (i, item) {
+            UserId.push(new ObjUserId(item.UserId));
+        });
+        $.get("../Handler/GetUserRole.ashx", { method: 'EditUserRole', RoleId: row.RoleId, length: len, rows: UserId }, function (data) {
             var resultJson = eval('(' + data + ')');
             if (resultJson.flag) {
                 alert("分配成功！");

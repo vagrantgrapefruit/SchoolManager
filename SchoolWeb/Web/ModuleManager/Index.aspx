@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../Content/bootstrap/css/bootstrap.min.css">  
+<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="../../Content/bootstrap/css/bootstrap.min.css"/>  
 	<script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../Scripts/web/index.js"></script>
@@ -34,7 +34,7 @@
 		</script>
 		<div id="lframe" style="float:left;width:200px;height:100%;padding-left:1px;padding-right:1px;box-shadow: 0px 0px 15px #666666;">
 			<div class="panel-group" id="accordion" >
-				<script>getNav("accordion","./Index.aspx");</script>	
+				<script>getNav("accordion","./Index.aspx",<%=Session["UserName"].ToString()%>);</script>	
 			</div>
 		</div>
 		

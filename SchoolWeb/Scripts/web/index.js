@@ -31,10 +31,9 @@ function addpanel(pid,head,id,isopen,inner){
     p2=p2.replace(/%head%/g,head);
     obj.innerHTML+=p1+inner+p2;
 }
-function getNav(pid,jsonUrl)
+function getNav(pid,jsonUrl,userName)
 {
-
-    $.get(jsonUrl, { method: 'GetTreeList', flag: '1' }, function (data) {
+    $.get(jsonUrl, { method: 'GetTreeList', flag: '1', userName: userName}, function (data) {
             var head = "";
             var content="";
             $.each(data.head, function (i, item) {

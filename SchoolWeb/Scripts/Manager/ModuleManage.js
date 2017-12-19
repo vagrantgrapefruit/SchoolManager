@@ -79,8 +79,14 @@ var TableInit = function () {
         return temp;
     };
     return oTableInit;
+
+
 };
 
+function getrow() {
+    var row = $('#tb_departments').bootstrapTable('getSelections');
+    return row;
+}
 
 $('#ModuleModal').on('hidden.bs.modal', function () {
     location.reload();

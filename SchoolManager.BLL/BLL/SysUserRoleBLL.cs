@@ -21,7 +21,23 @@ namespace SchoolManager.BLL
             }
             else
             {
-                queryData = m_Rep.GetList();
+                return null;
+            }
+            return CreateModelList(ref queryData);
+        }
+        public virtual List<SysUserRoleModel> GetByUserId(string userId)
+        {
+
+            IQueryable<tbl_SysUserRole> queryData = null;
+            if (!string.IsNullOrWhiteSpace(userId))
+            {
+                queryData = m_Rep.GetList(
+                                a => (a.UserId != null && a.UserId == userId)
+                                );
+            }
+            else
+            {
+                return null;
             }
             return CreateModelList(ref queryData);
         }
