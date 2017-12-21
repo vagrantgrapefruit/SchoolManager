@@ -14,8 +14,8 @@ namespace SchoolWeb.Web.StatusManager
 {
     public partial class Transfer_in : System.Web.UI.Page
     {
+     
         static YZJ_StatusBLL StatusBLL = new YZJ_StatusBLL();
-        static YZJ_CheckRecordBLL CheckRecordBLL = new YZJ_CheckRecordBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
             switch (Request.QueryString["action"])
@@ -24,10 +24,9 @@ namespace SchoolWeb.Web.StatusManager
                     transferIn(Request.QueryString["StdRollId"], Request.QueryString["StdName"],Request.QueryString["StdSex"],
                                  Request.QueryString["native"], Request.QueryString["nation"],
                                  Request.QueryString["HouseholdAddress"],Request.QueryString["CurrAddress"],
-                    //Request.QueryString["PhoneNumber"],/*Request.QueryString["Photo"],*/
-                    //Request.QueryString["PaperNumber"], Request.QueryString["UsedName"],
-                                 Request.QueryString["StudentCategory"],
-                    //Request.QueryString["email"], Request.QueryString["PoseCode"],
+                                 Request.QueryString["PhoneNumber"],Request.QueryString["PaperNumber"], 
+                                 Request.QueryString["UsedName"], Request.QueryString["StudentCategory"],
+                                 Request.QueryString["email"], Request.QueryString["PostCode"],
                                  Request.QueryString["IsLeagueeMember"],Request.QueryString["IsYoungPineer"],
                                  Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
                                  Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
@@ -37,13 +36,11 @@ namespace SchoolWeb.Web.StatusManager
             }
         }
         public void transferIn(string StdRollId,string StdName,string StdSex,string native, string nation ,
-                                string HouseholdAddress, string CurrAddress,
-            //string PhoneNumber,/*string photo,*/string PaperNumber, string UsedName, 
-                                 string StudentCategory,
-            //string email,
-            // string PostCode,
-                                  string IsLeagueeMember,string IsYoungPineer,string GuardianNO1, string G1PhoneNumber, string G1Relationship,
-            string GuardianNO2, string G2PhoneNumber, string G2Relationship, string AlmaMater
+                                string HouseholdAddress, string CurrAddress, string PhoneNumber,
+                              string PaperNumber, string UsedName,  string StudentCategory,
+                               string email, string PostCode,string IsLeagueeMember,string IsYoungPineer,
+                               string GuardianNO1, string G1PhoneNumber, string G1Relationship,string GuardianNO2,
+                               string G2PhoneNumber, string G2Relationship, string AlmaMater
             )
         {
             try
@@ -58,12 +55,11 @@ namespace SchoolWeb.Web.StatusManager
                 status.nation = nation;
                 status.HouseholdAddress = HouseholdAddress;
                 status.CurrentAddress = CurrAddress;
-                //   status.Photo = Convert.ToByte[](photo);
-                //status.PhoneNumber = PhoneNumber;
-                //status.PaperNumber = PaperNumber;
-                //status.UsedName = UsedName;
-                //status.email = email;
-                //status.PostCode = PostCode;
+                status.PhoneNumber = PhoneNumber;
+                status.PaperNumber = PaperNumber;
+                status.UsedName = UsedName;
+                status.email = email;
+                status.PostCode = PostCode;
                 if (IsLeagueeMember == "是")
                 {
                     status.IsLeagueeMember = 1;
@@ -81,20 +77,28 @@ namespace SchoolWeb.Web.StatusManager
                     status.IsYoungPineer = 0;
                 }
 
+                
                 status.GuardianNo1 = GuardianNO1;
                 status.G1PhoneNumber = G1PhoneNumber;
                 status.G1Relationship = G1Relationship;
                 status.GuardianNo2 = GuardianNO2;
                 status.G2PhoneNumber = G2PhoneNumber;
                 status.G2Relationship = G2Relationship;
+                DateTime dt = new DateTime();
+                status.Entrance_Year = dt.Year.ToString();
                 status.AlmaMater = AlmaMater;
                 status.StdCategory = StudentCategory;
 
                 bool flag = StatusBLL.Create(status);
 
+
+               
+
                 Response.Clear();
                 Response.Write("{'flag':" + flag + "}");
                 Response.End();
+
+
 
 
             }

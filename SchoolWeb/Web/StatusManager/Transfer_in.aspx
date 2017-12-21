@@ -26,13 +26,12 @@
                 "HouseholdAddress": $("#HouseholdAddress").val(),
                 //现住址
                 "CurrAddress": CurrAddress,
-                //"photo": $("#inputfile").val(),
-                //"phonenumber": $("#phonenumber").val(),
-                //"papernumber": $("#papernumber").val(),
-                //"usedname": $("#usedname").val(),
+                "PhoneNumber": $("#PhoneNumber").val(),
+                "PaperNumber": $("#PaperNumber").val(),
+                "UsedName": $("#UsedName").val(),
                 "StudentCategory": $("#StudentCategory").val(),
-                //"email": $("#email").val(),
-                //"postcode": $("#postcode").val(),
+                "email": $("#email").val(),
+                "PostCode": $("#PostCode").val(),
                 "IsLeagueeMember": $("#IsLeagueeMember").val(),
                 "IsYoungPineer": $("#IsYoungPineer").val(),
                 "GuardianNO1": $("#GuardianNO1").val(),
@@ -137,22 +136,17 @@
                         <input type="text" id="AddDetail" class="form-control" name="AddDetail" placeholder="详细地址"/>
                     </div>
                 </div>
-                <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">照片</label>
-                    <div class="col-sm-8">
-                        <input class="btn btn-default btn-block" type="file" id="inputfile" name="photo"/>
-                    </div>
-                </div>
+
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" id="PhoneNumber" class="form-control" name="Connection" placeholder="联系方式"/>
+                        <input type="text" id="PhoneNumber" class="form-control" name="PhoneNumber" placeholder="联系方式"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">身份证号</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="PaperNumber" placeholder="身份证号"/>
+                        <input type="text" id="PaperNumber" class="form-control" name="PaperNumber" placeholder="身份证号"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
@@ -170,7 +164,7 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">邮编</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="PostCode" placeholder="邮编"/>
+                        <input type="text" id="PostCode" class="form-control" name="PostCode" placeholder="邮编"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
