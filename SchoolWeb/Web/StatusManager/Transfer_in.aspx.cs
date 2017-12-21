@@ -18,52 +18,77 @@ namespace SchoolWeb.Web.StatusManager
         static YZJ_CheckRecordBLL CheckRecordBLL = new YZJ_CheckRecordBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            switch(Request.QueryString["action"])
+            switch (Request.QueryString["action"])
             {
-                case "submit":
-                    submit(Request.QueryString["StdRollId"], Request.QueryString["StdName"], Request.QueryString["StdSex"],
-                        Request.QueryString["native"],Request.QueryString["nation"], Request.QueryString["HouseholdAddress"],
-                        Request.QueryString["CurrAddress"], Request.QueryString["PhoneNumber"],/*Request.QueryString["Photo"],*/
-                        Request.QueryString["PaperNumber"], Request.QueryString["UsedName"], Request.QueryString["StdCategory"],
-                        Request.QueryString["email"],Request.QueryString["PoseCode"], Request.QueryString["IsIEagueeMember"],
-                        Request.QueryString["IsYoungPineer"], Request.QueryString["GuardianNo1"], Request.QueryString["G1PhoneNumber"],
-                        Request.QueryString["G1Relationship"], Request.QueryString["GuardianNo2"], Request.QueryString["G2PhoneNumber"],
-                        Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"]);
+                case "transferIn":
+                    transferIn(Request.QueryString["StdRollId"], Request.QueryString["StdName"],Request.QueryString["StdSex"],
+                                 Request.QueryString["native"], Request.QueryString["nation"],
+                                 Request.QueryString["HouseholdAddress"],Request.QueryString["CurrAddress"],
+                    //Request.QueryString["PhoneNumber"],/*Request.QueryString["Photo"],*/
+                    //Request.QueryString["PaperNumber"], Request.QueryString["UsedName"],
+                                 Request.QueryString["StudentCategory"],
+                    //Request.QueryString["email"], Request.QueryString["PoseCode"],
+                                 Request.QueryString["IsLeagueeMember"],Request.QueryString["IsYoungPineer"],
+                                 Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
+                                 Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
+                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"]
+                    );
                     break;
             }
         }
-        public void submit(string StdRollId,string StdName,string StdSex,string native,string nation,string HouseholdAdd,
-            string CurrAddress,string PhoneNumber,/*string photo,*/string PaperNumber,string UsedName,string email,
-            string PostCode,string IsLeagueeMember,string IsYoungPioneer,string GuardianNo1,string G1PhoneNumber,string G1Relationship,
-            string GuardianNo2,string G2PhoneNumber,string G2Relationship,string AlmaMater,string StdCategory)
-
+        public void transferIn(string StdRollId,string StdName,string StdSex,string native, string nation ,
+                                string HouseholdAddress, string CurrAddress,
+            //string PhoneNumber,/*string photo,*/string PaperNumber, string UsedName, 
+                                 string StudentCategory,
+            //string email,
+            // string PostCode,
+                                  string IsLeagueeMember,string IsYoungPineer,string GuardianNO1, string G1PhoneNumber, string G1Relationship,
+            string GuardianNO2, string G2PhoneNumber, string G2Relationship, string AlmaMater
+            )
         {
             try
             {
                 YZJ_StatusModel status = new YZJ_StatusModel();
-              //  status.id = ResultHelper.NewId;
+                status.id = ResultHelper.NewId;
                 status.available = true;
                 status.StdRollId = StdRollId;
                 status.StdName = StdName;
                 status.StdSex = StdSex;
                 status.native = native;
                 status.nation = nation;
-                status.HouseholdAddress = HouseholdAdd;
+                status.HouseholdAddress = HouseholdAddress;
                 status.CurrentAddress = CurrAddress;
-             //   status.Photo = Convert.ToByte[](photo);
-                status.PhoneNumber = PhoneNumber;
-                status.PaperNumber = PaperNumber;
-                status.UsedName = UsedName;
-                status.email = email;
-                status.PostCode = PostCode;
-                status.IsLeagueeMember = Convert.ToInt16(IsLeagueeMember);
-                status.IsYoungPineer =  Convert.ToInt16(IsYoungPioneer);
-                status.GuardianNo1 = GuardianNo1;
+                //   status.Photo = Convert.ToByte[](photo);
+                //status.PhoneNumber = PhoneNumber;
+                //status.PaperNumber = PaperNumber;
+                //status.UsedName = UsedName;
+                //status.email = email;
+                //status.PostCode = PostCode;
+                if (IsLeagueeMember == "是")
+                {
+                    status.IsLeagueeMember = 1;
+                }
+                else
+                {
+                    status.IsLeagueeMember = 0;
+                }
+                if (IsYoungPineer == "是")
+                {
+                    status.IsYoungPineer = 1;
+                }
+                else
+                {
+                    status.IsYoungPineer = 0;
+                }
+
+                status.GuardianNo1 = GuardianNO1;
                 status.G1PhoneNumber = G1PhoneNumber;
                 status.G1Relationship = G1Relationship;
+                status.GuardianNo2 = GuardianNO2;
                 status.G2PhoneNumber = G2PhoneNumber;
                 status.G2Relationship = G2Relationship;
                 status.AlmaMater = AlmaMater;
+                status.StdCategory = StudentCategory;
 
                 bool flag = StatusBLL.Create(status);
 
