@@ -17,7 +17,7 @@ namespace SchoolManager.Models
 	}
 	public class Virtual_YZJ_StatusModel
 	{
-		public virtual int id { get; set;}
+		public virtual string id { get; set;}
 		public virtual Nullable<bool> available { get; set;}
 		public virtual string StdRollId { get; set;}
 		public virtual string StdName { get; set;}

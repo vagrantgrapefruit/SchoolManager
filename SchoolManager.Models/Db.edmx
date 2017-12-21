@@ -136,7 +136,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="available" Type="bit" />
           <Property Name="StdRollId" Type="varchar" MaxLength="20" />
           <Property Name="StdName" Type="varchar" MaxLength="20" />
@@ -212,7 +212,6 @@
           <EntitySet Name="YZJ_CredentialsType" EntityType="Db.YZJ_CredentialsType" />
           <EntitySet Name="YZJ_Info" EntityType="Db.YZJ_Info" />
           <EntitySet Name="YZJ_Score" EntityType="Db.YZJ_Score" />
-          <EntitySet Name="YZJ_Status" EntityType="Db.YZJ_Status" />
           <EntitySet Name="YZJ_StatusType" EntityType="Db.YZJ_StatusType" />
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Db.YZJ_StdGraduationRecord" />
           <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
@@ -220,6 +219,7 @@
           <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
           <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
           <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
+          <EntitySet Name="YZJ_Status" EntityType="Db.YZJ_Status" />
         </EntityContainer>
         <EntityType Name="tbl_SysUser">
           <Key>
@@ -285,40 +285,6 @@
           <Property Name="available" Type="Boolean" />
           <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_Status">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="native" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Entrance_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Household_Registration_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HouseholdAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="CurrentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UrgentPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PaperType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaperNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UsedName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IsLeagueeMember" Type="Int32" />
-          <Property Name="IsYoungPineer" Type="Int32" />
-          <Property Name="GuardianNo1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="G1PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="G1Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="G2PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="G2Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StdCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="YZJ_StatusType">
           <Key>
@@ -401,6 +367,40 @@
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsShow" Type="Boolean" />
         </EntityType>
+        <EntityType Name="YZJ_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="native" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Entrance_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Household_Registration_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HouseholdAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UrgentPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PaperType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaperNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsedName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsLeagueeMember" Type="Int32" />
+          <Property Name="IsYoungPineer" Type="Int32" />
+          <Property Name="GuardianNo1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="G1PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G1Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="G2PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G2Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StdCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -475,41 +475,6 @@
               <MappingFragment StoreEntitySet="YZJ_Score">
                 <ScalarProperty Name="ClassNo" ColumnName="ClassNo" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="available" ColumnName="available" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="YZJ_Status">
-            <EntityTypeMapping TypeName="Db.YZJ_Status">
-              <MappingFragment StoreEntitySet="YZJ_Status">
-                <ScalarProperty Name="StdCategory" ColumnName="StdCategory" />
-                <ScalarProperty Name="AlmaMater" ColumnName="AlmaMater" />
-                <ScalarProperty Name="G2Relationship" ColumnName="G2Relationship" />
-                <ScalarProperty Name="G2PhoneNumber" ColumnName="G2PhoneNumber" />
-                <ScalarProperty Name="GuardianNo2" ColumnName="GuardianNo2" />
-                <ScalarProperty Name="G1Relationship" ColumnName="G1Relationship" />
-                <ScalarProperty Name="G1PhoneNumber" ColumnName="G1PhoneNumber" />
-                <ScalarProperty Name="GuardianNo1" ColumnName="GuardianNo1" />
-                <ScalarProperty Name="IsYoungPineer" ColumnName="IsYoungPineer" />
-                <ScalarProperty Name="IsLeagueeMember" ColumnName="IsLeagueeMember" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="UsedName" ColumnName="UsedName" />
-                <ScalarProperty Name="PaperNumber" ColumnName="PaperNumber" />
-                <ScalarProperty Name="PaperType" ColumnName="PaperType" />
-                <ScalarProperty Name="UrgentPhoneNumber" ColumnName="UrgentPhoneNumber" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
-                <ScalarProperty Name="HouseholdAddress" ColumnName="HouseholdAddress" />
-                <ScalarProperty Name="Household_Registration_Category" ColumnName="Household Registration Category" />
-                <ScalarProperty Name="Entrance_Year" ColumnName="Entrance Year" />
-                <ScalarProperty Name="nation" ColumnName="nation" />
-                <ScalarProperty Name="native" ColumnName="native" />
-                <ScalarProperty Name="StdSex" ColumnName="StdSex" />
-                <ScalarProperty Name="StdName" ColumnName="StdName" />
-                <ScalarProperty Name="StdRollId" ColumnName="StdRollId" />
                 <ScalarProperty Name="available" ColumnName="available" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -600,6 +565,41 @@
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YZJ_Status">
+            <EntityTypeMapping TypeName="Db.YZJ_Status">
+              <MappingFragment StoreEntitySet="YZJ_Status">
+                <ScalarProperty Name="StdCategory" ColumnName="StdCategory" />
+                <ScalarProperty Name="AlmaMater" ColumnName="AlmaMater" />
+                <ScalarProperty Name="G2Relationship" ColumnName="G2Relationship" />
+                <ScalarProperty Name="G2PhoneNumber" ColumnName="G2PhoneNumber" />
+                <ScalarProperty Name="GuardianNo2" ColumnName="GuardianNo2" />
+                <ScalarProperty Name="G1Relationship" ColumnName="G1Relationship" />
+                <ScalarProperty Name="G1PhoneNumber" ColumnName="G1PhoneNumber" />
+                <ScalarProperty Name="GuardianNo1" ColumnName="GuardianNo1" />
+                <ScalarProperty Name="IsYoungPineer" ColumnName="IsYoungPineer" />
+                <ScalarProperty Name="IsLeagueeMember" ColumnName="IsLeagueeMember" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="UsedName" ColumnName="UsedName" />
+                <ScalarProperty Name="PaperNumber" ColumnName="PaperNumber" />
+                <ScalarProperty Name="PaperType" ColumnName="PaperType" />
+                <ScalarProperty Name="UrgentPhoneNumber" ColumnName="UrgentPhoneNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="HouseholdAddress" ColumnName="HouseholdAddress" />
+                <ScalarProperty Name="Household_Registration_Category" ColumnName="Household Registration Category" />
+                <ScalarProperty Name="Entrance_Year" ColumnName="Entrance Year" />
+                <ScalarProperty Name="nation" ColumnName="nation" />
+                <ScalarProperty Name="native" ColumnName="native" />
+                <ScalarProperty Name="StdSex" ColumnName="StdSex" />
+                <ScalarProperty Name="StdName" ColumnName="StdName" />
+                <ScalarProperty Name="StdRollId" ColumnName="StdRollId" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

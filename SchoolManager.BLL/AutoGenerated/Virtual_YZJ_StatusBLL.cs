@@ -32,9 +32,9 @@ namespace SchoolManager.BLL
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
+								a=>(a.id!=null && a.id.Contains(queryStr))
 								
-								
-								a=>(a.StdRollId!=null && a.StdRollId.Contains(queryStr))
+								|| (a.StdRollId!=null && a.StdRollId.Contains(queryStr))
 								|| (a.StdName!=null && a.StdName.Contains(queryStr))
 								|| (a.StdSex!=null && a.StdSex.Contains(queryStr))
 								|| (a.native!=null && a.native.Contains(queryStr))
