@@ -41,11 +41,13 @@
                 "G2PhoneNumber": $("#G2PhoneNumber").val(),
                 "G2Relationship": $("#G2Relationship").val(),
                 "AlmaMater": $("#AlmaMater").val(),
+                "StatusState": $("#StatusState").val()
                
             },
                 function (resultString) {
+
                     if (resultString != null) {
-                        alert("!!")
+                        alert("学生已转入")
                     }
                    
                 });
@@ -234,6 +236,15 @@
                             <option>普通学生</option>
                             <option>残疾学生</option>
                             <option>贫困学生</option>
+                        </select>
+                    </div>
+                </div>
+                 <div class="form-group" style="margin-bottom:5px">
+                    <label class="col-sm-2 control-label">学籍状态</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="StatusState">
+                            <option>就读</option>
+                            <option>休学</option>
                         </select>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ namespace SchoolWeb.Web.StatusManager
                                  Request.QueryString["IsLeagueeMember"],Request.QueryString["IsYoungPineer"],
                                  Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
                                  Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
-                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"]
+                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"],Request.QueryString["StatusState"]
                     );
                     break;
             }
@@ -40,7 +40,7 @@ namespace SchoolWeb.Web.StatusManager
                               string PaperNumber, string UsedName,  string StudentCategory,
                                string email, string PostCode,string IsLeagueeMember,string IsYoungPineer,
                                string GuardianNO1, string G1PhoneNumber, string G1Relationship,string GuardianNO2,
-                               string G2PhoneNumber, string G2Relationship, string AlmaMater
+                               string G2PhoneNumber, string G2Relationship, string AlmaMater,string StatusState
             )
         {
             try
@@ -88,6 +88,7 @@ namespace SchoolWeb.Web.StatusManager
                 status.Entrance_Year = dt.Year.ToString();
                 status.AlmaMater = AlmaMater;
                 status.StdCategory = StudentCategory;
+                status.StatusState = StatusState;
 
                 bool flag = StatusBLL.Create(status);
 
