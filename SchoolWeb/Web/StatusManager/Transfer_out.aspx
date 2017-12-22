@@ -26,19 +26,7 @@
             });
 
         }
-        function test() {
-            //alert()
-            $.get("./Transfer_out.aspx", { "action": "getStudent", "condition": $("#condition").val() }, function (resultString) {
-               // alert()
-                var studentInfor = eval('(' + resultString + ')');
-                var studentInforArray = studentInfor.InforList;
-                $(studentInforArray).each(function (index, Infor) {
-                    $("#stdname").val(Infor.StdName);
-                    $("#stdrollid").val(Infor.StdRollId);
-                });
-
-            });
-        }
+      
         function submit() {
             // alert("submit")
             $("#mes").html("");
@@ -93,7 +81,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="test();">确认选择</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getStudent();">确认选择</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
