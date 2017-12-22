@@ -16,6 +16,7 @@ namespace SchoolWeb.Web.StatusManager
     {
      
         static YZJ_StatusBLL StatusBLL = new YZJ_StatusBLL();
+        static YZJ_CheckRecordBLL CheckRecordBLL = new YZJ_CheckRecordBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
             switch (Request.QueryString["action"])
@@ -93,10 +94,20 @@ namespace SchoolWeb.Web.StatusManager
                 bool flag = StatusBLL.Create(status);
 
 
-               
+                YZJ_CheckRecordModel model = new YZJ_CheckRecordModel();
+                model.id = ResultHelper.NewId;
+                model.available = true;
+                model.StdId = status.StdRollId;
+                model.StdName = status.StdName;
+                model.ApplicantNo = status.StdName;
+                model.ApplicantName = status.StdName;
+                model.ApplyDate = DateTime.Now;
+                //model.ApplyReason = reason;
+                model.ApplyType = "转出学校";
+                bool success = CheckRecordBLL.Create(model);
 
                 Response.Clear();
-                Response.Write("{'flag':" + flag + "}");
+                Response.Write("{'flag':" + flag + ",'success':" + success + "}");
                 Response.End();
 
 
