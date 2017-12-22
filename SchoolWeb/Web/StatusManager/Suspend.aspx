@@ -34,6 +34,7 @@
 
         }
         function submit() {
+           // alert("submit")
             $("#mes").html("");
             $("#reason").removeClass("input-validation-error");
             if ($.trim($("#reason").val()) == "") {
@@ -48,7 +49,13 @@
                 console.log("add")
                 return;
             }
-
+            $.get("./Suspend.aspx", { "action": "suspend", "reason": $("#reason").val(), "StdRollId": $("#stdrollid").val() }, function (resultString)
+            {
+                if (resultString != null)
+                {
+                    alert("休学成功！")
+                }
+            });
         }
 
     </script>
@@ -122,10 +129,11 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">
-                        <textarea rows="3" class="form-control" name="rea" placeholder="申请理由"></textarea>
+                        <textarea rows="3" id="reason" class="form-control" name="rea" placeholder="申请理由"></textarea>
                     </div>
                 </div>
                 <div style="text-align: center;margin:10px">
+                    <span id="mes"></span>
                     <a class="btn btn-success" onclick="submit();">提出申请</a> 
                 </div>
             </form>
