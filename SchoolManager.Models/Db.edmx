@@ -165,6 +165,7 @@
           <Property Name="G2Relationship" Type="varchar" MaxLength="20" />
           <Property Name="AlmaMater" Type="varchar" MaxLength="50" />
           <Property Name="StdCategory" Type="varchar" MaxLength="20" />
+          <Property Name="StatusState" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="YZJ_StatusType">
           <Key>
@@ -400,6 +401,7 @@
           <Property Name="G2Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StdCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StatusState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -571,6 +573,7 @@
           <EntitySetMapping Name="YZJ_Status">
             <EntityTypeMapping TypeName="Db.YZJ_Status">
               <MappingFragment StoreEntitySet="YZJ_Status">
+                <ScalarProperty Name="StatusState" ColumnName="StatusState" />
                 <ScalarProperty Name="StdCategory" ColumnName="StdCategory" />
                 <ScalarProperty Name="AlmaMater" ColumnName="AlmaMater" />
                 <ScalarProperty Name="G2Relationship" ColumnName="G2Relationship" />

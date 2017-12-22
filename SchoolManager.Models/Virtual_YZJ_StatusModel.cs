@@ -46,5 +46,6 @@ namespace SchoolManager.Models
 		public virtual string G2Relationship { get; set;}
 		public virtual string AlmaMater { get; set;}
 		public virtual string StdCategory { get; set;}
+		public virtual string StatusState { get; set;}
 	}
 }

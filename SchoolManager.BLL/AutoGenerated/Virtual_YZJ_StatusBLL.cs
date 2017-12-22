@@ -61,6 +61,7 @@ namespace SchoolManager.BLL
 								|| (a.G2Relationship!=null && a.G2Relationship.Contains(queryStr))
 								|| (a.AlmaMater!=null && a.AlmaMater.Contains(queryStr))
 								|| (a.StdCategory!=null && a.StdCategory.Contains(queryStr))
+								|| (a.StatusState!=null && a.StatusState.Contains(queryStr))
 								);
             }
             else
@@ -105,6 +106,7 @@ namespace SchoolManager.BLL
 													G2Relationship = r.G2Relationship,
 													AlmaMater = r.AlmaMater,
 													StdCategory = r.StdCategory,
+													StatusState = r.StatusState,
           
                                               }).ToList();
 
@@ -150,6 +152,7 @@ namespace SchoolManager.BLL
 				entity.G2Relationship = model.G2Relationship;
 				entity.AlmaMater = model.AlmaMater;
 				entity.StdCategory = model.StdCategory;
+				entity.StatusState = model.StatusState;
   
 
                 if (m_Rep.Create(entity))
@@ -260,6 +263,7 @@ namespace SchoolManager.BLL
 				entity.G2Relationship = model.G2Relationship;
 				entity.AlmaMater = model.AlmaMater;
 				entity.StdCategory = model.StdCategory;
+				entity.StatusState = model.StatusState;
  
 
 
@@ -317,6 +321,7 @@ namespace SchoolManager.BLL
 				model.G2Relationship = entity.G2Relationship;
 				model.AlmaMater = entity.AlmaMater;
 				model.StdCategory = entity.StdCategory;
+				model.StatusState = entity.StatusState;
  
                 return model;
             }
