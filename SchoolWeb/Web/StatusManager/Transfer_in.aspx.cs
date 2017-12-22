@@ -9,7 +9,6 @@ using SchoolManager.BLL;
 using System.Web.Script.Serialization;
 using SchoolManager.Common;
 
-
 namespace SchoolWeb.Web.StatusManager
 {
     public partial class Transfer_in : System.Web.UI.Page

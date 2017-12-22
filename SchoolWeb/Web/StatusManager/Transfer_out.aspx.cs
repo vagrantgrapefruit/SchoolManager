@@ -48,7 +48,7 @@ namespace SchoolWeb.Web.StatusManager
             {
                 List<YZJ_StatusModel> InforList = statusBLL.GetList(StdRollId);
                 InforList[0].StatusState = "转出";
-                InforList[0].available = false;
+                //InforList[0].available = false;
                 bool success = statusBLL.Edit(InforList[0]);
                 string json = js.Serialize(new { success });
 
