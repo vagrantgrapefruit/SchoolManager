@@ -14,11 +14,11 @@
     <script>
         function jmp(url) {
             var obj = document.getElementById("iframe");
-            debugger;
             var userName = "<%= Session["UserName"].ToString()%>";
             var schoolaCard = "<%= Session["SchoolCard"].ToString()%>";
-            $.get(url, { UserName: userName, SchoolaCard: schoolaCard }, function (data) {
             obj.setAttribute("src", url);
+            $.getJSON(url, { UserName: userName, SchoolaCard: schoolaCard }, function () {
+                obj.setAttribute("src", url);
         });
 
         }

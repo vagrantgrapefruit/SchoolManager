@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ModuleManage.aspx.cs" Inherits="SchoolWeb.Web.ModuleManager.ModuleManage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RoleManage.aspx.cs" Inherits="SchoolWeb.Web.ModuleManager.ModuleManage" %>
 
 <!DOCTYPE html>
 

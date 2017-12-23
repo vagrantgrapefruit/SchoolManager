@@ -14,7 +14,6 @@ namespace SchoolWeb.Web.ModuleManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             //if (Request.QueryString["limit"] != null)
             //{
             //    int limit = int.Parse(Request.QueryString["limit"]);

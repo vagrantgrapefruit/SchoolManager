@@ -136,7 +136,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="available" Type="bit" />
           <Property Name="StdRollId" Type="varchar" MaxLength="20" />
           <Property Name="StdName" Type="varchar" MaxLength="20" />
@@ -165,6 +165,7 @@
           <Property Name="G2Relationship" Type="varchar" MaxLength="20" />
           <Property Name="AlmaMater" Type="varchar" MaxLength="50" />
           <Property Name="StdCategory" Type="varchar" MaxLength="20" />
+          <Property Name="StatusState" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="YZJ_StatusType">
           <Key>
@@ -208,18 +209,18 @@
         <EntityContainer Name="DbContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_SysUser" EntityType="Db.tbl_SysUser" />
           <EntitySet Name="tbl_SysUserRole" EntityType="Db.tbl_SysUserRole" />
+          <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
+          <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
+          <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
+          <EntitySet Name="YZJ_CheckRecord" EntityType="Db.YZJ_CheckRecord" />
           <EntitySet Name="YZJ_CheckType" EntityType="Db.YZJ_CheckType" />
           <EntitySet Name="YZJ_CredentialsType" EntityType="Db.YZJ_CredentialsType" />
+          <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
           <EntitySet Name="YZJ_Info" EntityType="Db.YZJ_Info" />
           <EntitySet Name="YZJ_Score" EntityType="Db.YZJ_Score" />
           <EntitySet Name="YZJ_Status" EntityType="Db.YZJ_Status" />
           <EntitySet Name="YZJ_StatusType" EntityType="Db.YZJ_StatusType" />
           <EntitySet Name="YZJ_StdGraduationRecord" EntityType="Db.YZJ_StdGraduationRecord" />
-          <EntitySet Name="YZJ_Grade" EntityType="Db.YZJ_Grade" />
-          <EntitySet Name="YZJ_CheckRecord" EntityType="Db.YZJ_CheckRecord" />
-          <EntitySet Name="tbl_SysModule" EntityType="Db.tbl_SysModule" />
-          <EntitySet Name="tbl_SysPermission" EntityType="Db.tbl_SysPermission" />
-          <EntitySet Name="tbl_SysRole" EntityType="Db.tbl_SysRole" />
         </EntityContainer>
         <EntityType Name="tbl_SysUser">
           <Key>
@@ -241,135 +242,6 @@
           <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_CheckType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_CredentialsType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_Info">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="RepeatNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Entrance_Year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="InResidence" Type="Boolean" />
-          <Property Name="DormitoryBuilding" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DormitoryNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="AddProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AddCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AddArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AddStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AddDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_Score">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_Status">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="native" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Entrance_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Household_Registration_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="HouseholdAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="CurrentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UrgentPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PaperType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaperNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UsedName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IsLeagueeMember" Type="Int32" />
-          <Property Name="IsYoungPineer" Type="Int32" />
-          <Property Name="GuardianNo1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="G1PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="G1Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GuardianNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="G2PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="G2Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StdCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_StatusType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_StdGraduationRecord">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GraduatedSchoolname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="GraduatedSchoolNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_Grade">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="YZJ_CheckRecord">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="available" Type="Boolean" />
-          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplicantNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplicantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
-          <Property Name="AssessorId" Type="Int32" />
-          <Property Name="AssessorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AssessDate" Type="DateTime" Precision="3" />
-          <Property Name="ExaminantId" Type="Int32" />
-          <Property Name="ExaminantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineDate" Type="DateTime" Precision="3" />
-          <Property Name="AssessResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="AssessState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ExamineOpinion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ApplyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_SysModule">
           <Key>
@@ -400,6 +272,136 @@
           <Property Name="RoleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsShow" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="YZJ_CheckRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessorId" Type="Int32" />
+          <Property Name="AssessorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssessDate" Type="DateTime" Precision="3" />
+          <Property Name="ExaminantId" Type="Int32" />
+          <Property Name="ExaminantName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssessState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExamineOpinion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_CheckType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_CredentialsType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_Grade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_Info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="RepeatNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Entrance_Year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="InResidence" Type="Boolean" />
+          <Property Name="DormitoryBuilding" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DormitoryNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AddProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_Score">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ClassNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdSex" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="native" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Entrance_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Household_Registration_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HouseholdAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UrgentPhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PaperType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaperNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsedName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsLeagueeMember" Type="Int32" />
+          <Property Name="IsYoungPineer" Type="Int32" />
+          <Property Name="GuardianNo1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="G1PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G1Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="G2PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="G2Relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StdCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StatusState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_StatusType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="YZJ_StdGraduationRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="StdId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StdRollId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GraduatedSchoolname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GraduatedSchoolNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -432,6 +434,64 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysModule">
+            <EntityTypeMapping TypeName="Db.tbl_SysModule">
+              <MappingFragment StoreEntitySet="tbl_SysModule">
+                <ScalarProperty Name="IsLast" ColumnName="IsLast" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="ModuleURL" ColumnName="ModuleURL" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysPermission">
+            <EntityTypeMapping TypeName="Db.tbl_SysPermission">
+              <MappingFragment StoreEntitySet="tbl_SysPermission">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SysRole">
+            <EntityTypeMapping TypeName="Db.tbl_SysRole">
+              <MappingFragment StoreEntitySet="tbl_SysRole">
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YZJ_CheckRecord">
+            <EntityTypeMapping TypeName="Db.YZJ_CheckRecord">
+              <MappingFragment StoreEntitySet="YZJ_CheckRecord">
+                <ScalarProperty Name="ApplyType" ColumnName="ApplyType" />
+                <ScalarProperty Name="ExamineOpinion" ColumnName="ExamineOpinion" />
+                <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
+                <ScalarProperty Name="AssessState" ColumnName="AssessState" />
+                <ScalarProperty Name="AssessResult" ColumnName="AssessResult" />
+                <ScalarProperty Name="ExamineDate" ColumnName="ExamineDate" />
+                <ScalarProperty Name="ExamineName" ColumnName="ExamineName" />
+                <ScalarProperty Name="ExaminantName" ColumnName="ExaminantName" />
+                <ScalarProperty Name="ExaminantId" ColumnName="ExaminantId" />
+                <ScalarProperty Name="AssessDate" ColumnName="AssessDate" />
+                <ScalarProperty Name="AssessorName" ColumnName="AssessorName" />
+                <ScalarProperty Name="AssessorId" ColumnName="AssessorId" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="ApplicantNo" ColumnName="ApplicantNo" />
+                <ScalarProperty Name="StdName" ColumnName="StdName" />
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="YZJ_CheckType">
             <EntityTypeMapping TypeName="Db.YZJ_CheckType">
               <MappingFragment StoreEntitySet="YZJ_CheckType">
@@ -445,6 +505,15 @@
               <MappingFragment StoreEntitySet="YZJ_CredentialsType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YZJ_Grade">
+            <EntityTypeMapping TypeName="Db.YZJ_Grade">
+              <MappingFragment StoreEntitySet="YZJ_Grade">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -483,6 +552,7 @@
           <EntitySetMapping Name="YZJ_Status">
             <EntityTypeMapping TypeName="Db.YZJ_Status">
               <MappingFragment StoreEntitySet="YZJ_Status">
+                <ScalarProperty Name="StatusState" ColumnName="StatusState" />
                 <ScalarProperty Name="StdCategory" ColumnName="StdCategory" />
                 <ScalarProperty Name="AlmaMater" ColumnName="AlmaMater" />
                 <ScalarProperty Name="G2Relationship" ColumnName="G2Relationship" />
@@ -533,73 +603,6 @@
                 <ScalarProperty Name="StdId" ColumnName="StdId" />
                 <ScalarProperty Name="available" ColumnName="available" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="YZJ_Grade">
-            <EntityTypeMapping TypeName="Db.YZJ_Grade">
-              <MappingFragment StoreEntitySet="YZJ_Grade">
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="available" ColumnName="available" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="YZJ_CheckRecord">
-            <EntityTypeMapping TypeName="Db.YZJ_CheckRecord">
-              <MappingFragment StoreEntitySet="YZJ_CheckRecord">
-                <ScalarProperty Name="ApplyType" ColumnName="ApplyType" />
-                <ScalarProperty Name="ExamineOpinion" ColumnName="ExamineOpinion" />
-                <ScalarProperty Name="ApplyReason" ColumnName="ApplyReason" />
-                <ScalarProperty Name="AssessState" ColumnName="AssessState" />
-                <ScalarProperty Name="AssessResult" ColumnName="AssessResult" />
-                <ScalarProperty Name="ExamineDate" ColumnName="ExamineDate" />
-                <ScalarProperty Name="ExamineName" ColumnName="ExamineName" />
-                <ScalarProperty Name="ExaminantName" ColumnName="ExaminantName" />
-                <ScalarProperty Name="ExaminantId" ColumnName="ExaminantId" />
-                <ScalarProperty Name="AssessDate" ColumnName="AssessDate" />
-                <ScalarProperty Name="AssessorName" ColumnName="AssessorName" />
-                <ScalarProperty Name="AssessorId" ColumnName="AssessorId" />
-                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
-                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
-                <ScalarProperty Name="ApplicantNo" ColumnName="ApplicantNo" />
-                <ScalarProperty Name="StdName" ColumnName="StdName" />
-                <ScalarProperty Name="StdId" ColumnName="StdId" />
-                <ScalarProperty Name="available" ColumnName="available" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_SysModule">
-            <EntityTypeMapping TypeName="Db.tbl_SysModule">
-              <MappingFragment StoreEntitySet="tbl_SysModule">
-                <ScalarProperty Name="IsLast" ColumnName="IsLast" />
-                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
-                <ScalarProperty Name="ModuleURL" ColumnName="ModuleURL" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
-                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_SysPermission">
-            <EntityTypeMapping TypeName="Db.tbl_SysPermission">
-              <MappingFragment StoreEntitySet="tbl_SysPermission">
-                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
-                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_SysRole">
-            <EntityTypeMapping TypeName="Db.tbl_SysRole">
-              <MappingFragment StoreEntitySet="tbl_SysRole">
-                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

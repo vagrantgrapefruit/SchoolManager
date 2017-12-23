@@ -11,7 +11,7 @@ namespace SchoolWeb.Web.ModuleManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var a = Request.QueryString[""];
         }
     }
 }
