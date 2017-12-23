@@ -51,6 +51,7 @@ namespace SchoolWeb
                 if (model.PassWord == Password)
                 {
                     Session["UserName"] = UserName;
+                    Session["SchoolCard"] = model.SchoolCard;
                     return true;
                 }
                 else

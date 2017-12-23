@@ -52,10 +52,16 @@ namespace SchoolWeb.ModuleManager
                 model.AddRange(moduleBLL.GetByModuleId(a.ModuleId)); 
             }
             List<SysModuleModel> rootModel = (from r in model where r.ParentId == "0" select r).ToList();
-            rootModel = rootModel
-                .GroupBy(a => new SysModuleModel())
-                .Select(b => b.First())
-                .ToList();
+             rootModel = rootModel
+                .GroupBy(a => a.Id)
+                .Select(g => new SysModuleModel {
+                    Id=g.Key,
+                    ModuleId=g.Select(item =>item.ModuleId).Distinct().ToList()[0],
+                    ModuleName = g.Select(item => item.ModuleName).Distinct().ToList()[0],
+                    ModuleURL = g.Select(item => item.ModuleURL).Distinct().ToList()[0],
+                    IsShow = g.Select(item => item.IsShow).Distinct().ToList()[0],
+                    IsLast = g.Select(item => item.IsLast).Distinct().ToList()[0],
+                }).ToList();
             var json = new
             {
                 head = (from r in rootModel

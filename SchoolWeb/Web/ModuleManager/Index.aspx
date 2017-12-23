@@ -11,7 +11,20 @@
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../Scripts/web/index.js"></script>
 	<title>学校管理系统</title>
+    <script>
+        function jmp(url) {
+            var obj = document.getElementById("iframe");
+            debugger;
+            var userName = "<%= Session["UserName"].ToString()%>";
+            var schoolaCard = "<%= Session["SchoolCard"].ToString()%>";
+            $.get(url, { UserName: userName, SchoolaCard: schoolaCard }, function (data) {
+            obj.setAttribute("src", url);
+        });
+
+        }
+    </script>
 </head>
+
 <body style="padding-top:52px;background-color:#F6F4F0;">
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" style="box-shadow: 0px 0px 5px #666666;">
 	    <div class="container-fluid">
@@ -34,7 +47,7 @@
 		</script>
 		<div id="lframe" style="float:left;width:200px;height:100%;padding-left:1px;padding-right:1px;box-shadow: 0px 0px 15px #666666;">
 			<div class="panel-group" id="accordion" >
-				<script>getNav("accordion","./Index.aspx",<%=Session["UserName"].ToString()%>);</script>	
+				<script>getNav("accordion","./Index.aspx","<%=Session["UserName"].ToString()%>");</script>	
 			</div>
 		</div>
 		

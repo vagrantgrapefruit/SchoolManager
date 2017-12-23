@@ -15,7 +15,7 @@ var panelpart2= "           </tbody>"+
                 "   </div>"+
                 "</div>"
                 "</div>"
-var listElement="<tr><th onclick=\"jmp('%url%')\">%title%</th></tr>"
+var listElement = "<tr><th onclick=\"jmp('%url%')\">%title%</th></tr>"
 var badge="<span class=\"badge pull-right\">%count%</span>"
 function addpanel(pid,head,id,isopen,inner){
     var obj=document.getElementById(pid);
@@ -33,6 +33,7 @@ function addpanel(pid,head,id,isopen,inner){
 }
 function getNav(pid,jsonUrl,userName)
 {
+ 
     $.get(jsonUrl, { method: 'GetTreeList', flag: '1', userName: userName}, function (data) {
             var head = "";
             var content="";
@@ -90,8 +91,4 @@ function getNav(pid,jsonUrl,userName)
 
     //    }
     //})
-}
-function jmp(url){
-    var obj=document.getElementById("iframe");
-    obj.setAttribute("src",url);
 }
