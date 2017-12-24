@@ -14,8 +14,9 @@ namespace SchoolManager.Models
     
     public partial class YZJ_Info
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public Nullable<bool> available { get; set; }
+        public string StdRollId { get; set; }
         public string StdId { get; set; }
         public string StdName { get; set; }
         public string StdSex { get; set; }

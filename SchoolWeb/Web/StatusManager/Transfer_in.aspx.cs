@@ -4,16 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SchoolManager.Models;
 using SchoolManager.BLL;
-using System.Web.Script.Serialization;
 using SchoolManager.Common;
+using SchoolManager.Models;
 
 namespace SchoolWeb.Web.StatusManager
 {
     public partial class Transfer_in : System.Web.UI.Page
     {
-     
         static YZJ_StatusBLL StatusBLL = new YZJ_StatusBLL();
         static YZJ_CheckRecordBLL CheckRecordBLL = new YZJ_CheckRecordBLL();
         protected void Page_Load(object sender, EventArgs e)
@@ -21,26 +19,26 @@ namespace SchoolWeb.Web.StatusManager
             switch (Request.QueryString["action"])
             {
                 case "transferIn":
-                    transferIn(Request.QueryString["StdRollId"], Request.QueryString["StdName"],Request.QueryString["StdSex"],
+                    transferIn(Request.QueryString["StdRollId"], Request.QueryString["StdName"], Request.QueryString["StdSex"],
                                  Request.QueryString["native"], Request.QueryString["nation"],
-                                 Request.QueryString["HouseholdAddress"],Request.QueryString["CurrAddress"],
-                                 Request.QueryString["PhoneNumber"],Request.QueryString["PaperNumber"], 
+                                 Request.QueryString["HouseholdAddress"], Request.QueryString["CurrAddress"],
+                                 Request.QueryString["PhoneNumber"], Request.QueryString["PaperNumber"],
                                  Request.QueryString["UsedName"], Request.QueryString["StudentCategory"],
                                  Request.QueryString["email"], Request.QueryString["PostCode"],
-                                 Request.QueryString["IsLeagueeMember"],Request.QueryString["IsYoungPineer"],
+                                 Request.QueryString["IsLeagueeMember"], Request.QueryString["IsYoungPineer"],
                                  Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
                                  Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
-                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"],Request.QueryString["StatusState"]
+                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"], Request.QueryString["StatusState"]
                     );
                     break;
             }
         }
-        public void transferIn(string StdRollId,string StdName,string StdSex,string native, string nation ,
+        public void transferIn(string StdRollId, string StdName, string StdSex, string native, string nation,
                                 string HouseholdAddress, string CurrAddress, string PhoneNumber,
-                              string PaperNumber, string UsedName,  string StudentCategory,
-                               string email, string PostCode,string IsLeagueeMember,string IsYoungPineer,
-                               string GuardianNO1, string G1PhoneNumber, string G1Relationship,string GuardianNO2,
-                               string G2PhoneNumber, string G2Relationship, string AlmaMater,string StatusState
+                              string PaperNumber, string UsedName, string StudentCategory,
+                               string email, string PostCode, string IsLeagueeMember, string IsYoungPineer,
+                               string GuardianNO1, string G1PhoneNumber, string G1Relationship, string GuardianNO2,
+                               string G2PhoneNumber, string G2Relationship, string AlmaMater, string StatusState
             )
         {
             try
@@ -77,7 +75,7 @@ namespace SchoolWeb.Web.StatusManager
                     status.IsYoungPineer = 0;
                 }
 
-                
+
                 status.GuardianNo1 = GuardianNO1;
                 status.G1PhoneNumber = G1PhoneNumber;
                 status.G1Relationship = G1Relationship;
@@ -100,7 +98,7 @@ namespace SchoolWeb.Web.StatusManager
                 model.StdName = status.StdName;
                 model.ApplicantNo = status.StdName;
                 model.ApplicantName = status.StdName;
-                model.ApplyDate = DateTime.Now;
+                model.ApplyDate = DateTime.Now.ToString();
                 //model.ApplyReason = reason;
                 model.ApplyType = "转出学校";
                 bool success = CheckRecordBLL.Create(model);

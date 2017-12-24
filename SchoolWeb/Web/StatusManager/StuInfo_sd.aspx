@@ -12,52 +12,54 @@
 	<script src="../../Scripts/web/clist.js"></script>
 	<title>学籍管理系统</title>
 </head>
-<body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
-    <script type="text/javascript">
-        var obj=document.getElementById("fbody")
-        obj.style.height = (window.innerHeight).toString() + "px"
-        function submit()
-        {
-            CurrAddress = $("#AddProvince").val() + $("#AddCity").val() + $("#AddCity").val() + $("#AddArea").val() + $("#AddStreet").val() + $("#AddDetail").val();
-            //alert(CurrAddress)
-            $.get("./StuInfo_sd.aspx", {
-                "action": "stuInfor_sd",
-                "StdRollId": $("#stdRollId").val(),
-                "StdName": $("#stdname").val(),
-                "stdsex": $("#stdsex").val(),
-                "native": $("#native").val(),
-                "nation": $("#nation").val(),
-                "HouseholdAddress": $("#HouseholdAddress").val(),
-                //现住址
-                "CurrAddress": CurrAddress,
-                "PhoneNumber": $("#PhoneNumber").val(),
-                "PaperNumber": $("#PaperNumber").val(),
-                "UsedName": $("#UsedName").val(),
-                "StudentCategory": $("#StudentCategory").val(),
-                "email": $("#email").val(),
-                "PostCode": $("#PostCode").val(),
-                "IsLeagueeMember": $("#IsLeagueeMember").val(),
-                "IsYoungPineer": $("#IsYoungPineer").val(),
-                "GuardianNO1": $("#GuardianNO1").val(),
-                "G1PhoneNumber": $("#G1PhoneNumber").val(),
-                "G1Relationship": $("#G1Relationship").val(),
-                "GuardianNO2": $("#GuardianNO2").val(),
-                "G2PhoneNumber": $("#G2PhoneNumber").val(),
-                "G2Relationship": $("#G2Relationship").val(),
-                "AlmaMater": $("#AlmaMater").val(),
-                "StatusState": $("#StatusState").val()
+        <script type="text/javascript">
+        //var obj=document.getElementById("fbody")
+        //obj.style.height = (window.innerHeight).toString() + "px"
+        //function submit()
+        //{
+        //    CurrAddress = $("#AddProvince").val() + $("#AddCity").val() + $("#AddCity").val() + $("#AddArea").val() + $("#AddStreet").val() + $("#AddDetail").val();
+        //    //alert(CurrAddress)
+        //    $.get("./StuInfo_sd.aspx", {
+        //        "action": "stuInfor_sd",
+        //        "StdRollId": $("#stdRollId").val(),
+        //        "StdName": $("#stdname").val(),
+        //        "stdsex": $("#stdsex").val(),
+        //        "native": $("#native").val(),
+        //        "nation": $("#nation").val(),
+        //        "HouseholdAddress": $("#HouseholdAddress").val(),
+        //        //现住址
+        //        "CurrAddress": CurrAddress,
+        //        "PhoneNumber": $("#PhoneNumber").val(),
+        //        "PaperNumber": $("#PaperNumber").val(),
+        //        "UsedName": $("#UsedName").val(),
+        //        "StudentCategory": $("#StudentCategory").val(),
+        //        "email": $("#email").val(),
+        //        "PostCode": $("#PostCode").val(),
+        //        "IsLeagueeMember": $("#IsLeagueeMember").val(),
+        //        "IsYoungPineer": $("#IsYoungPineer").val(),
+        //        "GuardianNO1": $("#GuardianNO1").val(),
+        //        "G1PhoneNumber": $("#G1PhoneNumber").val(),
+        //        "G1Relationship": $("#G1Relationship").val(),
+        //        "GuardianNO2": $("#GuardianNO2").val(),
+        //        "G2PhoneNumber": $("#G2PhoneNumber").val(),
+        //        "G2Relationship": $("#G2Relationship").val(),
+        //        "AlmaMater": $("#AlmaMater").val(),
+        //        "StatusState": $("#StatusState").val()
 
-            },
-                function (resultString) {
+        //    },
+        //        function (resultString) {
 
-                    if (resultString != null) {
-                        alert("学生已转入")
-                    }
+        //            if (resultString != null) {
+        //                alert("学生已转入")
+        //            }
 
-                });
-        };
-        
+        //        });
+        //};
+
     </script>
+
+<body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
+  
     <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
         <div class="panel-heading" style="padding: 3px;padding-left:5px;padding-right:5px">
             <h5><strong>新生入学 / 学籍手动导入</strong></h5>
@@ -265,14 +267,6 @@
         </div>
    
     </div>
-    
-
-    
-	
-    
-
-	
-	
 </body>
 </html>
- 
+

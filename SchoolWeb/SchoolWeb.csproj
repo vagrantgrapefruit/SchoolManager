@@ -375,12 +375,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Login.aspx" />
+    <Content Include="Scripts\Check\DismissCheck.js" />
+    <Content Include="Scripts\Check\DropOutCheck.js" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.js" />
     <Content Include="Scripts\jQuery\jquery-3.2.1.min.js" />
     <Content Include="Scripts\Manager\AllotUser.js" />
     <Content Include="Scripts\Manager\ModuleManage.js" />
     <Content Include="Scripts\Manager\PermissionManage.js" />
     <Content Include="Scripts\Manager\RoleManage.js" />
+    <Content Include="Scripts\Manager\StatusManage.js" />
     <Content Include="Scripts\Manager\UserManage.js" />
     <Content Include="Scripts\web\clist.js" />
     <Content Include="Scripts\web\execlist.js" />
@@ -407,20 +410,27 @@
     <Content Include="Web\ModuleManager\ShowUser.aspx" />
     <Content Include="Web\ModuleManager\test.html" />
     <Content Include="Web\ModuleManager\UserManage.aspx" />
+    <Content Include="Web\StatusManager\CheckDismiss.html" />
+    <Content Include="Web\StatusManager\CheckRepeatGrade.html" />
+    <Content Include="Web\StatusManager\CheckSkip.html" />
     <Content Include="Web\StatusManager\Dismiss.aspx" />
     <Content Include="Web\StatusManager\DropOut.aspx" />
+    <Content Include="Web\StatusManager\CheckDropOut.html" />
     <Content Include="Web\StatusManager\DropOut_exec.aspx" />
     <Content Include="Web\StatusManager\DropOut_review.aspx" />
     <Content Include="Web\StatusManager\Index.aspx" />
     <Content Include="Web\StatusManager\RepeatGrade.aspx" />
     <Content Include="Web\StatusManager\Skip.aspx" />
+    <Content Include="Web\StatusManager\StatusDetails.html" />
+    <Content Include="Web\StatusManager\StatusManage.html" />
     <Content Include="Web\StatusManager\StuInfo_pl.aspx" />
     <Content Include="Web\StatusManager\StuInfo_sd.aspx" />
     <Content Include="Web\StatusManager\Suspend.aspx" />
+    <Content Include="Web\StatusManager\CheckSuspend.html" />
     <Content Include="Web\StatusManager\TransferClass.aspx" />
+    <Content Include="Web\StatusManager\CheckTransferOut.html" />
     <Content Include="Web\StatusManager\Transfer_in.aspx" />
     <Content Include="Web\StatusManager\Transfer_out.aspx" />
-    <Content Include="Web\StatusManager\UpGrade.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\SchoolWeb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\SchooManage - Web Deploy.pubxml" />
@@ -475,6 +485,9 @@
     <Content Include="Web\Handler\DeleteRole.ashx" />
     <Content Include="Web\Handler\GetUserRole.ashx" />
     <Content Include="Web\Handler\Permission.ashx" />
+    <Content Include="Web\Handler\GetStatus.ashx" />
+    <Content Include="Web\Handler\GetCheckRecord.ashx" />
+    <Content Include="Web\Handler\ChangeCheckRecord.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -488,6 +501,9 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\ChangeCheckRecord.ashx.cs">
+      <DependentUpon>ChangeCheckRecord.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\DeleteModel.ashx.cs">
       <DependentUpon>DeleteModel.ashx</DependentUpon>
@@ -507,11 +523,17 @@
     <Compile Include="Web\Handler\EditUser.ashx.cs">
       <DependentUpon>EditUser.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Handler\GetCheckRecord.ashx.cs">
+      <DependentUpon>GetCheckRecord.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Handler\GetModel.ashx.cs">
       <DependentUpon>GetModel.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\GetRoleModel.ashx.cs">
       <DependentUpon>GetRoleModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\GetStatus.ashx.cs">
+      <DependentUpon>GetStatus.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\GetUserModel.ashx.cs">
       <DependentUpon>GetUserModel.ashx</DependentUpon>
@@ -718,13 +740,6 @@
     </Compile>
     <Compile Include="Web\StatusManager\Transfer_out.aspx.designer.cs">
       <DependentUpon>Transfer_out.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\StatusManager\UpGrade.aspx.cs">
-      <DependentUpon>UpGrade.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\StatusManager\UpGrade.aspx.designer.cs">
-      <DependentUpon>UpGrade.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

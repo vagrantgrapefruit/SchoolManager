@@ -23,14 +23,14 @@ namespace SchoolManager.Models
 		public virtual string StdName { get; set;}
 		public virtual string ApplicantNo { get; set;}
 		public virtual string ApplicantName { get; set;}
-		public virtual Nullable<System.DateTime> ApplyDate { get; set;}
-		public virtual Nullable<int> AssessorId { get; set;}
+		public virtual string ApplyDate { get; set;}
+		public virtual string AssessorId { get; set;}
 		public virtual string AssessorName { get; set;}
-		public virtual Nullable<System.DateTime> AssessDate { get; set;}
+		public virtual string AssessDate { get; set;}
 		public virtual Nullable<int> ExaminantId { get; set;}
 		public virtual string ExaminantName { get; set;}
 		public virtual string ExamineName { get; set;}
-		public virtual Nullable<System.DateTime> ExamineDate { get; set;}
+		public virtual string ExamineDate { get; set;}
 		public virtual string AssessResult { get; set;}
 		public virtual string AssessState { get; set;}
 		public virtual string ApplyReason { get; set;}

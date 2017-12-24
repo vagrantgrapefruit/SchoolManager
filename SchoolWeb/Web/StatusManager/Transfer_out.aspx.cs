@@ -28,6 +28,10 @@ namespace SchoolWeb.Web.StatusManager
                     break;
             }
         }
+        /// <summary>
+        /// 获取学生信息
+        /// </summary>
+        /// <param name="condition">传入参数</param>
         public void getStudent(string condition)
         {
             try
@@ -42,32 +46,35 @@ namespace SchoolWeb.Web.StatusManager
             catch
             { }
         }
+        /// <summary>
+        /// 创建申请记录
+        /// </summary>
+        /// <param name="reason">申请理由</param>
+        /// <param name="StdRollId">申请人学籍号</param>
         public void transferOut(string reason, string StdRollId)
         {
             try
             {
                 List<YZJ_StatusModel> InforList = statusBLL.GetList(StdRollId);
-                InforList[0].StatusState = "转出";
+                //InforList[0].StatusState = "转出";
                 //InforList[0].available = false;
-                bool success = statusBLL.Edit(InforList[0]);
-                string json = js.Serialize(new { success });
-
-
-                DateTime dt = new DateTime();
+                //bool success = statusBLL.Edit(InforList[0]);
+                //string json = js.Serialize(new { success });
                 YZJ_CheckRecordModel model = new YZJ_CheckRecordModel();
                 model.id = ResultHelper.NewId;
                 model.available = true;
                 model.StdId = InforList[0].StdRollId;
                 model.StdName = InforList[0].StdName;
-                model.ApplicantNo = InforList[0].StdName;
-                model.ApplicantName = InforList[0].StdName;
-                model.ApplyDate = DateTime.Now;
+                model.ApplicantNo = Session["UserName"].ToString();
+                model.ApplicantName = Session["TrueName"].ToString();
+                model.ApplyDate = DateTime.Now.ToString();
                 model.ApplyReason = reason;
-                model.ApplyType = "转出学校";
+                model.AssessState = "待审核";
+                model.ApplyType = "转校";
                 bool flag = CheckRecordBLL.Create(model);
 
                 Response.Clear();
-                Response.Write("{'success':'" + success.ToString() + "','saveRecords':'" + flag + "'}");
+                Response.Write("{'saveRecords':'" + flag + "'}");
                 Response.End();
             }
             catch

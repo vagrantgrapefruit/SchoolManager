@@ -20,14 +20,14 @@ namespace SchoolManager.Models
         public string StdName { get; set; }
         public string ApplicantNo { get; set; }
         public string ApplicantName { get; set; }
-        public Nullable<System.DateTime> ApplyDate { get; set; }
-        public Nullable<int> AssessorId { get; set; }
+        public string ApplyDate { get; set; }
+        public string AssessorId { get; set; }
         public string AssessorName { get; set; }
-        public Nullable<System.DateTime> AssessDate { get; set; }
+        public string AssessDate { get; set; }
         public Nullable<int> ExaminantId { get; set; }
         public string ExaminantName { get; set; }
         public string ExamineName { get; set; }
-        public Nullable<System.DateTime> ExamineDate { get; set; }
+        public string ExamineDate { get; set; }
         public string AssessResult { get; set; }
         public string AssessState { get; set; }
         public string ApplyReason { get; set; }

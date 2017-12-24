@@ -47,26 +47,43 @@ namespace SchoolWeb.Web.StatusManager
             try
             {
                 List<YZJ_InfoModel> InforList = InforBLL.GetList(Stdid);
+                switch(newClass)
+                {
+                    case ("一班"):
+                         InforList[0].ClassNo = InforList[0].ClassNo.Remove(3,1)+'1';
+                        break;
+                    case ("二班"):
+                        InforList[0].ClassNo = InforList[0].ClassNo.Remove(3, 1) + '2';
+                        break;
+                    case ("三班"):
+                        InforList[0].ClassNo = InforList[0].ClassNo.Remove(3, 1) + '3';
+                        break;
+                    case ("四班"):
+                        InforList[0].ClassNo = InforList[0].ClassNo.Remove(3, 1) + '4';
+                        break;
+                    case ("五班"):
+                        InforList[0].ClassNo = InforList[0].ClassNo.Remove(3, 1) + '5';
+                        break;
+                }
                 InforList[0].ClassNo = newClass;
                 bool success = InforBLL.Edit(InforList[0]);
                 string json = js.Serialize(new { success });
                 
 
-                DateTime dt = new DateTime();
-                YZJ_CheckRecordModel model = new YZJ_CheckRecordModel();
-                model.id = ResultHelper.NewId;
-                model.available = true;
-                model.StdId = Stdid;
-                model.StdName = InforList[0].StdName;
-                model.ApplicantNo = Stdid;
-                model.ApplicantName = InforList[0].StdName;
-                model.ApplyDate = DateTime.Now;
-                model.ApplyReason = ApplyReason;
-                model.ApplyType = "转班";
-                bool flag = CheckRecordBLL.Create(model);
+                //YZJ_CheckRecordModel model = new YZJ_CheckRecordModel();
+                //model.id = ResultHelper.NewId;
+                //model.available = true;
+                //model.StdId = Stdid;
+                //model.StdName = InforList[0].StdName;
+                //model.ApplicantNo = Stdid;
+                //model.ApplicantName = InforList[0].StdName;
+                //model.ApplyDate = DateTime.Now;
+                //model.ApplyReason = ApplyReason;
+                //model.ApplyType = "转班";
+                //bool flag = CheckRecordBLL.Create(model);
 
                 Response.Clear();
-                Response.Write("{'transfer':'" + success.ToString() + "','saveRecords':'" + flag + "'}");
+                Response.Write("{'transfer':'" + success.ToString() + "'}");
                 Response.End();
                 
 

@@ -39,7 +39,7 @@
             $("#reason").removeClass("input-validation-error");
             if ($.trim($("#reason").val()) == "") {
                 $("#reason").addClass("input-validation-error").focus();
-                $("#mes").html("申请理由不为空！");
+                $("#mes").html("申请理由不能为空！");
                 console.log("add")
                 return;
             }
@@ -51,10 +51,11 @@
             }
             $.get("./Suspend.aspx", { "action": "suspend", "reason": $("#reason").val(), "StdRollId": $("#stdrollid").val() }, function (resultString)
             {
-                if (resultString != null)
-                {
-                    alert("休学成功！")
+                var resultJson = eval('(' + resultString + ')');
+                if (resultJson.saveRecords == "True") {
+                    alert("申请成功！")
                 }
+                else { alert("申请失败，请重试！") }
             });
         }
 

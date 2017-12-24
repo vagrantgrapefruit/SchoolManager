@@ -12,6 +12,48 @@
 	<script src="../../Scripts/web/clist.js"></script>
     <script src="../../Scripts/web/sel_student.js"></script>
 	<title>学籍管理系统</title>
+    <script>
+        var obj = document.getElementById("fbody")
+        obj.style.height = (window.innerHeight).toString() + "px"
+        function getStudent() {
+            //输入学籍号
+            $.get("./Dismiss.aspx", { "action": "getStudent", "condition": $("#condition").val() }, function (resultString) {
+
+                var studentInfor = eval('(' + resultString + ')');
+                var studentInforArray = studentInfor.InforList;
+                $(studentInforArray).each(function (index, Infor) {
+                    $("#stdname").val(Infor.StdName);
+                    $("#stdrollid").val(Infor.StdRollId);
+                });
+
+            });
+
+        }
+        function submit() {
+            // alert("submit")
+            $("#mes").html("");
+            $("#reason").removeClass("input-validation-error");
+            if ($.trim($("#reason").val()) == "") {
+                $("#reason").addClass("input-validation-error").focus();
+                $("#mes").html("申请理由不能为空！");
+                console.log("add")
+                return;
+            }
+            if ($.trim($("#stdname").val()) == "") {
+                $("#stdname").addClass("input-validation-error").focus();
+                $("#mes").html("未选择有效学生！");
+                console.log("add")
+                return;
+            }
+            $.get("./Dismiss.aspx", { "action": "dismiss", "reason": $("#reason").val(), "StdRollId": $("#stdrollid").val() }, function (resultString) {
+                var resultJson = eval('(' + resultString + ')');
+                if (resultJson.saveRecords == "True"){
+                    alert("申请成功！")
+                }
+                else { alert("申请失败，请重试！") }
+            });
+        }
+    </script>
 </head>
 <body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
     <script>
@@ -35,7 +77,7 @@
                     <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
                         <div class="panel-body" style="padding: 3px;padding-left:5px;padding-right:5px">
                             <div >
-                                <input type="text" class="form-control" name="model_name" placeholder="姓名或学籍号">
+                                <input type="text" id="condition" class="form-control" name="model_name" placeholder="姓名或学籍号">
                             </div>
                         </div>
                     </div>
@@ -67,16 +109,20 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学籍号</label>
                     <div class="col-sm-8">
-                        <input id="stdid" type="text" class="form-control" name="stdid" placeholder="学籍号" disabled>
+                        <input id="stdrollid" type="text" class="form-control" name="stdid" placeholder="学籍号" disabled>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">
-                        <textarea rows="3" class="form-control" name="rea" placeholder="申请理由"></textarea>
+                        <textarea rows="3" id="reason" class="form-control" name="rea" placeholder="申请理由"></textarea>
                     </div>
                 </div>
-                <div style="text-align: center;margin:10px"><button type="submit" class="btn btn-warning">提出申请</button></div>
+                <div style="text-align: center;margin:10px">
+                    <span id="mes"></span>
+                    <a class="btn btn-warning" onclick="submit();">提出申请</a> 
+                </div>
+                
             </form>
         </div>
     </div>	

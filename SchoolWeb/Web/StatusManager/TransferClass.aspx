@@ -33,12 +33,12 @@
         {
             $("#mes").html("");
             $("#reason").removeClass("input-validation-error");
-            if ($.trim($("#reason").val()) == "") {
-                $("#reason").addClass("input-validation-error").focus();
-                $("#mes").html("申请理由不为空！");
-                console.log("add")
-                return;
-            }
+            //if ($.trim($("#reason").val()) == "") {
+            //    $("#reason").addClass("input-validation-error").focus();
+            //    $("#mes").html("申请理由不为空！");
+            //    console.log("add")
+            //    return;
+            //}
             if ($.trim($("#stdname").val()) == "") {
                 $("#stdname").addClass("input-validation-error").focus();
                 $("#mes").html("未选择有效学生！");
@@ -49,7 +49,7 @@
             $.get("./TransferClass.aspx", { "action": "transfer", "newClass": newClass, "stdid": $("#stdid").val(), "ApplyReason": $("#reason").val() }, function (resultString) {
                 if (resultString != null)
                 {
-                    alert("修改好啦！")
+                    alert("转班完成！")
                 }
    
             });
@@ -136,12 +136,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group" style="margin-bottom:5px">
+<%--                <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">
                         <textarea rows="3" id="reason" class="form-control" name="rea" placeholder="申请理由"></textarea>
                     </div>
-                </div>
+                </div>--%>
                 <div style="text-align: center;margin:10px">
                     <span id="mes"></span>
                     <a class="btn btn-success" onclick="submit();">提出申请</a> 

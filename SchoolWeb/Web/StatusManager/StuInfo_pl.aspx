@@ -14,8 +14,8 @@
 </head>
 <body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
     <script>
-        var obj=document.getElementById("fbody")
-        obj.style.height=(window.innerHeight).toString()+"px"
+        var obj = document.getElementById("fbody");
+        obj.style.height = (window.innerHeight).toString() + "px";
     </script>
     <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
         <div class="panel-heading" style="padding: 3px;padding-left:5px;padding-right:5px">
@@ -29,8 +29,7 @@
         <div class="panel-body" style="padding: 3px;padding-left:5px;padding-right:5px">
             <form role="form" class="form-inline">
                 <div class="form-group">
-                    <input class="btn btn-default" type="file" id="inputfile" >
-
+                    <input class="btn btn-default" type="file" id="inputfile" />
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">预览</button>

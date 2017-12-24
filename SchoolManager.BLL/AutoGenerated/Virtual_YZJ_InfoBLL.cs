@@ -32,9 +32,10 @@ namespace SchoolManager.BLL
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = m_Rep.GetList(
+								a=>(a.id!=null && a.id.Contains(queryStr))
 								
-								
-								a=>(a.StdId!=null && a.StdId.Contains(queryStr))
+								|| (a.StdRollId!=null && a.StdRollId.Contains(queryStr))
+								|| (a.StdId!=null && a.StdId.Contains(queryStr))
 								|| (a.StdName!=null && a.StdName.Contains(queryStr))
 								|| (a.StdSex!=null && a.StdSex.Contains(queryStr))
 								|| (a.RepeatNo!=null && a.RepeatNo.Contains(queryStr))
@@ -65,6 +66,7 @@ namespace SchoolManager.BLL
                                               {
 													id = r.id,
 													available = r.available,
+													StdRollId = r.StdRollId,
 													StdId = r.StdId,
 													StdName = r.StdName,
 													StdSex = r.StdSex,
@@ -97,6 +99,7 @@ namespace SchoolManager.BLL
                 entity = new YZJ_Info();
                				entity.id = model.id;
 				entity.available = model.available;
+				entity.StdRollId = model.StdRollId;
 				entity.StdId = model.StdId;
 				entity.StdName = model.StdName;
 				entity.StdSex = model.StdSex;
@@ -194,6 +197,7 @@ namespace SchoolManager.BLL
                 }
                               				entity.id = model.id;
 				entity.available = model.available;
+				entity.StdRollId = model.StdRollId;
 				entity.StdId = model.StdId;
 				entity.StdName = model.StdName;
 				entity.StdSex = model.StdSex;
@@ -238,6 +242,7 @@ namespace SchoolManager.BLL
                 YZJ_InfoModel model = new YZJ_InfoModel();
                               				model.id = entity.id;
 				model.available = entity.available;
+				model.StdRollId = entity.StdRollId;
 				model.StdId = entity.StdId;
 				model.StdName = entity.StdName;
 				model.StdSex = entity.StdSex;

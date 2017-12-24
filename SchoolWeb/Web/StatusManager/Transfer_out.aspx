@@ -15,7 +15,6 @@
         function getStudent() {
             //输入学籍号
             $.get("./Transfer_out.aspx", { "action": "getStudent", "condition": $("#condition").val() }, function (resultString) {
-                alert()
                 var studentInfor = eval('(' + resultString + ')');
                 var studentInforArray = studentInfor.InforList;
                 $(studentInforArray).each(function (index, Infor) {
@@ -33,20 +32,20 @@
             $("#reason").removeClass("input-validation-error");
             if ($.trim($("#reason").val()) == "") {
                 $("#reason").addClass("input-validation-error").focus();
-                $("#mes").html("申请理由不为空！");
-                console.log("add")
+                $("#mes").html("申请理由不能为空！");
                 return;
             }
             if ($.trim($("#stdrollid").val()) == "") {
                 $("#stdrollid").addClass("input-validation-error").focus();
                 $("#mes").html("未选择有效学生！");
-                console.log("add")
                 return;
             }
             $.get("./Transfer_out.aspx", { "action": "transferOut", "reason": $("#reason").val(), "StdRollId": $("#stdrollid").val() }, function (resultString) {
-                if (resultString != null) {
-                    alert("转学成功！")
+                var resultJson = eval('(' + resultString + ')');
+                if (resultJson.saveRecords == "True") {
+                    alert("申请成功！")
                 }
+                else { alert("申请失败，请重试！") }
             });
         }
     </script>
@@ -109,12 +108,12 @@
                     </div>
                 </div>
                 
-                <div class="form-group" style="margin-bottom:5px;margin-top:5px">
+<%--                <div class="form-group" style="margin-bottom:5px;margin-top:5px">
                     <label class="col-sm-2 control-label">转出学校</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="schoolname" placeholder="学校名"/>
                     </div>
-                </div>
+                </div>--%>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">

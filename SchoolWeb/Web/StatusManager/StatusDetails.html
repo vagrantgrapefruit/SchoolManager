@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Transfer_in.aspx.cs" Inherits="SchoolWeb.Web.StatusManager.Transfer_in" %>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -10,71 +8,60 @@
 	<script src="../../Scripts/jQuery/jquery-3.2.1.min.js"></script>
    	<script src="../../Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../Scripts/web/clist.js"></script>
-	<title>学籍管理系统</title>
-    <script type="text/javascript">
-        var obj = document.getElementById("fbody")
-        obj.style.height = (window.innerHeight).toString() + "px"
-
-       function transferIn()
-        {
-            CurrAddress = $("#AddProvince").val() + $("#AddCity").val() + $("#AddCity").val() + $("#AddArea").val() + $("#AddStreet").val() + $("#AddDetail").val();
-            //alert(CurrAddress)
-            $.get("./Transfer_in.aspx", {
-                "action": "transferIn",
-                "StdRollId": $("#stdRollId").val(),
-                "StdName": $("#stdname").val(),
-                "stdsex": $("#stdsex").val(),
-                "native": $("#native").val(),
-                "nation": $("#nation").val(),
-                "HouseholdAddress": $("#HouseholdAddress").val(),
-                //现住址
-                "CurrAddress": CurrAddress,
-                "PhoneNumber": $("#PhoneNumber").val(),
-                "PaperNumber": $("#PaperNumber").val(),
-                "UsedName": $("#UsedName").val(),
-                "StudentCategory": $("#StudentCategory").val(),
-                "email": $("#email").val(),
-                "PostCode": $("#PostCode").val(),
-                "IsLeagueeMember": $("#IsLeagueeMember").val(),
-                "IsYoungPineer": $("#IsYoungPineer").val(),
-                "GuardianNO1": $("#GuardianNO1").val(),
-                "G1PhoneNumber": $("#G1PhoneNumber").val(),
-                "G1Relationship": $("#G1Relationship").val(),
-                "GuardianNO2": $("#GuardianNO2").val(),
-                "G2PhoneNumber": $("#G2PhoneNumber").val(),
-                "G2Relationship": $("#G2Relationship").val(),
-                "AlmaMater": $("#AlmaMater").val(),
-                "StatusState": $("#StatusState").val()
-               
-            },
-                function (resultString) {
-
-                    if (resultString != null) {
-                        alert("学生已转入")
-                    }
-                   
-                });
-        }
-    </script>
-
+	<title>详细信息</title>
 </head>
-<body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
-    <script>
-        var obj = document.getElementById("fbody")
-        obj.style.height = (window.innerHeight).toString() + "px"
+        <script type="text/javascript">
+            var rows = window.parent.getrow();
+            var row = rows[0];
+            $.get("../Handler/GetStatus.ashx", { method: 'Getinfor', id: row.id }, function (data) {
+                debugger;
+                var resultJson = eval('(' + data + ')');
+                $('#stdRollId').val(resultJson.StdRollId);
+                $('#stdname').val(resultJson.StdName);
+                $('#stdsex').val(resultJson.StdSex);
+                $('#native').val(resultJson.native);
+                $('#nation').val(resultJson.nation);
+                $('#HouseholdAddress').val(resultJson.HouseholdAddress);
+                $('#EntranceYear').val(resultJson.Entrance_Year);
+                $('#HouseholdRegistrationCategory').val(resultJson.Household_Registration_Category);
+                $('#CurrentAddress').val(resultJson.CurrentAddress);
+                $('#Photo').val(resultJson.Photo);
+                $('#PhoneNumber').val(resultJson.PhoneNumber);
+                $('#UrgentPhoneNumber').val(resultJson.UrgentPhoneNumber);
+                $('#PaperType').val(resultJson.PaperType);
+                $('#PaperNumber').val(resultJson.PaperNumber);
+                $('#UsedName').val(resultJson.UsedName);
+                $('#email').val(resultJson.email);
+                $('#PostCode').val(resultJson.PostCode);
+                $('#IsLeagueeMember').val(resultJson.IsLeagueeMember);
+                $('#IsYoungPineer').val(resultJson.IsYoungPineer);
+                $('#GuardianNo1').val(resultJson.GuardianNo1);
+                $('#G1PhoneNumber').val(resultJson.G1PhoneNumber);
+                $('#G1Relationship').val(resultJson.G1Relationship);
+                $('#GuardianNo2').val(resultJson.GuardianNo2);
+                $('#G2PhoneNumber').val(resultJson.G2PhoneNumber);
+                $('#G2Relationship').val(resultJson.G2Relationship);
+                $('#AlmaMater').val(resultJson.AlmaMater);
+                $('#StdCategory').val(resultJson.StdCategory);
+                $('#StatusState').val(resultJson.StatusState);
+            });
+
     </script>
-    <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
+
+<body id="fbody" style="padding:3px;background-color:#F6F4F0;height:100%">
+   
+
+    <div class="panel panel-default" style="padding: 0px;margin-bottom:0px">
         <div class="panel-heading" style="padding: 3px;padding-left:5px;padding-right:5px">
-            <h5><strong>学籍管理 / 学生转入</strong></h5>
+            <h5>学生信息表单</h5>
         </div>
-    </div>	 
-    <div class="panel panel-default" style="padding: 0px;margin-bottom:1px">
-        <div class="panel-body" style="padding: 3px;padding-left:5px;padding-right:5px">
+        
+        <div class="panel-body" style="padding: 10px;padding-left:5px;padding-right:5px;height:100%">
             <form class="form-horizontal" role="form" method="get">
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学籍号</label>
                     <div class="col-sm-8">
-                        <input type="text" id="stdRollId" class="form-control" name="stdRollId" placeholder="学籍号"/>
+                        <input type="text" id="stdRollId" class="form-control" name="stdid" placeholder="学籍号"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
@@ -112,58 +99,58 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">居住省</label>
+                    <label class="col-sm-2 control-label">户籍类别</label>
                     <div class="col-sm-8">
-                        <input type="text" id="AddProvince" class="form-control" name="AddProvince" placeholder="居住省"/>
+                        <input type="text" id="HouseholdRegistrationCategory" class="form-control" name="HouseholdRegistrationCategory" placeholder="户籍类别"/>
                     </div>
-                </div>
+                </div>  
                 <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">居住市</label>
+                    <label class="col-sm-2 control-label">入学年份</label>
                     <div class="col-sm-8">
-                        <input type="text" id="AddCity" class="form-control" name="AddCity" placeholder="居住市"/>
+                        <input type="text" id="EntranceYear" class="form-control" name="EntranceYear" placeholder="入学年份"/>
                     </div>
-                </div>
-                <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">居住区</label>
-                    <div class="col-sm-8">
-                        <input type="text" id="AddArea" class="form-control" name="AddArea" placeholder="居住区"/>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-bottom:5px">
-                    <label class="col-sm-2 control-label">居住街道</label>
-                    <div class="col-sm-8">
-                        <input type="text" id="AddStreet" class="form-control" name="AddStreet" placeholder="居住街道"/>
-                    </div>
-                </div>
+                </div>  
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">详细地址</label>
                     <div class="col-sm-8">
-                        <input type="text" id="AddDetail" class="form-control" name="AddDetail" placeholder="详细地址"/>
+                        <input type="text" id="CurrentAddress" class="form-control" name="CurrentAddress" placeholder="详细地址"/>
                     </div>
-                </div>
-
+                </div>              
+                
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" id="PhoneNumber" class="form-control" name="PhoneNumber" placeholder="联系方式"/>
+                        <input type="text" id="PhoneNumber" class="form-control" name="Connection" placeholder="联系方式"/>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="col-sm-2 control-label">紧急联系方式</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="UrgentPhoneNumber" class="form-control" name="UrgentPhoneNumber" placeholder="紧急联系方式"/>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:5px">
+                    <label class="col-sm-2 control-label">身份类别</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="PaperType" class="form-control" name="PaperType" placeholder="身份类别"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">身份证号</label>
                     <div class="col-sm-8">
-                        <input type="text" id="PaperNumber" class="form-control" name="PaperNumber" placeholder="身份证号"/>
+                        <input type="text" id="PaperNumber" class="form-control" name="IdCard" placeholder="身份证号"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">曾用名</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="UsedName" placeholder="曾用名"/>
+                        <input type="text" id="UsedName" class="form-control" name="StdUsedName" placeholder="曾用名"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">电子邮箱</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email" placeholder="电子邮箱"/>
+                        <input type="text" id="email" class="form-control" name="email" placeholder="电子邮箱"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
@@ -175,7 +162,7 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">是否团员</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="IsLeagueeMember">
+                        <select class="form-control" id="IsLeagueeMember" name="IsIEagueeMember">
                             <option>是</option>
                             <option>否</option>
                         </select>
@@ -184,7 +171,7 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">是否少先队员</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="IsYoungPineer">
+                        <select class="form-control" id="IsYoungPineer" name="IsYoungPineer">
                             <option>是</option>
                             <option>否</option>
                         </select>
@@ -193,56 +180,56 @@
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="GuardianNO1" placeholder="监护人1"/>
+                        <input type="text" class="form-control" id="GuardianNO1" name="GuardianNO1" placeholder="监护人1"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="G1PhoneNumber" placeholder="监护人1联系方式"/>
+                        <input type="text" class="form-control" id="G1PhoneNumber" name="G1PhoneNumber" placeholder="监护人1联系方式"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人1与其关系</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="G1Relationship" placeholder="监护人1与其关系"/>
+                        <input type="text" class="form-control" id="G1Relationship" name="G1Relationship" placeholder="监护人1与其关系"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="GuardianNO2" placeholder="监护人2"/>
+                        <input type="text" class="form-control" id="GuardianNO2" name="GuardianNO2" placeholder="监护人2"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2联系方式</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="G2PhoneNumber" placeholder="监护人2联系方式"/>
+                        <input type="text" class="form-control" id="G2PhoneNumber" name="G2PhoneNumber" placeholder="监护人2联系方式"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">监护人2与其关系</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="G2Relationship" placeholder="监护人2与其关系"/>
+                        <input type="text" class="form-control" id="G2Relationship" name="G2Relationship" placeholder="监护人2与其关系"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">原毕业学校</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="AlmaMater" placeholder="原毕业学校"/>
+                        <input type="text" class="form-control" id="AlmaMater" name="AlmaMater" placeholder="原毕业学校"/>
                     </div>
                 </div>
                 <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学生类别</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="StudentCategory">
+                        <select class="form-control" id="StudentCategory" name="StudentCategory">
                             <option>普通学生</option>
                             <option>残疾学生</option>
                             <option>贫困学生</option>
                         </select>
                     </div>
                 </div>
-                 <div class="form-group" style="margin-bottom:5px">
+                <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">学籍状态</label>
                     <div class="col-sm-8">
                         <select class="form-control" id="StatusState">
@@ -251,21 +238,11 @@
                         </select>
                     </div>
                 </div>
-                <div style="text-align: center;margin:10px">
+                 
 
-                  <button class="btn btn-success" onclick="transferIn();">转入</button>
-                    
-
-                </div>
-
-            </form>
+       </form>
         </div>
-    </div>	
-	
-    
-
-	
-	
+   
+    </div>
 </body>
 </html>
- 

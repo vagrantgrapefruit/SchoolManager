@@ -6,33 +6,33 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SchoolManager.Models;
 using SchoolManager.BLL;
-using System.Web.Script.Serialization;
 using SchoolManager.Common;
+
 
 namespace SchoolWeb.Web.StatusManager
 {
-    public partial class StuInfor_sd : System.Web.UI.Page
+    public partial class StuInfo_sd : System.Web.UI.Page
     {
         static YZJ_StatusBLL statusBLL = new YZJ_StatusBLL();
         static YZJ_CheckRecordBLL checkRecordBLL = new YZJ_CheckRecordBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            switch (Request.QueryString["action"])
-            {
-                case "stuInfor_sd":
-                    stuInfor_sd(Request.QueryString["StdRollId"], Request.QueryString["StdName"], Request.QueryString["StdSex"],
-                                 Request.QueryString["native"], Request.QueryString["nation"],
-                                 Request.QueryString["HouseholdAddress"], Request.QueryString["CurrAddress"],
-                                 Request.QueryString["PhoneNumber"], Request.QueryString["PaperNumber"],
-                                 Request.QueryString["UsedName"], Request.QueryString["StudentCategory"],
-                                 Request.QueryString["email"], Request.QueryString["PostCode"],
-                                 Request.QueryString["IsLeagueeMember"], Request.QueryString["IsYoungPineer"],
-                                 Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
-                                 Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
-                                 Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"], Request.QueryString["StatusState"]
-                    );
-                    break;
-            }
+            //switch (Request.QueryString["action"])
+            //{
+            //    case "stuInfor_sd":
+            //        stuInfor_sd(Request.QueryString["StdRollId"], Request.QueryString["StdName"], Request.QueryString["StdSex"],
+            //                     Request.QueryString["native"], Request.QueryString["nation"],
+            //                     Request.QueryString["HouseholdAddress"], Request.QueryString["CurrAddress"],
+            //                     Request.QueryString["PhoneNumber"], Request.QueryString["PaperNumber"],
+            //                     Request.QueryString["UsedName"], Request.QueryString["StudentCategory"],
+            //                     Request.QueryString["email"], Request.QueryString["PostCode"],
+            //                     Request.QueryString["IsLeagueeMember"], Request.QueryString["IsYoungPineer"],
+            //                     Request.QueryString["GuardianNO1"], Request.QueryString["G1PhoneNumber"],
+            //                     Request.QueryString["G1Relationship"], Request.QueryString["GuardianNO2"], Request.QueryString["G2PhoneNumber"],
+            //                     Request.QueryString["G2Relationship"], Request.QueryString["AlmaMater"], Request.QueryString["StatusState"]
+            //        );
+            //        break;
+            //}
         }
         public void stuInfor_sd(string StdRollId, string StdName, string StdSex, string native, string nation,
                             string HouseholdAddress, string CurrAddress, string PhoneNumber,
@@ -98,7 +98,7 @@ namespace SchoolWeb.Web.StatusManager
                 model.StdName = status.StdName;
                 model.ApplicantNo = status.StdName;
                 model.ApplicantName = status.StdName;
-                model.ApplyDate = DateTime.Now;
+                model.ApplyDate = DateTime.Now.ToString();
                 model.ApplyType = "新生导入";
                 bool success = checkRecordBLL.Create(model);
 

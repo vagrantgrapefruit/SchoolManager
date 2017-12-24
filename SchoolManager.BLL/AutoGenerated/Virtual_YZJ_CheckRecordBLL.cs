@@ -38,14 +38,14 @@ namespace SchoolManager.BLL
 								|| (a.StdName!=null && a.StdName.Contains(queryStr))
 								|| (a.ApplicantNo!=null && a.ApplicantNo.Contains(queryStr))
 								|| (a.ApplicantName!=null && a.ApplicantName.Contains(queryStr))
-								
-								
+								|| (a.ApplyDate!=null && a.ApplyDate.Contains(queryStr))
+								|| (a.AssessorId!=null && a.AssessorId.Contains(queryStr))
 								|| (a.AssessorName!=null && a.AssessorName.Contains(queryStr))
-								
+								|| (a.AssessDate!=null && a.AssessDate.Contains(queryStr))
 								
 								|| (a.ExaminantName!=null && a.ExaminantName.Contains(queryStr))
 								|| (a.ExamineName!=null && a.ExamineName.Contains(queryStr))
-								
+								|| (a.ExamineDate!=null && a.ExamineDate.Contains(queryStr))
 								|| (a.AssessResult!=null && a.AssessResult.Contains(queryStr))
 								|| (a.AssessState!=null && a.AssessState.Contains(queryStr))
 								|| (a.ApplyReason!=null && a.ApplyReason.Contains(queryStr))
