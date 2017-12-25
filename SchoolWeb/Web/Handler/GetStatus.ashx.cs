@@ -25,9 +25,18 @@ namespace SchoolWeb.Web.Handler
                 var offset = int.Parse(context.Request.QueryString["offset"]);
                 var departmentname = context.Request.QueryString["departmentname"];
                 var statu = context.Request.QueryString["statu"];
-                var search= context.Request.QueryString["search"];
-                var jsondata = GetStatusBySearch(limit, offset, departmentname, statu, search);
-                context.Response.Write(jsondata);
+                var search = context.Request.QueryString["search"];
+                if (context.Request.QueryString["Param"] == "Out")
+                {
+                    var jsondata = GetOutStatusBySearch(limit, offset, departmentname, statu, search);
+                    context.Response.Write(jsondata);
+                }
+                else
+                {
+                    var jsondata = GetStatusBySearch(limit, offset, departmentname, statu, search);
+                    context.Response.Write(jsondata);
+                }
+
 
             }
             else if (context.Request.QueryString["limit"] != null)
@@ -36,8 +45,16 @@ namespace SchoolWeb.Web.Handler
                 var offset = int.Parse(context.Request.QueryString["offset"]);
                 var departmentname = context.Request.QueryString["departmentname"];
                 var statu = context.Request.QueryString["statu"];
-                var jsondata = GetStatusInfor(limit, offset, departmentname, statu);
-                context.Response.Write(jsondata);
+                if (context.Request.QueryString["Param"] == "Out")
+                {
+                    var jsondata = GetOutStatusInfor(limit, offset, departmentname, statu);
+                    context.Response.Write(jsondata);
+                }
+                else
+                {
+                    var jsondata = GetStatusInfor(limit, offset, departmentname, statu);
+                    context.Response.Write(jsondata);
+                }
             }
             else if (context.Request.QueryString["method"] == "Getinfor")
             {
@@ -50,7 +67,19 @@ namespace SchoolWeb.Web.Handler
         public string GetStatusInfor(int limit, int offset, string departmentname, string statu)
         {
 
-            List<YZJ_StatusModel> modelList = StatusBLL.GetList("");
+            List<YZJ_StatusModel> modelList = StatusBLL.GetaviliableList("");
+
+            var total = modelList.Count;
+            var rows = modelList.Skip(offset).Take(limit).ToList();
+
+
+            var jsondata = js.Serialize(new { total = total, rows = rows });
+            return jsondata;
+        }
+        public string GetOutStatusInfor(int limit, int offset, string departmentname, string statu)
+        {
+
+            List<YZJ_StatusModel> modelList = StatusBLL.GetNotaviliableList("");
 
             var total = modelList.Count;
             var rows = modelList.Skip(offset).Take(limit).ToList();
@@ -62,7 +91,19 @@ namespace SchoolWeb.Web.Handler
         public string GetStatusBySearch(int limit, int offset, string departmentname, string statu,string search)
         {
 
-            List<YZJ_StatusModel> modelList = StatusBLL.GetList(search);
+            List<YZJ_StatusModel> modelList = StatusBLL.GetaviliableList(search);
+
+            var total = modelList.Count;
+            var rows = modelList.Skip(offset).Take(limit).ToList();
+
+
+            var jsondata = js.Serialize(new { total = total, rows = rows });
+            return jsondata;
+        }
+        public string GetOutStatusBySearch(int limit, int offset, string departmentname, string statu, string search)
+        {
+
+            List<YZJ_StatusModel> modelList = StatusBLL.GetNotaviliableList(search);
 
             var total = modelList.Count;
             var rows = modelList.Skip(offset).Take(limit).ToList();

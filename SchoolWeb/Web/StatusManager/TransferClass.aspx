@@ -33,23 +33,25 @@
         {
             $("#mes").html("");
             $("#reason").removeClass("input-validation-error");
-            //if ($.trim($("#reason").val()) == "") {
-            //    $("#reason").addClass("input-validation-error").focus();
-            //    $("#mes").html("申请理由不为空！");
-            //    console.log("add")
-            //    return;
-            //}
+            if ($.trim($("#reason").val()) == "") {
+                $("#reason").addClass("input-validation-error").focus();
+                $("#mes").html("申请理由不为空！");
+                console.log("add")
+                return;
+            }
             if ($.trim($("#stdname").val()) == "") {
                 $("#stdname").addClass("input-validation-error").focus();
                 $("#mes").html("未选择有效学生！");
                 console.log("add")
                 return;
             }
-            newClass = ($("#stdclass").val()).substring(0, 2) + $("#cclass").val();
+            newClass = $("#cclass").val();
             $.get("./TransferClass.aspx", { "action": "transfer", "newClass": newClass, "stdid": $("#stdid").val(), "ApplyReason": $("#reason").val() }, function (resultString) {
-                if (resultString != null)
+                var resultJson = eval('(' + resultString + ')');
+                debugger;
+                if (resultJson.transfer == 'True')
                 {
-                    alert("转班完成！")
+                    alert("申请成功！")
                 }
    
             });
@@ -128,20 +130,20 @@
                     <label class="col-sm-2 control-label">转入</label>
                     <div class="col-sm-8">
                         <select class="form-control" id="cclass" name="cclass">
-                            <option value="01">一班</option>
-                            <option value="02">二班</option>
-                            <option value="03">三班</option>
-                            <option value="04">四班</option>
-                            <option value="05">五班</option>
+                            <option value="一班">一班</option>
+                            <option value="二班">二班</option>
+                            <option value="三班">三班</option>
+                            <option value="四班">四班</option>
+                            <option value="五班">五班</option>
                         </select>
                     </div>
                 </div>
-<%--                <div class="form-group" style="margin-bottom:5px">
+                <div class="form-group" style="margin-bottom:5px">
                     <label class="col-sm-2 control-label">申请理由</label>
                     <div class="col-sm-8">
                         <textarea rows="3" id="reason" class="form-control" name="rea" placeholder="申请理由"></textarea>
                     </div>
-                </div>--%>
+                </div>
                 <div style="text-align: center;margin:10px">
                     <span id="mes"></span>
                     <a class="btn btn-success" onclick="submit();">提出申请</a> 

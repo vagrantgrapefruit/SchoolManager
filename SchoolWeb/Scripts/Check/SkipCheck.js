@@ -22,7 +22,7 @@ var TableInit = function () {
     //初始化Table
     oTableInit.Init = function () {
         $('#tb_departments').bootstrapTable({
-            url: '../Handler/GetCheckRecord.ashx?Param=DropOut',         //请求后台的URL（*）
+            url: '../Handler/GetCheckRecord.ashx?Param=Skip',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -50,41 +50,41 @@ var TableInit = function () {
             columns: [{
                 checkbox: true
             }, {
-                    field: 'StdId',
-                    title: '学籍号',
+                field: 'StdId',
+                title: '学籍号',
             }, {
-                    field: 'StdName',
-                    title: '学生姓名'
+                field: 'StdName',
+                title: '学生姓名'
             }, {
-                    field: 'ApplicantNo',
-                    title: '申请人工号/学号'
+                field: 'ApplicantNo',
+                title: '申请人工号/学号'
             }, {
-                    field: 'ApplicantName',
-                    title: '申请人姓名'
+                field: 'ApplicantName',
+                title: '申请人姓名'
             }, {
-                    field: 'ApplyDate',
-                    title: '申请时间'
+                field: 'ApplyDate',
+                title: '申请时间'
             }, {
-                    field: 'AssessorId',
-                    title: '审核人Id'
+                field: 'AssessorId',
+                title: '审核人Id'
             }, {
-                    field: 'AssessDate',
-                    title: '审核时间'
+                field: 'AssessDate',
+                title: '审核时间'
             }, {
-                    field: 'AssessorName',
-                    title: '审核人'
+                field: 'AssessorName',
+                title: '审核人'
             }, {
-                    field: 'AssessResult',
-                    title: '审核结果'
+                field: 'AssessResult',
+                title: '审核结果'
             }, {
-                    field: 'AssessState',
-                    title: '审核状态'
+                field: 'AssessState',
+                title: '审核状态'
             }, {
-                    field: 'ApplyReason',
-                    title: '申请理由'
+                field: 'ApplyReason',
+                title: '申请理由'
             }, {
-                    field: 'ApplyType',
-                    title: '申请项目类别'
+                field: 'ApplyType',
+                title: '申请项目类别'
             },]
         });
     };
@@ -123,7 +123,7 @@ var ButtonInit = function () {
         if (rows.length == 1) {
             var row = rows[0];
             if (row.AssessState == "待审核") {
-                $.get("../Handler/ChangeCheckRecord.ashx?Param=AgreeCheckOut", row, function (data) {
+                $.get("../Handler/ChangeCheckRecord.ashx?Param=AgreeSkip", row, function (data) {
                     debugger;
                     var resultJson = eval('(' + data + ')');
                     if (resultJson.flag) {

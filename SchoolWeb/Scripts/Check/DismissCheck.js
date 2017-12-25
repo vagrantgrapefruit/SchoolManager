@@ -123,7 +123,7 @@ var ButtonInit = function () {
         if (rows.length == 1) {
             var row = rows[0];
             if (row.AssessState == "待审核") {
-                $.get("../Handler/ChangeCheckRecord.ashx?Param=Agree", row, function (data) {
+                $.get("../Handler/ChangeCheckRecord.ashx?Param=AgreeDismiss", row, function (data) {
                     debugger;
                     var resultJson = eval('(' + data + ')');
                     if (resultJson.flag) {
