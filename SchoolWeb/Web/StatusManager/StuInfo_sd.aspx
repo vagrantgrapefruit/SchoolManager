@@ -67,7 +67,7 @@
                 dataType: 'json',
                 success: function (data) {
                     debugger;
-                    if (data.flag1 == "true") {
+                    if (data.flag1 == true) {
                         alert("保存成功!");
                     }
                     else {
