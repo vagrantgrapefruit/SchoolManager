@@ -496,6 +496,7 @@
     <Content Include="Web\Handler\GetStatus.ashx" />
     <Content Include="Web\Handler\GetCheckRecord.ashx" />
     <Content Include="Web\Handler\ChangeCheckRecord.ashx" />
+    <Content Include="Web\Handler\GetStudent.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -542,6 +543,9 @@
     </Compile>
     <Compile Include="Web\Handler\GetStatus.ashx.cs">
       <DependentUpon>GetStatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Handler\GetStudent.ashx.cs">
+      <DependentUpon>GetStudent.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Handler\GetUserModel.ashx.cs">
       <DependentUpon>GetUserModel.ashx</DependentUpon>
